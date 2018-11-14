@@ -30,3 +30,26 @@
     transform: rotate(360deg);
   }
 }
+
+.ButtonContainer {
+  display: flex;
+  justify-content: space-around;
+}
+
+.Clickable {
+  /*Placeholder code for a nice round button that is green*/
+  width: 200px;
+  height: 200px;
+  border-radius: 200px;
+
+  background-color: green;
+  color: white;
+}
+
+.ClickWrapper {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+}
