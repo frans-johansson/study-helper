@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import Button from "./Button.js"
+import Button from "../Components/Button.js"
 
 let a=true;
 
