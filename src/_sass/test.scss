@@ -1,0 +1,35 @@
+//Fonts
+$font-stack:    Helvetica, sans-serif;
+$texttest-font:    Andale Mono;
+
+//Färger
+$primary-color: #333;
+$grass-color: #A3BC3D; // gräs
+$sky-color: #BCDEEF; //himmel
+$snow-color: #FFFFFF; // snö
+$mountain_l-color: #92B5CB; //berg 
+$mountain_s-color: #88A7BC; // berg skugga
+$box-color: #F3EFBE; // bakgrunds färg till boxar där man kan ställa in saker
+$yes-color: #1CCC21; // knapp färg för ja, gå vidare, positivt
+$no-color: #E52823; // knapp färg för nej, avbryt
+$text-color: #867B6E; //färg för allmän text
+
+//Ämnes färger
+$a-color: #B85F7C; // rosa, lila, orange
+$c-color: #675E9B; // lila
+$d-color: #BD693C; // orange
+$f-color: #0952AD; // blå
+$g-color: #5EB8B4; // ljus blå
+$h-color: #51872F; // oliv grön
+$i-color: #8A3030; // röd 
+$j-color: #D456B3; // rosa 
+$k-color: #6B3EBD; // lila, blå 
+
+body {
+  font: 100% $texttest-font;
+  color: $text-color;
+  background-color: $sky-color; 
+}
+
+
+
