@@ -23,7 +23,7 @@ class ListElement extends Component {
 							  hoursGoal={this.props.hoursGoal}
 							  endDate={this.props.endDate}
 			  	/>
-			  	<DEBUG_Remove onClick={ () => {this.props.removeMountain(this.props.id)} } />
+			  	<DEBUG_Remove text="Delete this" onClick={ () => {this.props.removeMountain(this.props.id)} } />
 			</div>
 		)
 	}

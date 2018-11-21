@@ -1,5 +1,5 @@
 class MountainData {
-	constructor(name, goal, date, color, id ,studied) {
+	constructor(name, goal, date, color, id) {
 
 		this.name = name
 		this.goal = goal
