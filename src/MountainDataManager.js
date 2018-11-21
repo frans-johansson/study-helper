@@ -22,54 +22,6 @@ class MountainForm extends Component {
   }
 }
 
-class MountainEdit extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      name: '',
-      goal: 0,
-      date: '',
-      color: '', //Hur gör vi detta?
-      studied: 0,
-      visible: false,
-    };
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  // Updates state with entered data
-  handleChange(event) {
-    this.setState({
-      [event.target.name]: event.target.value,
-    });
-  }
-
-  // Sends data away into storage (woosh)
-  handleSubmit(event) {
-    let {name, goal, date, color} = this.state
-
-    let m = new MountainData(name, goal, date, color, key)
-
-    window.localStorage.setItem(`mountain(${key})`, JSON.stringify(m));
-
-    event.preventDefault();
-  }
-
-  render() {
-    if (!visible)
-      return(<div/>)
-
-    return (
-      <div>
-        <h1>Redigera Berg</h1>
-        <MountainForm onChange={this.handleChange} onSubmit={this.handleSubmit} />
-      </div>
-    );
-  }
-}
-
 // Detta är copypastat från reactjs.org
 // Och sedan lite redigerat
 class MountainDeclaration extends Component {
@@ -98,16 +50,21 @@ class MountainDeclaration extends Component {
   // Sends data away into storage (woosh)
   handleSubmit(event) {
     let {name, goal, date, color} = this.state
-    let key = window.localStorage.getItem("key")
 
-    if (!key)
-      key = 0
+    // Try to get the array from local storage. If it's not there, create an empty array.
+    let mountains = JSON.parse(window.localStorage.getItem("mountains"))
+    if (!mountains)
+      mountains = []
 
-    let m = new MountainData(name, goal, date, color, key)
+    // Create a new mountain object and place it at the end of the array
+    let newMountain = new MountainData(name, goal, date, color, Date.now())
+    mountains.push(newMountain)
 
-    window.localStorage.setItem(`mountain(${key})`, JSON.stringify(m));
-    key++
-    window.localStorage.setItem("key", key)
+    // Updates the array in local storage
+    window.localStorage.setItem("mountains", JSON.stringify(mountains));
+
+    // Updates the app state with the new mountain
+    this.props.updateMountainList()
 
     event.preventDefault();
   }
@@ -122,33 +79,8 @@ class MountainDeclaration extends Component {
   }
 }
 
-function getMountains() {
-  let amount = window.localStorage.getItem("key")
 
-  if (!amount)
-    amount = 0
 
-  console.log(amount)
-
-  let mountains = []
-
-  for (let i = 0; i < amount; ++i) {
-    let mountain = JSON.parse(window.localStorage.getItem(`mountain(${i})`))
-
-    if (!mountain)
-      continue
-
-    mountain.key = i
-    mountains[i] = mountain
-  }
-
-  return mountains.filter(Boolean)
-}
-
-function removeMountain(key) { 
-  window.localStorage.removeItem(`mountain(${key})`)
-}
-
-export {MountainDeclaration, MountainEdit, getMountains, removeMountain}
+export default MountainDeclaration
 
 // Bra idé: CurrentKey ligger i local storage och kan hämtas därifrån varje gång

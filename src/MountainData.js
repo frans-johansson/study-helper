@@ -1,13 +1,12 @@
 class MountainData {
-	constructor(name, timeGoal, date, color, id) {
+	constructor(name, goal, date, color, id ,studied) {
 
 		this.name = name
-		this.timeGoal = timeGoal
+		this.goal = goal
 		this.date = date
 		this.color = color
 		this.id = id
-
-		// Add the rest of the things later
+		this.studied = 0
 	}
 }
 
