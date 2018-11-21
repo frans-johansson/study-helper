@@ -1,34 +1,31 @@
 import React, { Component } from 'react'
 
-import TimerTest from './TimerTest.js'
-
 class SetTimerIntervall extends Component {
 
 	constructor(props) {
-		super()
+		super(props)
 
-		this.state = {
-			value: props.value
-		}
-		this.handleChange = this.handleChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
-	handleChange(event) {
-		this.setState({value: event.target.value});
-	}
 
 	handleSubmit(event) {
-		this.setState({value: event.target.value});
+
+		event.preventDefault();
+		this.props.setTimeState(event.target.elements.inputTime.value);
+		
+		console.log("in handleSubmit" + event.target.elements.inputTime.value);
+
 	}
 
 	render() {
 		return(
 			<div>
-				<form>
+				<form onSubmit={this.handleSubmit}>
 					<label>
 						Plugg: 
-						<input type="text" value={this.state.value} onChange={this.handleChange}/>
+						<input type="number" name="inputTime" defaultValue={this.props.defaultTime} />
+						
 					</label>
 						<input type="submit" value="Submit"/>
 				</form>
