@@ -7,7 +7,7 @@ class Archive extends Component {
 		return(
 			<div>
 				<h1>ARCHIVE</h1>
-				<Button text="Home" onClick={this.props.changeView} />
+				<Button text="Home" onClick={ () => {this.props.setActiveView("home")}} />
 			</div>
 		)
 	}

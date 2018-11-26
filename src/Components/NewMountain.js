@@ -28,8 +28,8 @@ class NewMountain extends Component {
 
     let {name, goal, date, color} = this.state
 
-    this.props.addMountain(name, goal, date, color, Date.now())
-    this.props.toggleNewMountain()
+    this.props.subComponentProps.addMountain(name, goal, date, color, Date.now())
+    this.props.clearSubComponent()
   }
 
   render() {

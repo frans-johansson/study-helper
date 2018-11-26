@@ -4,7 +4,13 @@ import RecentProgress from '../Components/RecentProgress.js'
 import MountainList from '../Components/MountainList.js'
 import Button from '../Components/Button.js'
 
+
 class Home extends Component {
+
+	constructor(props) {
+		super(props)
+	}
+
 	render() {
 		return(
 			<div>
@@ -15,20 +21,19 @@ class Home extends Component {
 
 				<div>
 					<MountainList
-						mountains={this.props.mountains}
-						updateMountainList={this.props.updateMountainList}
-						removeMountain={this.props.removeMountain}
+						mountains={this.props.viewProps.mountains}
+						removeMountain={this.props.viewProps.removeMountain}
 					/>
 				</div>
 
 				<div>
-					<Button text="Archive" onClick={this.props.changeView} />
+					<Button text="Arkiverade berg" onClick={ () => {this.props.setActiveView("archive")}} />
 				</div>
 
 				<div>
 					<Button text="Complicated timer" />
 					<Button text="Simple timer" />
-					<Button text="New mountain" onClick={this.props.toggleNewMountain} />
+					<Button text="New mountain" onClick={ () => {this.props.displaySubComponent("newMountain")}} />
 				</div>
 			</div>
 		)
