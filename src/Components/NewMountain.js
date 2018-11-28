@@ -9,7 +9,6 @@ class NewMountain extends Component {
       name: '',
       goal: 0,
       date: '',
-      color: '', //Hur gör vi detta?
     }
 
     this.handleChange = this.handleChange.bind(this)
@@ -28,8 +27,8 @@ class NewMountain extends Component {
 
     let {name, goal, date, color} = this.state
 
-    this.props.subComponentProps.addMountain(name, goal, date, color, Date.now())
-    this.props.clearSubComponent()
+    this.props.subcomponentProps.addMountain(name, goal, date, color, Date.now())
+    this.props.clearSubcomponent()
   }
 
   render() {
@@ -44,8 +43,6 @@ class NewMountain extends Component {
               <input type="number" name="goal" onChange={this.handleChange} />
               End date:
               <input type="text" name="date" onChange={this.handleChange} />
-              Color:
-              <input type="text" name="color" onChange={this.handleChange} />
             </label>
 
             <input type="submit" value="Submit" />

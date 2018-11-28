@@ -7,11 +7,13 @@ import Archive from './Views/Archive'
 
 import MountainData from './MountainData'
 import NewMountain from './Components/NewMountain'
+import MountainInfo from './Components/MountainInfo'
 
 const components = {
 	home: Home,
 	archive: Archive,
 	newMountain: NewMountain,
+	mountainInfo: MountainInfo,
 
 	nullComponent: NullComponent,
 }
@@ -21,64 +23,46 @@ class AppContainer extends Component {
 		super()
 
    		this.setActiveView = this.setActiveView.bind(this)
-   		this.displaySubComponent = this.displaySubComponent.bind(this)
-   		this.clearSubComponent = this.clearSubComponent.bind(this);
+   		this.displaySubcomponent = this.displaySubcomponent.bind(this)
+   		this.clearSubcomponent = this.clearSubcomponent.bind(this);
 
 		this.updateMountainList = this.updateMountainList.bind(this)
 		this.removeMountain = this.removeMountain.bind(this)
 		this.addMountain = this.addMountain.bind(this)
+		this.setHighlightedMountain = this.setHighlightedMountain.bind(this)
+		this.clearHighlightedMountain = this.clearHighlightedMountain.bind(this)
 
    		this.state = {
    			activeView: "home",
-   			subComponent: "nullComponent",
+   			subcomponent: "nullComponent",
 
    			mountains: [],
+   			highlightedMountain: '',
    		}
  	}
 
   	setActiveView(view) {
     	this.setState({
       		activeView: view,
-      		subComponent: "nullComponent",
+      		subcomponent: "nullComponent",
     	})
   	}
 
-  	displaySubComponent(component) {
+  	displaySubcomponent(component) {
   		this.setState({
-  			subComponent: component,
+  			subcomponent: component,
   		})
   	}
 
-  	clearSubComponent() {
+  	clearSubcomponent() {
   		this.setState({
-  			subComponent: "nullComponent",
+  			subcomponent: "nullComponent",
   		})	
   	}
-
-		/*this.state = {
-			showHome: true,
-			showArchive: false,
-			showNewMountain: false,
-
-			mountains: [],
-		}*/
 
 	componentWillMount() {
 		this.updateMountainList()
 	}
-
-	/*changeView() {
-		this.setState({
-			showHome: !(this.state.showHome),
-			showArchive: !(this.state.showArchive),
-		})
-	}
-
-	toggleNewMountain() {
-		this.setState({
-			showNewMountain: !(this.state.showNewMountain),
-		})
-	}*/
 
 	updateMountainList() {
 		let updatedList = JSON.parse(window.localStorage.getItem("mountains"))
@@ -114,17 +98,33 @@ class AppContainer extends Component {
 	    this.updateMountainList()
 	}
 
+	clearHighlightedMountain() {
+		this.setState({
+			highlightedMountain: '',
+		})
+	}
+
+	setHighlightedMountain(id) {
+		let m = this.state.mountains.filter((m) => m.id == id)
+
+		console.log(m)
+
+		this.setState({
+			highlightedMountain: m,
+		})
+	}
 
 	render() {
 
-		let { activeView, subComponent } = this.state
+		let { activeView, subcomponent } = this.state
 		const ActiveView = components[activeView]
-		const SubComponent = components[subComponent]
+		const Subcomponent = components[subcomponent]
 
 		const _props = {
 			home: {
 				mountains: this.state.mountains,
-   				removeMountain: this.removeMountain,	
+   				removeMountain: this.removeMountain,
+   				setHighlightedMountain: this.setHighlightedMountain,
 			},
 
 			newMountain: {
@@ -132,129 +132,31 @@ class AppContainer extends Component {
    				addMountain: this.addMountain,
    				mountains: this.state.mountains,
 			},
+
+			mountainInfo: {
+				highlightedMountain: this.state.highlightedMountain,
+				clearHighlightedMountain: this.clearHighlightedMountain,
+			}
 		}
+		// Props passed to each component
 		const viewProps = _props[activeView]
-		const subComponentProps = _props[subComponent]
+		const subcomponentProps = _props[subcomponent]
 
 		return(
 			<div>
-				<ActiveView setActiveView={this.setActiveView} displaySubComponent={this.displaySubComponent} viewProps={viewProps}/>
-				<SubComponent clearSubComponent={this.clearSubComponent} subComponentProps={subComponentProps}/>
+				<ActiveView
+					setActiveView={this.setActiveView}
+					displaySubcomponent={this.displaySubcomponent}
+					viewProps={viewProps}>
+
+					<Subcomponent
+						clearSubcomponent={this.clearSubcomponent}
+						subcomponentProps={subcomponentProps}/>
+
+				</ActiveView>
 			</div>
 		)
-
-	    /*if(this.state.isToggleOn=="Mountain"){
-	      
-	      	return(
-	      		<div>
-	       			<MountainTest/>
-	      			<Button text="Tillbaka" onClick={this.handleClick.bind(this, "Back")}/>
-	      		</div>);
-	    }
-
-
-	    if(this.state.isToggleOn=="Back"){
-	      
-	      	return(
-	      		<div>
-	       			<HomeTest/>
-	       		</div>);
-	    }
-
-
-	    if(this.state.isToggleOn=="Timer"){
-	      
-	    	return(
-	      		<div>
-	       			<p> finns inte </p>
-	       			<Button text="Tillbaka" onClick={this.handleClick.bind(this, "Back")}/>
-
-			    </div>);
-	    }
-
-
-	    if(this.state.isToggleOn=="Archive"){
-	      
-	      	return(
-	      		<div>
-	       			<p> finns inte </p>
-	       			<Button text="Tillbaka" onClick={this.handleClick.bind(this, "Back")}/>
-	       			<ArchiveTest/> 
-			    </div>);
-	    }
-
-
-	    if(this.state.isToggleOn=="timertwo"){
-	      
-	      	return(
-	      		<div>
-	       			<p> finns inte </p>
-	       			<Button text="Tillbaka" onClick={this.handleClick.bind(this, "Back")}/>
-	       			<TimerCTest/>	       
-	      		</div>);
-	    }
-
-
-	    return (
-	     	<div>
-	      		<Button text="lägg till berg" onClick={this.handleClick.bind(this, "Mountain")}/>
-
-	      		<Button text="timern" onClick={this.handleClick.bind(this, "Timer")}/>
-
-	      		<Button text="Arkiverade berg" onClick={this.handleClick.bind(this, "Archive")}/>
-
-	      		<Button text="Kalender timer" onClick={this.handleClick.bind(this, "Timertwo")}/>
-
-	       </div>
-	      
-	    );*/
 	}
-
-
-
-
-	/*
-	render() {
-		let {showHome, showArchive, showNewMountain} = this.state
-
-		if(showHome) {
-			if (showNewMountain) {
-				return(
-					<div>
-						<NewMountain
-							toggleNewMountain={this.toggleNewMountain}
-							addMountain={this.addMountain}
-						/>
-						<Home 
-							changeView={this.changeView}
-							toggleNewMountain={this.toggleNewMountain}
-							updateMountainList={this.updateMountainList}
-							removeMountain={this.removeMountain}
-							mountains={this.state.mountains}
-						/>
-					</div>
-				)
-			}
-
-			return(
-				<Home 
-					changeView={this.changeView}
-					toggleNewMountain={this.toggleNewMountain}
-					updateMountainList={this.updateMountainList}
-					removeMountain={this.removeMountain}
-					mountains={this.state.mountains}
-				/>
-			)
-		}
-		else if(showArchive) {
-			return(
-				<Archive changeView={this.changeView} />
-			)
-		}
-
-		// Sad div :(
-		return(<div/>)
-	}*/
 }
 
 export default AppContainer

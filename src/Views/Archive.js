@@ -8,6 +8,10 @@ class Archive extends Component {
 			<div>
 				<h1>ARCHIVE</h1>
 				<Button text="Home" onClick={ () => {this.props.setActiveView("home")}} />
+
+				<div>
+					{this.props.children}
+				</div>
 			</div>
 		)
 	}

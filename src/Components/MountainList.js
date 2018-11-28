@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import Button from './Button.js' 
 
-class MountainInfo extends Component {
+class MountainData extends Component {
 	render() {
 		return(
 			<div>
@@ -14,18 +14,34 @@ class MountainInfo extends Component {
 }
 
 class ListElement extends Component {
+	constructor() {
+		super()
+
+		this.handleClick = this.handleClick.bind(this)
+	}
+
+	handleClick(e) {
+		if(e.target.className == "Clickable") {
+			this.props.removeMountain(this.props.id)
+		}
+		else {
+			this.props.displaySubcomponent("mountainInfo")
+			this.props.setHighlightedMountain(this.props.id)
+		}
+	}
+
 	render() {
 		return(
-			<div>
+			<div className="listElement" onClick={this.handleClick}>
 				<h1>{this.props.name}</h1>
-				<MountainInfo 
+				<MountainData 
 					studied={this.props.studied}
 					goal={this.props.goal}
 					date={this.props.date}
 			  	/>
 			  	<Button
 			  		text="Delete this"
-			  		onClick={ () => {this.props.removeMountain(this.props.id)} }
+			  		onClick={this.handleClick}
 		  		/>
 			</div>
 		)
@@ -48,6 +64,8 @@ class MountainList extends Component {
 									id={m.id} 
 
 									removeMountain={this.props.removeMountain}
+									setHighlightedMountain={this.props.setHighlightedMountain}
+									displaySubcomponent={this.props.displaySubcomponent}
 								/>
 					)
 				}
