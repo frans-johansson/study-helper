@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
-let pauseTime = [0,15];
 
-class SetTimerIntervall extends Component {
+class SimpleTimerSetup extends Component {
 	
 
 	constructor(props) {
@@ -12,13 +11,15 @@ class SetTimerIntervall extends Component {
 	
 
 	handleSubmit(event) {
+        event.preventDefault();
+        
+        let {setTimeInput, setPauseInput, setActiveView} = this.props.subcomponentProps
 
-		event.preventDefault();
-		this.props.setTimeState(event.target.elements.inputTimeH.value, event.target.elements.inputTimeMin.value);
-
-		this.props.setPauseState(event.target.elements.inputTimePauseH.value, event.target.elements.inputTimePauseMin.value);
-	
-
+		setTimeInput(event.target.elements.inputTimeH.value, event.target.elements.inputTimeMin.value);
+        setPauseInput(event.target.elements.inputTimePauseH.value, event.target.elements.inputTimePauseMin.value);
+        
+        this.props.clearSubcomponent()
+        setActiveView("timer")
 	}
 
 	render() {
@@ -41,4 +42,4 @@ class SetTimerIntervall extends Component {
 	}
 }
 
-export default SetTimerIntervall
+export default SimpleTimerSetup

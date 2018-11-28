@@ -1,46 +1,71 @@
 import React, { Component } from 'react'
 
-import NullComponent from './Components/NullComponent'
-
+// View imports
 import Home from './Views/Home'
 import Archive from './Views/Archive'
+import Timer from './Views/Timer'
 
+// Component imports
+import NullComponent from './Components/NullComponent'
 import MountainData from './MountainData'
 import NewMountain from './Components/NewMountain'
 import MountainInfo from './Components/MountainInfo'
+import SimpleTimerSetup from './Components/SimpleTimerSetup';
 
+// Register of available components.
 const components = {
+	// Views
 	home: Home,
+	timer: Timer,
 	archive: Archive,
+	// Subcomponents
 	newMountain: NewMountain,
 	mountainInfo: MountainInfo,
-
+	simpleTimerSetup: SimpleTimerSetup,
+	// Null
 	nullComponent: NullComponent,
 }
 
-class AppContainer extends Component {
+class AppController extends Component {
 	constructor() {
 		super()
-
+		// Display functions
    		this.setActiveView = this.setActiveView.bind(this)
    		this.displaySubcomponent = this.displaySubcomponent.bind(this)
    		this.clearSubcomponent = this.clearSubcomponent.bind(this);
-
+		// Mountain management
 		this.updateMountainList = this.updateMountainList.bind(this)
 		this.removeMountain = this.removeMountain.bind(this)
 		this.addMountain = this.addMountain.bind(this)
+		// Mountain information 
 		this.setHighlightedMountain = this.setHighlightedMountain.bind(this)
 		this.clearHighlightedMountain = this.clearHighlightedMountain.bind(this)
+		// Timer functions
+		this.setTimeInput = this.setTimeInput.bind(this)
+		this.setPauseInput = this.setPauseInput.bind(this)
+
 
    		this.state = {
+			// Controlling what is displayed
    			activeView: "home",
    			subcomponent: "nullComponent",
 
+			// Mountain
    			mountains: [],
-   			highlightedMountain: '',
-   		}
+			highlightedMountain: '',
+			   
+			// Timer with defaults
+			timeInput: [0,45],
+			pauseInput: [0,15],
+   		}	
  	}
 
+	/* INITS */
+	componentWillMount() {
+		this.updateMountainList()
+	}
+
+	/* DISPLAY */
   	setActiveView(view) {
     	this.setState({
       		activeView: view,
@@ -60,10 +85,7 @@ class AppContainer extends Component {
   		})	
   	}
 
-	componentWillMount() {
-		this.updateMountainList()
-	}
-
+	/* MOUNTAINS */
 	updateMountainList() {
 		let updatedList = JSON.parse(window.localStorage.getItem("mountains"))
   		if(!updatedList)
@@ -107,24 +129,41 @@ class AppContainer extends Component {
 	setHighlightedMountain(id) {
 		let m = this.state.mountains.filter((m) => m.id == id)
 
-		console.log(m)
-
 		this.setState({
 			highlightedMountain: m,
 		})
 	}
 
-	render() {
+	/* TIMER */
+	setTimeInput(hours, minutes) {
+		let time = [hours, minutes];
 
+		this.setState({timeInput: time});
+	}
+
+	setPauseInput(hours, minutes){
+		let pause = [hours, minutes];
+
+		this.setState({pauseInput: pause});
+	}
+
+	render() {
 		let { activeView, subcomponent } = this.state
 		const ActiveView = components[activeView]
 		const Subcomponent = components[subcomponent]
 
+		// Register of props that correspond to each component
+		// Will be passed either as viewProps or subcomponentProps
 		const _props = {
 			home: {
 				mountains: this.state.mountains,
    				removeMountain: this.removeMountain,
    				setHighlightedMountain: this.setHighlightedMountain,
+			},
+
+			timer: {
+				time: this.state.timeInput,
+				pauseTime: this.state.pauseInput,
 			},
 
 			newMountain: {
@@ -136,7 +175,13 @@ class AppContainer extends Component {
 			mountainInfo: {
 				highlightedMountain: this.state.highlightedMountain,
 				clearHighlightedMountain: this.clearHighlightedMountain,
-			}
+			},
+
+			simpleTimerSetup: {
+				setTimeInput: this.setTimeInput,
+				setPauseInput: this.setPauseInput,
+				setActiveView: this.setActiveView,
+			},
 		}
 		// Props passed to each component
 		const viewProps = _props[activeView]
@@ -159,4 +204,4 @@ class AppContainer extends Component {
 	}
 }
 
-export default AppContainer
+export default AppController

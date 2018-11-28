@@ -30,7 +30,7 @@ class Home extends Component {
 
 				<div>
 					{/*<Button text="Complicated timer" />*/}
-					<Button text="Simple timer" />
+					<Button text="Simple timer" onClick={ () => {this.props.displaySubcomponent("simpleTimerSetup")}} />
 					<Button text="New mountain" onClick={ () => {this.props.displaySubcomponent("newMountain")}} />
 				</div>
 

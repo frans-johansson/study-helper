@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import AppContainer from './AppContainer.js'
+import AppController from './AppController.js'
 
 class App extends Component {
   render() {
     return(
       <div>
-      	<AppContainer />
+      	<AppController />
       </div>
     )
   }
