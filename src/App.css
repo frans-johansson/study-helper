@@ -53,3 +53,11 @@
   align-items: center;
   justify-content: center;
 }
+
+.listElement {
+  background-color: lightgray;
+}
+
+.listElement:hover {
+  background-color: gray;
+}
