@@ -1,6 +1,7 @@
 //Fonts
 $font-stack:    Helvetica, sans-serif;
 $texttest-font:    Andale Mono;
+$texttesttest-font:    Futura;
 
 //Färger
 $primary-color: #333;
@@ -15,21 +16,92 @@ $no-color: #E52823; // knapp färg för nej, avbryt
 $text-color: #867B6E; //färg för allmän text
 
 //Ämnes färger
-$a-color: #B85F7C; // rosa, lila, orange
-$c-color: #675E9B; // lila
-$d-color: #BD693C; // orange
-$f-color: #0952AD; // blå
-$g-color: #5EB8B4; // ljus blå
-$h-color: #51872F; // oliv grön
-$i-color: #8A3030; // röd 
-$j-color: #D456B3; // rosa 
-$k-color: #6B3EBD; // lila, blå 
+$a-color: #5A999D; 
+$c-color: #D17B6E; 
+$d-color: #868D6E; 
+$f-color: #AD7B98; 
+$g-color: #78B0E8; 
+$h-color: #D498CF; 
+$i-color: #91BE7B; 
+$j-color: #76639A; 
+$k-color: #5360A5; 
+$l-color: #5360A5; 
 
 body {
-  font: 100% $texttest-font;
+  font: 100% $texttesttest-font;
   color: $text-color;
   background-color: $sky-color; 
 }
 
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.ButtonContainer {
+  display: flex;
+  justify-content: space-around;
+}
+
+.Clickable {
+  /*Placeholder code for a nice round button that is green*/
+  width: 100px;
+  height: 100px;
+  border-radius: 200px;
+
+  background-color: $yes-color;
+  color: white;
+}
+
+.ClickWrapper {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+}
+
+.InfoContainer{
+
+	display: flex;
+flex-direction: column;
+   align-items: center;
+  justify-content: center;
+	
+  	width: 500px;
+  	height: 200px;
+  	
+
+ 	background-color: $box-color;
+  	color: $text-color;
+}
 
 
