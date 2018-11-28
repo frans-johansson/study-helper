@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 
 import Button from "../Components/Button.js"
+import setPauseTime from "../SetTimerTest.js"
 
-let a=false;
+let isTicking = false;
+let isPause = false;
 
 let tickCounter = 0;
 
@@ -21,11 +23,11 @@ function formatTimeToUser(seconds) {
 }
 
 function pausePlay() {
-	if(a === true){
-		a = false
+	if(isTicking === true){
+		isTicking = false
 	}
 	else{
-		a = true
+		isTicking = true
 	}
 }
 
@@ -36,52 +38,65 @@ class Timer extends Component {
 		super(props)
 
 		this.state = {
-			time: props.time
+			time: props.time,
+			pauseTime: props.pauseTime
 		}
 		console.log("in constructor " + this.state.time);
 		this.timer = setInterval(this.tickDown.bind(this), 1000)
 	}
-	componentDidMount() {
-		console.log("in componentDidMount " + this.state.time);
-	}
-
 
 
 	tickDown() {
 		if (tickCounter == 0) {
-		this.setState({
-			time: this.props.time
-		})
+			this.setState({
+				time: this.props.time,
+				pauseTime: this.props.pauseTime
+				})
+		}
 
-	}
-	tickCounter ++;
-	console.log("In tickDown: tickCounter = "  + tickCounter);
-		
-		if(a===true){
-		this.setState({
-			time: this.state.time - 1
-		})
-	}
-	console.log("In tickDown: "  + this.state.time);
+		tickCounter ++;
+					
+		if(isTicking === true){
+			this.setState({
+				time: this.state.time - 1
+			})
+		}
 
 		if (this.state.time <= 0) {
-			clearInterval(this.timer)
+			if(isPause) {
+				this.setState({
+				time: this.props.time,
+				pauseTime: this.props.pauseTime
+				})
+
+				isPause = true;
+			}
+			else {
+				this.setState({
+				time: this.props.pauseTime,
+				pauseTime: this.props.time
+				})
+
+				isPause = false;
+			}
+			
 		}
+
+		
 	}
 
+	render() {	
 
-	render() {
-{
-	if (!a) {
-		tickCounter = 0;
-	}
-	
-}
+		if (!isTicking) {
+			tickCounter = 0
+			isTicking = true
+		}
+		
+
 		return(
 			<p>
 				{formatTimeToUser(this.state.time)}
 			</p>
-
 		)
 	}
 }
@@ -90,14 +105,16 @@ class TimerTest extends Component {
 
 	constructor(props) {
 		super(props);
-		
 	}
+
 	
+
 	render() {
 		return(
 			<div>
-				<Timer time={formatTimeFromUser(this.props.time)}/>
-			<Button onClick={() => pausePlay()} text="Pausa"/>
+				<Timer time={formatTimeFromUser(this.props.time)}  pauseTime={formatTimeFromUser(this.props.pauseTime)}/>
+				<Button onClick={() => pausePlay()} text="Plugg"/>
+				
 			</div>	
 		)
 	}
