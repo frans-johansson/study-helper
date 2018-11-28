@@ -56,7 +56,7 @@ class SetTimerTest extends Component {
       	<SetTimerIntervall defaultTimeH={0} defaultTimeMin={45} defaultTimePauseH={0} defaultTimePauseMin={15} 
       		setTimeState={this.setTimeState} setPauseState={this.setPauseState} />
 
-      	<TimerTest time={this.state.time} />
+      	<TimerTest time={this.state.timeInput} pauseTime = {this.state.pauseInput} />
       </div>
     )
   }
