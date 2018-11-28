@@ -1,19 +1,13 @@
 import React, { Component } from 'react';
-import './_css/test.css';
+import './App.css';
 
-import Hubtest from './Tests/Hubtest.js'
-import HomeTest from './Tests/HomeTest.js'
-import TimerTest from './Tests/TimerTest.js'
-import MountainTest from './Tests/MountainTest.js'
+import AppContainer from './AppContainer.js'
 
 class App extends Component {
   render() {
     return(
       <div>
-      	<HomeTest />
-
-  		
-
+      	<AppContainer />
       </div>
     )
   }
