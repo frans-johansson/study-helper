@@ -1,4 +1,5 @@
 @import 'variabels';
+@import 'button';
 
 /*ska centrera allt i den*/
 .page_container{
@@ -14,15 +15,32 @@
 
 	}
 	/*för varje box*/
-	.box_conatiner{
+	.place_container{
 
+		.box_container{
 
+			background-color: $box-color;
+
+		}
 	}	
 	
 }
 
+.sub_page_container{
+
+		position:absolute;
+		flex-direction:column;
+		align-content: space-evenly;
+
+		background-color: $box-color;
+
+		width: 400px;
+		height: 700px;
+
+	}
+
 /*när man vill att en box ska vara på en sida */
-.two_box_conatiner{
+.two_box_container{
 	display:flex;
 	justify-content:space-evenly;
 	flex-direction:row;
@@ -48,4 +66,5 @@
 
 body{
 	font: 100% $texttesttest-font;
+	color: $text-color;
 }
