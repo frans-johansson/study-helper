@@ -1,0 +1,51 @@
+@import 'variabels';
+
+/*ska centrera allt i den*/
+.page_container{
+
+	display:flex;
+	justify-content:center;
+
+	/*när saker ska vara i en kollumn*/
+	.page_collum_container{
+	
+		flex-direction:column;
+		align-content: space-evenly;
+
+	}
+	/*för varje box*/
+	.box_conatiner{
+
+
+	}	
+	
+}
+
+/*när man vill att en box ska vara på en sida */
+.two_box_conatiner{
+	display:flex;
+	justify-content:space-evenly;
+	flex-direction:row;
+
+	.left_box{
+			
+		justify-self: flex-start;
+	}
+
+	.right_box{
+		justify-self: flex-end;
+			
+
+	}
+}
+
+/* när två knappar*/
+.button_container_two{
+	display:flex;
+	align-content: space-evenly;
+
+}
+
+body{
+	font: 100% $texttesttest-font;
+}
