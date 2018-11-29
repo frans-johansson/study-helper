@@ -107,7 +107,7 @@ class TimerContainer extends Component {
         let {time, pauseTime} = this.props.viewProps
 
 		return(
-			<div>
+			<div class="sub_page_container">
 				<Timer time={formatTimeFromUser(time)}  pauseTime={formatTimeFromUser(pauseTime)}/>
 				<Button onClick={() => pausePlay()} text="Plugg"/>
                 <Button onClick={() => {this.returnHome()}} text="Tillbaka"/>

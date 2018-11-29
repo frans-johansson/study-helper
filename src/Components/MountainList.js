@@ -32,7 +32,7 @@ class ListElement extends Component {
 
 	render() {
 		return(
-			<div className="listElement" onClick={this.handleClick}>
+			<div class="box_container" onClick={this.handleClick}>
 				<h1>{this.props.name}</h1>
 				<MountainData 
 					studied={this.props.studied}

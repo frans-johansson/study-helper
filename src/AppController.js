@@ -189,7 +189,8 @@ class AppController extends Component {
 
 		return(
 			<div>
-				<ActiveView
+				<div class="page_container">
+				<ActiveView 
 					setActiveView={this.setActiveView}
 					displaySubcomponent={this.displaySubcomponent}
 					viewProps={viewProps}>
@@ -199,6 +200,7 @@ class AppController extends Component {
 						subcomponentProps={subcomponentProps}/>
 
 				</ActiveView>
+				</div>
 			</div>
 		)
 	}

@@ -24,7 +24,7 @@ class SimpleTimerSetup extends Component {
 
 	render() {
 		return(
-			<div>
+			<div class="sub_page_container">
 				<form onSubmit={this.handleSubmit}>
 					<label>
 						Pluggtid Timmar:
