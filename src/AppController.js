@@ -201,6 +201,9 @@ class AppController extends Component {
 				setTimeInput: this.setTimeInput,
 				setPauseInput: this.setPauseInput,
 				setActiveView: this.setActiveView,
+
+				// Mountain selection
+				mountains: this.state.mountains,
 				setSelectedMountain: this.setSelectedMountain,
 				clearSelectedMountain: this.clearSelectedMountain,
 			},

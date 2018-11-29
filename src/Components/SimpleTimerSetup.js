@@ -23,10 +23,11 @@ class MountainChoice extends Component {
 			isSelected: !isSelected
 		})
 	}
-
+	
+	// The className mountainSelection is a test class and should be changed later
 	render() {
 		return(
-			<div className="mountainSelection" onClick={this.handleClick(this.props.id)}/>
+			<div className="mountainSelection" onClick={() => this.handleClick(this.props.id)}/>
 		)
 	}
 }
@@ -93,8 +94,9 @@ class SimpleTimerSetup extends Component {
 					<input type="number" name="inputTimePauseMin" defaultValuePauseMin={this.props.defaultTime} />
 
 					<MountainSelector
-						setSelectedMountain={this.subcomponentProps.setSelectedMountain}
-						clearSelectedMountain={this.subcomponentProps.clearSelectedMountain}/>
+						setSelectedMountain={this.props.subcomponentProps.setSelectedMountain}
+						clearSelectedMountain={this.props.subcomponentProps.clearSelectedMountain}
+						mountains={this.props.subcomponentProps.mountains}/>
 
 					<input type="submit" value="Submit"/>
 				</form>
