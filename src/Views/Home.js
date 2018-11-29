@@ -9,8 +9,6 @@ class Home extends Component {
 	render() {
 		return(
 			<div class="page_container">
-				
-
 				<div class="page_collum_container">
 					<div>
 						{this.props.children}
@@ -42,8 +40,6 @@ class Home extends Component {
 							<Button text="New mountain" onClick={ () => {this.props.displaySubcomponent("newMountain")}} />
 						</div>
 					</div>
-
-					
 				</div>
 			</div>
 		)

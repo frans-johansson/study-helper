@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 
 import Button from "../Components/Button.js"
 
-let isTicking = false;
-let isPause = false;
+let timer = undefined
+let isTicking = false
+let isPause = false
 
 let tickCounter = 0;
 
@@ -36,7 +37,7 @@ class Timer extends Component {
 			pauseTime: props.pauseTime,
         }
         
-		this.timer = setInterval(this.tickDown.bind(this), 1000)
+		timer = setInterval(this.tickDown.bind(this), 1000)
 	}
 
 	tickDown() {
@@ -46,10 +47,10 @@ class Timer extends Component {
 			this.setState({
 				time: time,
 				pauseTime: pauseTime
-				})
+			})
 		}
 
-		tickCounter ++;
+		tickCounter++
 					
 		if(isTicking === true){
 			this.setState({
@@ -64,7 +65,7 @@ class Timer extends Component {
 				    pauseTime: pauseTime
 				})
 
-				isPause = false;
+				isPause = false
 			}
 			else {
 				this.setState({
@@ -72,7 +73,7 @@ class Timer extends Component {
 				    pauseTime: time
 				})
 
-				isPause = true;
+				isPause = true
 			}	
 		}
 	}
@@ -93,13 +94,13 @@ class Timer extends Component {
 
 class TimerContainer extends Component {
 	constructor(props) {
-        super(props);
+        super(props)
         
         this.returnHome = this.returnHome.bind(this)
     }
     
     returnHome() {
-        clearInterval(this.timer)
+        clearInterval(timer)
         setTimeout(this.props.setActiveView("home"), 1000)
     }
 

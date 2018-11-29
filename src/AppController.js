@@ -26,6 +26,10 @@ const components = {
 	nullComponent: NullComponent,
 }
 
+function findMountain(id, array) {
+	return [array.filter( (m) => m.id == id)]
+}
+
 class AppController extends Component {
 	constructor() {
 		super()
@@ -43,7 +47,8 @@ class AppController extends Component {
 		// Timer functions
 		this.setTimeInput = this.setTimeInput.bind(this)
 		this.setPauseInput = this.setPauseInput.bind(this)
-
+		this.setSelectedMountain = this.setSelectedMountain.bind(this)
+		this.clearSelectedMountain = this.clearSelectedMountain.bind(this)
 
    		this.state = {
 			// Controlling what is displayed
@@ -52,11 +57,12 @@ class AppController extends Component {
 
 			// Mountain
    			mountains: [],
-			highlightedMountain: '',
+			highlightedMountain: undefined,
 			   
 			// Timer with defaults
 			timeInput: [0,45],
 			pauseInput: [0,15],
+			selectedMountain: undefined,
    		}	
  	}
 
@@ -122,12 +128,12 @@ class AppController extends Component {
 
 	clearHighlightedMountain() {
 		this.setState({
-			highlightedMountain: '',
+			highlightedMountain: undefined,
 		})
 	}
 
 	setHighlightedMountain(id) {
-		let m = this.state.mountains.filter((m) => m.id == id)
+		let m = findMountain(id, this.state.mountains)
 
 		this.setState({
 			highlightedMountain: m,
@@ -145,6 +151,20 @@ class AppController extends Component {
 		let pause = [hours, minutes];
 
 		this.setState({pauseInput: pause});
+	}
+
+	setSelectedMountain(id) {
+		let m = findMountain(id, this.state.mountains)
+
+		this.setState({
+			selectedMountain: m,
+		})
+	}
+
+	clearSelectedMountain() {
+		this.setState({
+			selectedMountain: undefined,
+		})
 	}
 
 	render() {
@@ -181,6 +201,8 @@ class AppController extends Component {
 				setTimeInput: this.setTimeInput,
 				setPauseInput: this.setPauseInput,
 				setActiveView: this.setActiveView,
+				setSelectedMountain: this.setSelectedMountain,
+				clearSelectedMountain: this.clearSelectedMountain,
 			},
 		}
 		// Props passed to each component
