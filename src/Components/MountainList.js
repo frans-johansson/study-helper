@@ -39,10 +39,12 @@ class ListElement extends Component {
 					goal={this.props.goal}
 					date={this.props.date}
 			  	/>
-			  	<Button
+			  	<div class="button_container">
+			  	<Button 
 			  		text="Delete this"
 			  		onClick={this.handleClick}
 		  		/>
+		  		</div>
 			</div>
 		)
 	}

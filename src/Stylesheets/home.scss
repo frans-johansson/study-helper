@@ -3,41 +3,54 @@
 
 /*ska centrera allt i den*/
 .page_container{
-
+	text-align:center;
 	display:flex;
 	justify-content:center;
+	align-content: space-evenly;
 
 	/*när saker ska vara i en kollumn*/
 	.page_collum_container{
-	
+		width: 400px;
+		position: relative;
+		bottom: -150px;
 		flex-direction:column;
-		align-content: space-evenly;
-
 	}
 	/*för varje box*/
 	.place_container{
-
+		
+		
 		.box_container{
-
+			width:400px;
 			background-color: $box-color;
+			
 
 		}
-	}	
+	}
+
 	
 }
+.bottom_container{
+	position: fixed;
+    bottom: 40px;
+}
+
 
 .sub_page_container{
 
 		position:absolute;
+		bottom: 0;
+
 		flex-direction:column;
 		align-content: space-evenly;
 
 		background-color: $box-color;
 
 		width: 400px;
-		height: 700px;
+		height: 600px;
 
-	}
+}
+
+
 
 /*när man vill att en box ska vara på en sida */
 .two_box_container{
@@ -55,13 +68,6 @@
 			
 
 	}
-}
-
-/* när två knappar*/
-.button_container_two{
-	display:flex;
-	align-content: space-evenly;
-
 }
 
 body{

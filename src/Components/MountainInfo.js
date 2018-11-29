@@ -17,10 +17,12 @@ class MountainInfo extends Component {
 		let {goal, date, studied, color, id} = mountain
 
 		return(
-			<div>
+			<div class="sub_page_container">
 				<h1>{mountain.name}</h1>
 				<p>{`Mål:${goal} Slutdatum:${date} Antal timmar:${studied} Färg:${color} Skapat:${id}`}</p>
-				<Button onClick={this.handleClick}/>
+				<div class="button_container">
+				<Button text="Tillbaka" onClick={this.handleClick}/>
+				</div>
 			</div>
 		)
 	}
