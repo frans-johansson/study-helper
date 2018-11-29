@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../_css/home.css';
+import '../Stylesheets/home.scss';
 import RecentProgress from '../Components/RecentProgress.js'
 import MountainList from '../Components/MountainList.js'
 import Button from '../Components/Button.js'
