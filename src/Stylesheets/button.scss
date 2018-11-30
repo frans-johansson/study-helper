@@ -1,17 +1,14 @@
 @import 'variabels';
 
 .ClickWrapper{
-  
   width: 70px;
   height: 140px;
   display:flex;
   flex-direction:column;
   justify-content: center;
-
-
 }
+
 .Clickable {
-  
   width: 60px;
   height: 60px;
   border-radius: 100px;
@@ -19,37 +16,33 @@
   color: white;
 
   background-color: $text-color;
-
-
 }
+
 .no_button{
     background-color: $no-color;
   }
+
 .yes_button{
     background-color: $yes-color;
 }
+
 .button_container{
-  
   display:flex;
   justify-content: center;
   flex-direction:row;
-  width: 400px;
 
+  width: 400px;
 }
 
-/* när två knappar*/
 .button_container_two{
-  
   display:flex;
   justify-content: space-around;
   flex-direction:row;
-  background-color: $box-color;
+  border: 5px solid $text-color; 
   width: 400px;
-
 }
 
 .small_button{
-
 	  width: 40px;
 	  height: 40px;
 	  border-radius: 100px;

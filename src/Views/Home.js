@@ -3,6 +3,7 @@ import '../Stylesheets/home.scss';
 import RecentProgress from '../Components/RecentProgress.js'
 import MountainList from '../Components/MountainList.js'
 import Button from '../Components/Button.js'
+import ProgressBarExample from '../Components/ProgressBar.js'
 
 
 class Home extends Component {
@@ -10,7 +11,7 @@ class Home extends Component {
 		return(
 			<div class="page_container">
 			<div class="home_image_conatiner">
-			
+
 				<div class="page_collum_container">
 					
 					<h1>HOME</h1>
@@ -28,21 +29,20 @@ class Home extends Component {
 						/>
 					</div>
 					
-
 					<div class="place_container">
-						<div >
-							{/*<Button text="Arkiverade berg" onClick={ () => {this.props.setActiveView("archive")}} />*/}
-						</div>
-						<div class="bottom_container">
-						<div>
-						{this.props.children}
-					    </div>
-						<div class="button_container_two">
-							{/*<Button text="Complicated timer" />*/}
-							<Button text="Simple timer" onClick={ () => {this.props.displaySubcomponent("simpleTimerSetup")}} />
-							<Button text="New mountain" onClick={ () => {this.props.displaySubcomponent("newMountain")}} />
-						</div>
-						</div>
+							<div >
+								{/*<Button text="Arkiverade berg" onClick={ () => {this.props.setActiveView("archive")}} />*/}
+							</div>
+							<div class="bottom_container">
+								<div>
+									{this.props.children}
+							    </div>
+								<div class="button_container_two">
+									{/*<Button text="Complicated timer" />*/}
+									<Button text="Simple timer" onClick={ () => {this.props.displaySubcomponent("simpleTimerSetup")}} />
+									<Button text="New mountain" onClick={ () => {this.props.displaySubcomponent("newMountain")}} />
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
