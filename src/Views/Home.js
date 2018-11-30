@@ -9,7 +9,8 @@ class Home extends Component {
 	render() {
 		return(
 			<div class="page_container">
-
+			<div class="home_image_conatiner">
+			
 				<div class="page_collum_container">
 					
 					<h1>HOME</h1>
@@ -40,6 +41,7 @@ class Home extends Component {
 							{/*<Button text="Complicated timer" />*/}
 							<Button text="Simple timer" onClick={ () => {this.props.displaySubcomponent("simpleTimerSetup")}} />
 							<Button text="New mountain" onClick={ () => {this.props.displaySubcomponent("newMountain")}} />
+						</div>
 						</div>
 						</div>
 					</div>

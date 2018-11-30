@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 
+
 import Button from "../Components/Button.js"
 
 let timer = undefined
@@ -108,11 +109,23 @@ class TimerContainer extends Component {
         let {time, pauseTime} = this.props.viewProps
 
 		return(
-			<div class="sub_page_container">
+			
+				<div class="timer_page_collum_container">
+
+				<div class="timer_box_container">
 				<Timer time={formatTimeFromUser(time)}  pauseTime={formatTimeFromUser(pauseTime)}/>
-				<Button onClick={() => pausePlay()} text="Plugg"/>
+				 </div>	
+
+				<div class="timer_box_container">
+				<Button onClick={() => pausePlay()} text="Paus"/>
+				 </div>	
+
+				<div class="timer_box_container">
                 <Button onClick={() => {this.returnHome()}} text="Tillbaka"/>
-			</div>	
+                 </div>	
+
+                </div>	
+				
 		)
 	}
 }

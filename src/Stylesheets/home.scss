@@ -1,8 +1,10 @@
 @import 'variabels';
 @import 'button';
+@import 'timer';
 
 /*ska centrera allt i den*/
 .page_container{
+
 	text-align:center;
 	display:flex;
 	justify-content:center;
@@ -10,41 +12,75 @@
 
 	/*när saker ska vara i en kollumn*/
 	.page_collum_container{
-		width: 400px;
+		background-color: $grass-color;
+		width: 450px;
 		position: relative;
-		bottom: -150px;
+		bottom: -200px;
 		flex-direction:column;
-	}
-	/*för varje box*/
-	.place_container{
-		
-		
-		.box_container{
-			width:400px;
-			background-color: $box-color;
+		justify-content:center;
+
+		.place_container{
 			
+			.box_container{
+			width:430px;
+			background-color: $box-color;
+			border: 10px solid $grass-color;
 
 		}
-	}
+		
+	    }
 
+	}
+	/*för varje box*/
+	
+	
 	
 }
+
+
+	
+
+
+.home_image_conatiner{
+	background-image:url(../svg/homepage.svg);
+	background-size:cover;
+	
+	width: 450px;
+	height:500px;
+	justify-content:center;
+	display:flex;
+
+}
+
+.stat_image_conatiner{
+	
+	background-image:url(../svg/statcomp.svg);
+	background-size:cover;
+	flex-direction:column;
+	width: 400px;
+	height:600px;
+	justify-content:center;
+	display:flex;
+
+}
+
 .bottom_container{
 	position: fixed;
-    bottom: 40px;
+    bottom: 20px;
+    margin: 25px;
 }
 
 
 .sub_page_container{
 
-		position:absolute;
-		bottom: 0;
+		position: absolute;
+		bottom: -20px;
 
 		flex-direction:column;
 		align-content: space-evenly;
 
 		background-color: $box-color;
-
+		
 		width: 400px;
 		height: 600px;
 
@@ -73,6 +109,7 @@
 body{
 	font: 100% $texttesttest-font;
 	color: $text-color;
+
 }
 
 input[type=submit]{
