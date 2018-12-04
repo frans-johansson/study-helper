@@ -80,6 +80,30 @@ class AppController extends Component {
 			window.localStorage.setItem("colors", JSON.stringify(colors))
 		}
 
+		// Set up variables for progress
+		let progressTracking = JSON.parse(window.localStorage.getItem("progressTracking"))
+
+		if (!progressTracking) { // If uninitialized
+			let data = {
+				workToday: 0,
+				workYesterday: 0,
+				lastDate: new Date().toDateString(),
+			}
+
+			window.localStorage.setItem("progressTracking", JSON.stringify(data))
+		}
+		else { // If it exists in storage
+			let currentDate = new Date().toDateString()
+			let {workToday, workYesterday, lastDate} = progressTracking
+
+			// Check for new date
+			if (currentDate != lastDate && workToday > 0) {
+				[workToday, workYesterday, lastDate] = [0, workToday, currentDate] // Shifterino
+			}
+
+			window.localStorage.setItem("progressTracking", JSON.stringify({workToday, workYesterday, lastDate}))
+		}
+
 		this.updateMountainList()
 	}
 
