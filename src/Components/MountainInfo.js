@@ -18,11 +18,11 @@ class MountainInfo extends Component {
 
 		return(
 
-			<div class="sub_page_container">
-				<div class="stat_image_conatiner">
+			<div className="sub_page_container">
+				<div className="stat_image_conatiner">
 					<h1>{mountain.name}</h1>
 					<p>{`Mål:${goal} Slutdatum:${date} Antal timmar:${studied} Färg:${color} Skapat:${id}`}</p>
-					<div class="button_container">
+					<div className="button_container">
 						<Button text="Tillbaka" onClick={this.handleClick}/>
 					</div>
 				</div>

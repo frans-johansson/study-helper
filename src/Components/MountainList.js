@@ -10,7 +10,7 @@ class MountainData extends Component {
 				<p>{`Antal timmar: ${this.props.studied} Mål: ${this.props.goal}`}</p>
 				<p>{`Slutdatum: ${this.props.date}`}</p>
 
-				<div class="mini_image_conatiner"/>
+				<div className="mini_image_conatiner"/>
 				<ProgressBar percentage= {this.props.studied} goal={this.props.goal}/>
 			</div>
 		)
@@ -36,14 +36,14 @@ class ListElement extends Component {
 
 	render() {
 		return(
-			<div class="box_container" onClick={this.handleClick}>
+			<div className="box_container" onClick={this.handleClick}>
 				<h1>{this.props.name}</h1>
 				<MountainData 
 					studied={this.props.studied}
 					goal={this.props.goal}
 					date={this.props.date}
 			  	/>
-			  	<div class="button_container">
+			  	<div className="button_container">
 			  	<Button 
 			  		text="Radera berg"
 		  		/>
