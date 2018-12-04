@@ -27,7 +27,7 @@ const components = {
 }
 
 function findMountain(id, array) {
-	return [array.filter( (m) => m.id == id)]
+	return array.filter((m) => m.id == id).shift()
 }
 
 class AppController extends Component {
@@ -58,6 +58,7 @@ class AppController extends Component {
 			// Mountain
    			mountains: [],
 			highlightedMountain: undefined,
+			colors: undefined,
 			   
 			// Timer with defaults
 			timeInput: [0,45],
@@ -68,6 +69,17 @@ class AppController extends Component {
 
 	/* INITS */
 	componentWillMount() {
+		// Add colors to local storage 
+		if (!window.localStorage.getItem("colors")) {
+			let colors = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
+			// Sets array in state
+			this.setState({
+				colors: colors,
+			})
+			// Sets array in storage
+			window.localStorage.setItem("colors", JSON.stringify(colors))
+		}
+
 		this.updateMountainList()
 	}
 
@@ -102,10 +114,20 @@ class AppController extends Component {
 		})
 	}
 
-	removeMountain(key) {
-		let remainingMountains = this.state.mountains.filter((m) => m.id != key)
-
+	removeMountain(id) {
+		// Remove mountain from local storage
+		let remainingMountains = this.state.mountains.filter((m) => m.id != id)
 		window.localStorage.setItem("mountains", JSON.stringify(remainingMountains))
+
+		// Add the color back to local storage
+		let color = findMountain(id, this.state.mountains).color
+		let colors = JSON.parse(window.localStorage.getItem("colors"))
+
+		console.log(color)
+		console.log(colors)
+
+		colors.push(color)
+		window.localStorage.setItem("colors", JSON.stringify(colors))
 
 		this.updateMountainList()
 	}
@@ -121,6 +143,11 @@ class AppController extends Component {
 
 	    // Updates the array in local storage
 	    window.localStorage.setItem("mountains", JSON.stringify(mountains))
+
+	    // Remove the used color from local storage
+	    let colors = JSON.parse(window.localStorage.getItem("colors"))
+	    colors.shift()
+	    window.localStorage.setItem("colors", JSON.stringify(colors))
 
 	    // Updates the app state with the new mountain
 	    this.updateMountainList()

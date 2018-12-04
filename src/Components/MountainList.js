@@ -49,7 +49,6 @@ class ListElement extends Component {
 			  	<div class="button_container">
 			  	<Button 
 			  		text="Delete this"
-			  		onClick={this.handleClick}
 		  		/>
 		  		</div>
 			</div>
