@@ -88,7 +88,9 @@ class AppController extends Component {
 
 		// Set up variables for progress
 		let progressTracking = JSON.parse(window.localStorage.getItem("progressTracking"))
-		let {workToday, workYesterday, lastDate} = progressTracking
+		let workToday = 0
+		let workYesterday = 0
+		let lastDate = 0
 
 		if (!progressTracking) { // If uninitialized
 			[workToday, workYesterday, lastDate] = [0, 0, new Date().toDateString()]			
@@ -97,6 +99,9 @@ class AppController extends Component {
 		}
 		else { // If it exists in storage
 			let currentDate = new Date().toDateString()
+			workToday = progressTracking.workToday
+			workYesterday = progressTracking.workYesterday
+			lastDate = progressTracking.lastDate
 
 			// Check for new date
 			if (currentDate != lastDate && workToday > 0) {
@@ -147,6 +152,7 @@ class AppController extends Component {
 		let {lastDate} = progressTracking
 		window.localStorage.setItem("progressTracking", JSON.stringify({workToday, workYesterday, lastDate}))
   	}
+  	
 
 	/* MOUNTAINS */
 	updateMountainList() {
