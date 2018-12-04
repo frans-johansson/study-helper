@@ -60,7 +60,7 @@ class MountainList extends Component {
 	render() {
 		return(
 			<div >
-				<h2>MOUNTAIN LIST</h2>
+				<h2>DINA BERG</h2>
 				{
 					this.props.mountains.map(
 						(m) => <ListElement

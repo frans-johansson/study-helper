@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class RecentProgress extends Component {
 	render() {
 		return(
-			<h2>RECENT PROGRESS</h2>
+			<h2>SENASTE FRAMSTEG</h2>
 		)
 	}
 }
