@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import Button from './Button.js' 
-import ProgressBarExample from '../Components/ProgressBar.js'
+import ProgressBar from '../Components/ProgressBar.js'
 
 class MountainData extends Component {
 	render() {
@@ -11,7 +11,7 @@ class MountainData extends Component {
 				<p>{`Slutdatum: ${this.props.date}`}</p>
 
 				<div class="mini_image_conatiner"/>
-				<ProgressBarExample percentage= {this.props.studied} goal={this.props.goal}/>
+				<ProgressBar percentage= {this.props.studied} goal={this.props.goal}/>
 			</div>
 		)
 	}

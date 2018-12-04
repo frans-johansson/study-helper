@@ -90,9 +90,8 @@ class Timer extends Component {
 
 	render() {	
 
-		let next
-        let subject
-        let nowtime= this.props.time-this.state.time
+		let next= "Nästa: Paus"
+        let subject = "Analys"
         let totaltime = this.props.time
 
 		if (!isTicking) {
@@ -108,7 +107,9 @@ class Timer extends Component {
        	}else{
        		subject = this.props.mountain.name
        		next = "Nästa: paus"
+       		totaltime = this.props.pauseTime
        	}
+       	let nowtime=totaltime-this.state.time
 
 		return(
 			<div>
@@ -124,7 +125,8 @@ class Timer extends Component {
 			</div>
 		)
 
-
+		nowtime= 0
+		totaltime=0
 	}
 }
 

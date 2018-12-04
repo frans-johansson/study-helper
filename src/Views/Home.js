@@ -3,7 +3,7 @@ import '../Stylesheets/home.scss';
 import RecentProgress from '../Components/RecentProgress.js'
 import MountainList from '../Components/MountainList.js'
 import Button from '../Components/Button.js'
-import ProgressBarExample from '../Components/ProgressBar.js'
+
 
 
 class Home extends Component {

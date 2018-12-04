@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Button from '../Components/Button.js'
 
 class NewMountain extends Component {
 
@@ -49,6 +50,8 @@ class NewMountain extends Component {
 
             <input type="submit" value="Lägg till" disabled={!this.state.name || !this.state.goal || this.state.goal <= 0 || !this.state.date}/>
           </form>
+
+          <Button text="Hem" onClick={ () => {this.props.clearSubcomponent()}} />
         </div>
     )
   }
