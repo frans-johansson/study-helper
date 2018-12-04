@@ -55,6 +55,10 @@ class AppController extends Component {
    			activeView: "home",
    			subcomponent: "nullComponent",
 
+   			// Progress
+   			workToday: 0,
+   			workYesterday: 0,
+
 			// Mountain
    			mountains: [],
 			highlightedMountain: undefined,
@@ -82,19 +86,15 @@ class AppController extends Component {
 
 		// Set up variables for progress
 		let progressTracking = JSON.parse(window.localStorage.getItem("progressTracking"))
+		let {workToday, workYesterday, lastDate} = progressTracking
 
 		if (!progressTracking) { // If uninitialized
-			let data = {
-				workToday: 0,
-				workYesterday: 0,
-				lastDate: new Date().toDateString(),
-			}
+			[workToday, workYesterday, lastDate] = [0, 0, new Date().toDateString()]			
 
-			window.localStorage.setItem("progressTracking", JSON.stringify(data))
+			window.localStorage.setItem("progressTracking", JSON.stringify({workToday, workYesterday, lastDate}))
 		}
 		else { // If it exists in storage
 			let currentDate = new Date().toDateString()
-			let {workToday, workYesterday, lastDate} = progressTracking
 
 			// Check for new date
 			if (currentDate != lastDate && workToday > 0) {
@@ -104,6 +104,11 @@ class AppController extends Component {
 			window.localStorage.setItem("progressTracking", JSON.stringify({workToday, workYesterday, lastDate}))
 		}
 
+		// Update app state
+		this.setState({
+			workToday: workToday,
+			workYesterday: workYesterday,
+		})
 		this.updateMountainList()
 	}
 
@@ -125,6 +130,20 @@ class AppController extends Component {
   		this.setState({
   			subcomponent: "nullComponent",
   		})	
+  	}
+
+  	/* PROGRESS */
+  	incrementWorkToday(amount) {
+  		let {workToday, workYesterday} = this.state
+  		workToday += amount
+
+  		this.setState({
+  			workToday: workToday,
+  		})
+
+  		let progressTracking = JSON.parse(window.localStorage.getItem("progressTracking"))
+		let {lastDate} = progressTracking
+		window.localStorage.setItem("progressTracking", JSON.stringify({workToday, workYesterday, lastDate}))
   	}
 
 	/* MOUNTAINS */
