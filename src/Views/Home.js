@@ -14,7 +14,7 @@ class Home extends Component {
 
 				<div class="page_collum_container">
 					
-					<h1>HOME</h1>
+					<h1>HEM</h1>
 					<div class="place_container">
 						<RecentProgress />
 					</div>
@@ -39,8 +39,8 @@ class Home extends Component {
 							    </div>
 								<div class="button_container_two">
 									{/*<Button text="Complicated timer" />*/}
-									<Button text="Simple timer" onClick={ () => {this.props.displaySubcomponent("simpleTimerSetup")}} />
-									<Button text="New mountain" onClick={ () => {this.props.displaySubcomponent("newMountain")}} />
+									<Button text="Snabb timer" onClick={ () => {this.props.displaySubcomponent("simpleTimerSetup")}} />
+									<Button text="Nytt berg" onClick={ () => {this.props.displaySubcomponent("newMountain")}} />
 								</div>
 							</div>
 						</div>

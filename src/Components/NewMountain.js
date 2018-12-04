@@ -13,7 +13,7 @@ class NewMountain extends Component {
 
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
-  }
+   }
 
   handleChange(event) {
     this.setState({
@@ -31,21 +31,22 @@ class NewMountain extends Component {
     this.props.clearSubcomponent()
   }
 
+
   render() {
     return(
         <div class="sub_page_container">
-          <h2>NEW MOUNTAIN</h2>
+          <h2>NYTT BERG</h2>
           <form onSubmit={this.handleSubmit} method="get">
             <label>
-              Name:
+              Namn:
               <input type="text" name="name" onChange={this.handleChange} />
-              Goal:
+              Mål:
               <input type="number" name="goal" onChange={this.handleChange} />
-              End date:
-              <input type="text" name="date" onChange={this.handleChange} />
+              Slutdatum:
+              <input type="date" name="date" onChange={this.handleChange} />
             </label>
 
-            <input type="submit" value="Submit" />
+            <input type="submit" value="Lägg till" disabled={!this.state.name || !this.state.goal || !this.state.date}/>
           </form>
         </div>
     )
