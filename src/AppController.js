@@ -43,6 +43,7 @@ class AppController extends Component {
 		this.updateMountainList = this.updateMountainList.bind(this)
 		this.removeMountain = this.removeMountain.bind(this)
 		this.addMountain = this.addMountain.bind(this)
+		this.incrementStudied = this.incrementStudied.bind(this)
 		// Mountain information 
 		this.setHighlightedMountain = this.setHighlightedMountain.bind(this)
 		this.clearHighlightedMountain = this.clearHighlightedMountain.bind(this)
@@ -218,6 +219,19 @@ class AppController extends Component {
 		})
 	}
 
+	incrementStudied(id, amount) {
+		let mountain = findMountain(id, this.state.mountains)
+		let i = this.state.mountains.indexOf(mountain)
+
+		// Convert to hours
+		amount /= 3600
+
+		this.state.mountains[i].studied += amount
+
+		window.localStorage.setItem("mountains", JSON.stringify(this.state.mountains))
+		this.updateMountainList()
+	}
+
 	/* TIMER */
 	setTimeInput(hours, minutes) {
 		let time = [hours, minutes];
@@ -262,7 +276,9 @@ class AppController extends Component {
 			timer: {
 				time: this.state.timeInput,
 				pauseTime: this.state.pauseInput,
-				// Needs to increment work 
+				mountain: this.state.selectedMountain,
+				incrementWorkToday: this.incrementWorkToday,
+				incrementStudied: this.incrementStudied,
 			},
 
 			newMountain: {

@@ -10,6 +10,7 @@ let isTicking = false
 let isPause = false
 
 let tickCounter = 0;
+let workSum = 0
 
 function formatTimeFromUser([hours, minutes]) {
 	return hours*60*60 + minutes*60
@@ -39,7 +40,7 @@ class Timer extends Component {
 			time: props.time,
 			pauseTime: props.pauseTime,
         }
-       
+
 		timer = setInterval(this.tickDown.bind(this), 1000)
 	}
 
@@ -61,6 +62,10 @@ class Timer extends Component {
 			this.setState({
 				time: this.state.time - 1
 			})
+
+			if (!isPause) {
+				workSum++
+			}
 		}
 
 		if (this.state.time <= 0) {
@@ -97,11 +102,11 @@ class Timer extends Component {
 		
 		if(isPause){
        		subject = "Paus" 
-       		next = "Nästa: plugg"
+       		next = `Nästa: ${this.props.mountain.name}`
        		totaltime = this.props.pauseTime
        		
        	}else{
-       		subject = "Analys"
+       		subject = this.props.mountain.name
        		next = "Nästa: paus"
        	}
 
@@ -132,11 +137,13 @@ class TimerContainer extends Component {
     
     returnHome() {
         clearInterval(timer)
-        setTimeout(this.props.setActiveView("home"), 1000)
+        this.props.viewProps.incrementStudied(this.props.viewProps.mountain.id, workSum)
+        this.props.viewProps.incrementWorkToday(workSum)
+        this.props.setActiveView("home")
     }
 
 	render() {
-        let {time, pauseTime} = this.props.viewProps
+        let {time, pauseTime, mountain} = this.props.viewProps
        
        
 
@@ -147,7 +154,9 @@ class TimerContainer extends Component {
 				<div className="timer_page_collum_container">
 
 				<div className="timer_box_container">
-				<Timer time={formatTimeFromUser(time)}  pauseTime={formatTimeFromUser(pauseTime)}/>
+					<Timer 	time={formatTimeFromUser(time)}
+							pauseTime={formatTimeFromUser(pauseTime)}
+							mountain={mountain}/>
 				</div>	
 
 				

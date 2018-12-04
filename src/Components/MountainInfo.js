@@ -13,7 +13,7 @@ class MountainInfo extends Component {
 	}
 
 	render() {
-		let [mountain] = this.props.subcomponentProps.highlightedMountain
+		let mountain = this.props.subcomponentProps.highlightedMountain
 		let {goal, date, studied, color, id} = mountain
 
 		return(
