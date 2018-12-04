@@ -9,6 +9,7 @@ class NewMountain extends Component {
       name: '',
       goal: 0,
       date: '',
+      color: JSON.parse(window.localStorage.getItem("colors")).shift(),
     }
 
     this.handleChange = this.handleChange.bind(this)
