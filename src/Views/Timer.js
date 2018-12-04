@@ -3,6 +3,8 @@ import React, { Component } from 'react'
 
 import Button from "../Components/Button.js"
 
+import ProgressBar from "../Components/ProgressBar.js"
+
 let timer = undefined
 let isTicking = false
 let isPause = false
@@ -37,9 +39,11 @@ class Timer extends Component {
 			time: props.time,
 			pauseTime: props.pauseTime,
         }
-        
+       
 		timer = setInterval(this.tickDown.bind(this), 1000)
 	}
+
+
 
 	tickDown() {
         let {time, pauseTime} = this.props
@@ -80,16 +84,42 @@ class Timer extends Component {
 	}
 
 	render() {	
+
+		let next
+        let subject
+        let nowtime= this.props.time-this.state.time
+        let totaltime = this.props.time
+
 		if (!isTicking) {
 			tickCounter = 0
 			isTicking = true
 		}
-	
+		
+		if(isPause){
+       		subject = "Paus" 
+       		next = "Nästa: plugg"
+       		totaltime = this.props.pauseTime
+       		
+       	}else{
+       		subject = "Analys"
+       		next = "Nästa: paus"
+       	}
+
 		return(
-			<p>
-				{formatTimeToUser(this.state.time)}
-			</p>
+			<div>
+					
+					<h1> {subject} </h1>
+					<p> {next} </p>
+
+					<ProgressBar percentage= {nowtime} goal={totaltime}/>
+			
+					<p>
+						{formatTimeToUser(this.state.time)}
+					</p>
+			</div>
 		)
+
+
 	}
 }
 
@@ -107,20 +137,26 @@ class TimerContainer extends Component {
 
 	render() {
         let {time, pauseTime} = this.props.viewProps
+       
+       
+
+       
 
 		return(
 			
-				<div class="timer_page_collum_container">
+				<div className="timer_page_collum_container">
 
-				<div class="timer_box_container">
+				<div className="timer_box_container">
 				<Timer time={formatTimeFromUser(time)}  pauseTime={formatTimeFromUser(pauseTime)}/>
-				 </div>	
+				</div>	
 
-				<div class="timer_box_container">
+				
+
+				<div className="timer_box_container">
 				<Button onClick={() => pausePlay()} text="Paus"/>
 				 </div>	
 
-				<div class="timer_box_container">
+				<div className="timer_box_container">
                 <Button onClick={() => {this.returnHome()}} text="Tillbaka"/>
                  </div>	
 
