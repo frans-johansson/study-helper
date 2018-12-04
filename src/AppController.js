@@ -36,7 +36,9 @@ class AppController extends Component {
 		// Display functions
    		this.setActiveView = this.setActiveView.bind(this)
    		this.displaySubcomponent = this.displaySubcomponent.bind(this)
-   		this.clearSubcomponent = this.clearSubcomponent.bind(this);
+   		this.clearSubcomponent = this.clearSubcomponent.bind(this)
+   		// Progress
+   		this.incrementWorkToday = this.incrementWorkToday.bind(this)
 		// Mountain management
 		this.updateMountainList = this.updateMountainList.bind(this)
 		this.removeMountain = this.removeMountain.bind(this)
@@ -254,6 +256,7 @@ class AppController extends Component {
 			timer: {
 				time: this.state.timeInput,
 				pauseTime: this.state.pauseInput,
+				// Needs to increment work 
 			},
 
 			newMountain: {
