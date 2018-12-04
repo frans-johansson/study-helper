@@ -44,10 +44,10 @@ class NewMountain extends Component {
               Mål:
               <input type="number" name="goal" onChange={this.handleChange} />
               Slutdatum:
-              <input type="date" name="date" onChange={this.handleChange} />
+              <input type="date" dateFormat="dd/mm/yy" name="date" onChange={this.handleChange} />
             </label>
 
-            <input type="submit" value="Lägg till" disabled={!this.state.name || !this.state.goal || !this.state.date}/>
+            <input type="submit" value="Lägg till" disabled={!this.state.name || !this.state.goal || this.state.goal <= 0 || !this.state.date}/>
           </form>
         </div>
     )

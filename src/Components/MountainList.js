@@ -6,15 +6,12 @@ import ProgressBarExample from '../Components/ProgressBar.js'
 class MountainData extends Component {
 	render() {
 		return(
-			<div >
-
-				
+			<div >			
 				<p>{`Antal timmar: ${this.props.studied} Mål: ${this.props.goal}`}</p>
 				<p>{`Slutdatum: ${this.props.date}`}</p>
 
 				<div class="mini_image_conatiner"/>
 				<ProgressBarExample percentage= {this.props.studied} goal={this.props.goal}/>
-				
 			</div>
 		)
 	}
@@ -48,7 +45,7 @@ class ListElement extends Component {
 			  	/>
 			  	<div class="button_container">
 			  	<Button 
-			  		text="Delete this"
+			  		text="Radera berg"
 		  		/>
 		  		</div>
 			</div>
