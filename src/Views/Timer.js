@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 
 
 import Button from "../Components/Button.js"
-
 import ProgressBar from "../Components/ProgressBar.js"
+import {formatTimeFromUser, formatTimeToUser} from '../Utils'
 
 let timer = undefined
 let isTicking = false
@@ -11,17 +11,6 @@ let isPause = false
 
 let tickCounter = 0;
 let workSum = 0
-
-function formatTimeFromUser([hours, minutes]) {
-	return hours*60*60 + minutes*60
-}
-
-function formatTimeToUser(seconds) {
-	let date = new Date(null)
-	date.setSeconds(seconds)
-
-	return date.toISOString().substr(11, 8)
-}
 
 function pausePlay() {
 	if(isTicking === true){
