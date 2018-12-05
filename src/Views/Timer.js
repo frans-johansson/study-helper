@@ -96,7 +96,7 @@ class Timer extends Component {
        	}else{
        		subject = this.props.mountain.name
        		next = "Nästa: paus"
-       		totaltime = this.props.pauseTime
+       		totaltime = this.props.time
        	}
        	let nowtime=totaltime-this.state.time
 

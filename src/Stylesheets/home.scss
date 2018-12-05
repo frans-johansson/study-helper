@@ -3,41 +3,56 @@
 @import 'timer';
 
 .page_container{
+
 	text-align:center;
 
 	display:flex;
 	justify-content:center;
 	align-content: space-evenly;
-	.page_collum_container{
-		background-color: $grass-color;
-
-		width: 450px;
-		height: 100vH;
-
-
-
-		flex-direction:column;
-		justify-content:center;
-
-		.page_box{	
-
-			position: relative;
-			bottom: -200px;
-
-			.place_container{
-				
-				.box_container{
-					width:430px;
-
-					background-color: $box-color;
-					border: 10px solid $grass-color;
-				}
-			
-		    }
-		}
-
-	}
 	
+
+}
+	
+
+.page_collum_container{
+
+	background-color: $grass-color;
+	
+	width: 450px;
+	height: 100vH;
+
+
+
+	flex-direction:column;
+	justify-content:center;
+
+		
+}
+
+.page_box{	
+
+	position: relative;
+	bottom: -200px;
+
+}
+
+.place_container{
+				
+				
+			
+}
+
+.box_container{
+					
+	width:430px;
+
+	background-color: $box-color;
+	border: 10px solid $grass-color;
+}
+
+.mountainSelection{
+	width: 40px;
+	height:40px;
 }
 
 .progress_bar{

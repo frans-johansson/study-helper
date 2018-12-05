@@ -30,7 +30,7 @@ class MountainData extends Component {
 				<p>{`Slutdatum: ${this.props.date}`}</p>
 
 				<div className="mini_image_conatiner"/>
-				<ProgressBar percentage= {this.props.studied} goal={this.props.goal}/>
+				<ProgressBar percentage= {this.props.studied} goal={this.props.goal}  mountain={this.props.color}/>
 			</div>
 		)
 	}
@@ -62,6 +62,7 @@ class ListElement extends Component {
 					studied={this.props.studied}
 					goal={this.props.goal}
 					date={this.props.date}
+					color={this.props.color}
 			  	/>
 			  	<div className="button_container">
 			  	<Button 
@@ -87,6 +88,7 @@ class MountainList extends Component {
 									date={m.date}
 									key={m.id}
 									id={m.id} 
+									color={m.color} 
 
 									removeMountain={this.props.removeMountain}
 									setHighlightedMountain={this.props.setHighlightedMountain}

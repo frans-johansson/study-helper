@@ -6,8 +6,6 @@ export function formatTimeToUser(seconds) {
 	let date = new Date(null)
 	date.setSeconds(seconds)
 
-	console.log(seconds)
-
 	return date.toISOString().substr(11, 8)
 }
 

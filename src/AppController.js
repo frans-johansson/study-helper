@@ -79,7 +79,8 @@ class AppController extends Component {
 	componentWillMount() {
 		// Add colors to local storage 
 		if (!window.localStorage.getItem("colors")) {
-			let colors = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
+			let colors = ['#5A999D', '#D17B6E', '#868D6E', '#AD7B98', '#78B0E8', 
+						  '#D498CF', '#91BE7B', '#76639A', '#5360A5', '#5360A5']
 			// Sets array in state
 			this.setState({
 				colors: colors,
