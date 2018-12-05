@@ -3,8 +3,9 @@
 .ClickWrapper{
   width: 70px;
   height: 140px;
-  display:flex;
-  flex-direction:column;
+
+  display: flex;
+  flex-direction: column;
   justify-content: center;
 }
 
@@ -24,22 +25,6 @@
 
 .yes_button{
     background-color: $yes-color;
-}
-
-.button_container{
-  display:flex;
-  justify-content: center;
-  flex-direction:row;
-
-  width: 400px;
-}
-
-.button_container_two{
-  display:flex;
-  justify-content: space-around;
-  flex-direction:row;
-  border: 5px solid $text-color; 
-  width: 400px;
 }
 
 .small_button{

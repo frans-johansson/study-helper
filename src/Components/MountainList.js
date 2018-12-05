@@ -55,7 +55,7 @@ class ListElement extends Component {
 
 	render() {
 		return(
-			<div className="box_container" onClick={this.handleClick}>
+			<div onClick={this.handleClick}>
 				<h1>{this.props.name}</h1>
 				<MountainData 
 					name={this.props.name}
@@ -64,11 +64,9 @@ class ListElement extends Component {
 					date={this.props.date}
 					color={this.props.color}
 			  	/>
-			  	<div className="button_container">
 			  	<Button 
 			  		text="Radera berg"
 		  		/>
-		  		</div>
 			</div>
 		)
 	}
@@ -77,7 +75,7 @@ class ListElement extends Component {
 class MountainList extends Component {
 	render() {
 		return(
-			<div >
+			<div className={this.props.className}>
 				<h2>DINA BERG</h2>
 				{
 					this.props.mountains.map(

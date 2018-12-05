@@ -2,69 +2,75 @@
 @import 'button';
 @import 'timer';
 
-.page_container{
-
-	text-align:center;
-
-	display:flex;
-	justify-content:center;
-	align-content: space-evenly;
-	
-
-}
-	
-
-.page_collum_container{
+#root {
+	width: 100vw;
+	height: 100vh;
 
 	background-color: $grass-color;
-	
-	width: 450px;
-	height: 100vH;
 
-
-
-	flex-direction:column;
-	justify-content:center;
-
-		
+	font: 100% $texttesttest-font;
+	color: $text-color;
 }
 
-.page_box{	
+.page_container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-content: space-between;
 
-	position: relative;
-	bottom: -200px;
-
+	text-align: center;
 }
 
-.place_container{
-				
-				
-			
+.has_subcomponent {
+	div:not(.hidden):not(.Clickable) {
+		padding: 10px;
+		background-color: $box-color;
+	}
 }
 
-.box_container{
-					
-	width:430px;
+.fixed {
+	position: absolute;
+	bottom: 0;
+	width: 100vw;
 
-	background-color: $box-color;
-	border: 10px solid $grass-color;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	&.center_on_page {
+		height: 100vh;
+		justify-content: center;
+	}
+
+	&.as_row { 
+		flex-direction: row;
+		justify-content: space-around;
+	}
 }
 
-.mountainSelection{
+.view_container {
+	margin: 0 40px;
+
+	div:not(.Clickable):not(.progress_bar) {
+		background-color: $box-color;
+	}
+}
+
+.mountainSelection {
 	width: 40px;
 	height:40px;
 }
 
-.progress_bar{
+.progress_bar {
 	background:#d8d5c7;
 
 	position: relative;
 
 	height: 30px;
-	width: 430px;
+	width: 100%;
 }
 
-.filler{
+.filler {
 	background:blue;
 	
 	height:100%;
@@ -84,8 +90,9 @@
     position: absolute;
 }
 
-.home_image_conatiner{
-	background-image:url(../svg/homepage.svg);
+.home_image_conatiner {
+	background-image:url(../svg/homepagedown.svg);
+
 	background-size:cover;
 	
 	width: 450px;
@@ -95,7 +102,7 @@
 	display:flex;
 }
 
-.stat_image_conatiner{
+.stat_image_conatiner {
 	background-image:url(../svg/statcomp.svg);
 	background-size:cover;
 
@@ -107,7 +114,7 @@
 	height:600px;
 }
 
-.mini_image_conatiner{
+.mini_image_conatiner {
 	background-image:url(../svg/minimount.svg);
 	background-size:cover;
 
@@ -119,32 +126,15 @@
 	flex-direction:column;
 }
 
-.bottom_container{
+.bottom_container {
 	position: fixed;
 
     bottom: 20px;
   
 }
 
-.sub_page_container{
-		position: absolute;
-		bottom: -20px;
 
-		flex-direction:column;
-		align-content: space-evenly;
-
-		background-color: $box-color;
-		
-		width: 400px;
-		height: 600px;
-}
-
-body{
-	font: 100% $texttesttest-font;
-	color: $text-color;
-}
-
-input[type=submit]{
+input[type=submit] {
 	border-radius: 100px;
 	border:0 none;
 
@@ -152,14 +142,15 @@ input[type=submit]{
 	color:$text-color;
 }
 
-input[type=text]{
+input[type=text] {
 	border:0 none;
 	color:$text-color;
 
 	height:30px;
 
 }
-input[type=number]{
+
+input[type=number] {
 	border:0 none;
 	width: 80px;
 	height:50px;
