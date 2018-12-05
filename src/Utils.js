@@ -15,8 +15,10 @@ export function toHoursMinutes(h) {
 	let seconds = h*3600
 	let timeString = formatTimeToUser(seconds)
 
-	let hours = timeString.substring(0, 2)
-	let minutes = timeString.substring(3, 5)
+	let hours = parseInt(timeString.substring(0, 2), 10)
+	let minutes = parseInt(timeString.substring(3, 5), 10)
 
-	return(`${hours}h ${minutes}min`)
+	console.log([hours, minutes])
+
+	return [hours, minutes]
 }
