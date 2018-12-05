@@ -50,6 +50,10 @@
 
 .view_container {
 	margin: 0 40px;
+
+	div:not(.Clickable):not(.progress_bar) {
+		background-color: $box-color;
+	}
 }
 
 .mountainSelection {
@@ -63,7 +67,7 @@
 	position: relative;
 
 	height: 30px;
-	width: 430px;
+	width: 100%;
 }
 
 .filler {
