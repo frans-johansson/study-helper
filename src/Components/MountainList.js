@@ -2,12 +2,31 @@ import React, { Component } from 'react';
 
 import Button from './Button.js' 
 import ProgressBar from '../Components/ProgressBar.js'
+import { toHoursMinutes } from '../Utils'
 
 class MountainData extends Component {
+
+	constructor(props) {
+		super(props)
+
+		// Formatera pluggad tid
+		let [hours, minutes] = toHoursMinutes(this.props.studied)
+
+		this.studiedMessage = ''
+
+		if (hours == 0 && minutes == 0)
+			this.studiedMessage += `Du har inte börjat plugga ${this.props.name} än`
+		
+		if (hours != 0)
+			this.studiedMessage += `${hours} h`
+		if (minutes != 0)
+			this.studiedMessage += `${minutes} min`
+	}
+
 	render() {
 		return(
 			<div >			
-				<p>{`Antal timmar: ${this.props.studied} Mål: ${this.props.goal}`}</p>
+				<p>{`${this.studiedMessage} Mål: ${this.props.goal}`}</p>
 				<p>{`Slutdatum: ${this.props.date}`}</p>
 
 				<div className="mini_image_conatiner"/>
@@ -39,6 +58,7 @@ class ListElement extends Component {
 			<div className="box_container" onClick={this.handleClick}>
 				<h1>{this.props.name}</h1>
 				<MountainData 
+					name={this.props.name}
 					studied={this.props.studied}
 					goal={this.props.goal}
 					date={this.props.date}

@@ -131,6 +131,7 @@ class TimerContainer extends Component {
     returnHome() {
         clearInterval(timer)
         this.props.viewProps.incrementStudied(this.props.viewProps.mountain.id, workSum)
+        this.props.viewProps.updatePreviousDate(this.props.viewProps.mountain.id)
         this.props.viewProps.incrementWorkToday(workSum)
         this.props.setActiveView("home")
     }

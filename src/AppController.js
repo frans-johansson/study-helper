@@ -44,6 +44,7 @@ class AppController extends Component {
 		this.removeMountain = this.removeMountain.bind(this)
 		this.addMountain = this.addMountain.bind(this)
 		this.incrementStudied = this.incrementStudied.bind(this)
+		this.updatePreviousDate = this.updatePreviousDate.bind(this)
 		// Mountain information 
 		this.setHighlightedMountain = this.setHighlightedMountain.bind(this)
 		this.clearHighlightedMountain = this.clearHighlightedMountain.bind(this)
@@ -205,6 +206,20 @@ class AppController extends Component {
 	    this.updateMountainList()
 	}
 
+	updatePreviousDate(id) {
+		let mountain = findMountain(id, this.state.mountains)
+		let i = this.state.mountains.indexOf(mountain)
+
+		// Updates the date of this mountain in the state array
+		this.state.mountains[i].previousDate = new Date().toDateString()
+
+		console.log(this.state.mountains[i].previousDate)
+
+		// Push changes to local storage
+		window.localStorage.setItem("mountains", JSON.stringify(this.state.mountains))
+		this.updateMountainList()
+	}
+
 	clearHighlightedMountain() {
 		this.setState({
 			highlightedMountain: undefined,
@@ -222,7 +237,7 @@ class AppController extends Component {
 	incrementStudied(id, amount) {
 		let mountain = findMountain(id, this.state.mountains)
 		let i = this.state.mountains.indexOf(mountain)
-
+		
 		// Convert to hours
 		amount /= 3600
 
@@ -279,6 +294,7 @@ class AppController extends Component {
 				mountain: this.state.selectedMountain,
 				incrementWorkToday: this.incrementWorkToday,
 				incrementStudied: this.incrementStudied,
+				updatePreviousDate: this.updatePreviousDate,
 			},
 
 			newMountain: {
