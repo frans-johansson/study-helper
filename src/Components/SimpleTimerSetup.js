@@ -91,16 +91,16 @@ class SimpleTimerSetup extends Component {
 			<div className="sub_page_container">
 				<form onSubmit={this.handleSubmit}>
 					<label> Pluggtid Timmar: </label>
-					<input type="number" name="inputTimeH" defaultValueH={this.props.defaultTime} />
+					<input type="number" min = "0" name="inputTimeH" defaultValueH={this.props.defaultTime} />
 					
 					<label>Minuter:</label>
-					<input type="number" name="inputTimeMin" defaultValueMin={this.props.defaultTime} />
+					<input type="number" min = "0" name="inputTimeMin" defaultValueMin={this.props.defaultTime} />
 					
 					<label>Paustid Timmar:</label>
-					<input type="number" name="inputTimePauseH" defaultValuePauseH={this.props.defaultTime} />
+					<input type="number" min = "0" name="inputTimePauseH" defaultValuePauseH={this.props.defaultTime} />
 					
 					<label>Minuter:</label>
-					<input type="number" name="inputTimePauseMin" defaultValuePauseMin={this.props.defaultTime} />
+					<input type="number" min = "0" name="inputTimePauseMin" defaultValuePauseMin={this.props.defaultTime} />
 
 					<MountainSelector
 						setSelectedMountain={this.props.subcomponentProps.setSelectedMountain}
@@ -109,8 +109,12 @@ class SimpleTimerSetup extends Component {
 
 					<input type="submit" value="Submit"/>
 
-					<Button text="Hem" onClick={ () => {this.props.clearSubcomponent()}} />
+					
 				</form>
+
+				<Button text="Hem" onClick={ () => {this.props.clearSubcomponent()}} />
+
+
 			</div>
 		)
 	}

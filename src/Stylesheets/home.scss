@@ -70,6 +70,20 @@
 	height:100%;
 }
 
+.mountain_climber_container {
+	position: absolute;
+
+		flex-direction:column;
+		align-content: space-evenly;
+		
+		width: 400px;
+		height: 600px;
+}
+
+.mountain_position {
+    position: absolute;
+}
+
 .home_image_conatiner{
 	background-image:url(../svg/homepage.svg);
 	background-size:cover;
