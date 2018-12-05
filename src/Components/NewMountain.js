@@ -33,6 +33,26 @@ class NewMountain extends Component {
     this.props.clearSubcomponent()
   }
 
+  todayDate() {
+    let today = new Date();
+    let dd = today.getDate();
+    let mm = today.getMonth()+1;
+    let yy = today.getFullYear();
+
+    if(dd<10)
+    {
+      dd = "0"+dd
+    }
+    if(mm<10)
+    {
+      mm = "0"+mm
+    }
+    today = yy + '-' + mm + '-' + dd;
+
+    return today
+  
+  }
+
 
   render() {
     return(
@@ -45,7 +65,7 @@ class NewMountain extends Component {
               Mål:
               <input type="number" min="0" name="goal" onChange={this.handleChange} />
               Slutdatum:
-              <input type="date" name="date" onChange={this.handleChange} />
+              <input id="datefield" type="date" name="date" min={this.todayDate()} onChange={this.handleChange} />
             </label>
 
             <input type="submit" value="Lägg till" disabled={!this.state.name || !this.state.goal || !this.state.date}/>
