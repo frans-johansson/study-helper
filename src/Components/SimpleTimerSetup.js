@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Button from '../Components/Button.js'
 
 class MountainChoice extends Component {
 	constructor(props) {
@@ -24,10 +25,17 @@ class MountainChoice extends Component {
 		})
 	}
 	
+	
+
 	// The className mountainSelection is a test class and should be changed later
 	render() {
+
+		let divStyle={
+			backgroundColor:`${this.props.color}`,
+		}
+
 		return(
-			<button className="mountainSelection" onClick={() => this.handleClick(this.props.id)}/>
+			<button className="mountainSelection" style={divStyle} onClick={() => this.handleClick(this.props.id)} />
 		)
 	}
 }
@@ -46,6 +54,7 @@ class MountainSelector extends Component {
 							return(
 								<MountainChoice
 									id={m.id}
+									color={m.color}
 									setSelectedMountain={this.props.setSelectedMountain}
 									clearSelectedMountain={this.props.clearSelectedMountain}/>
 							)
@@ -99,6 +108,8 @@ class SimpleTimerSetup extends Component {
 						mountains={this.props.subcomponentProps.mountains}/>
 
 					<input type="submit" value="Submit"/>
+
+					<Button text="Hem" onClick={ () => {this.props.clearSubcomponent()}} />
 				</form>
 			</div>
 		)

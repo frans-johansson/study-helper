@@ -10,7 +10,7 @@ class ProgressBarExample extends Component {
 		if(this.props.percentage>0){
 		 	divStyle = {
             	width: 430*(this.props.percentage/this.props.goal),
-            	backgroundColor: '$`${this.props.mountain}`-color',  // Detta funkar inte, men är en bit på vägen
+            	backgroundColor: `${this.props.mountain}`,  // Detta funkar inte, men är en bit på vägen
         	};
    		 }
    		 else{
@@ -20,7 +20,7 @@ class ProgressBarExample extends Component {
     	}
 		return(
 			<div >
-				<div className="progress_bar">
+				<div className="progress_bar"> 
 					<div className="filler" style={divStyle} />
 				</div>
 			</div>
