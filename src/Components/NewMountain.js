@@ -36,7 +36,7 @@ class NewMountain extends Component {
 
   render() {
     return(
-        <div className="sub_page_container">
+        <div>
           <h2>NYTT BERG</h2>
           <form onSubmit={this.handleSubmit} method="get">
             <label>

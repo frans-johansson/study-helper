@@ -77,7 +77,7 @@ class ListElement extends Component {
 class MountainList extends Component {
 	render() {
 		return(
-			<div >
+			<div className={this.props.className}>
 				<h2>DINA BERG</h2>
 				{
 					this.props.mountains.map(

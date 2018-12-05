@@ -88,7 +88,7 @@ class SimpleTimerSetup extends Component {
 
 	render() {
 		return(
-			<div className="sub_page_container">
+			<div>
 				<form onSubmit={this.handleSubmit}>
 					<label> Pluggtid Timmar: </label>
 					<input type="number" name="inputTimeH" defaultValueH={this.props.defaultTime} />
