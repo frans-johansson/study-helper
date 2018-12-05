@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import Button from '../Components/Button.js'
 
+let ifMountainSelected = false;
+
 class MountainChoice extends Component {
 	constructor(props) {
 		super(props)
@@ -15,10 +17,14 @@ class MountainChoice extends Component {
 	handleClick(id) {
 		let {isSelected} = this.state;
 
-		if(!isSelected)
+		if(!isSelected){
 			this.props.setSelectedMountain(id)
-		else 
+			ifMountainSelected = true;
+		}
+		else{
 			this.props.clearSelectedMountain()
+			ifMountainSelected = false;
+		}
 
 		this.setState({
 			isSelected: !isSelected
@@ -85,32 +91,34 @@ class SimpleTimerSetup extends Component {
         this.props.clearSubcomponent()
         setActiveView("timer")
 	}
-
+	/*Value är hårdkodad för det rekommenderade pluggintervallet*/
 	render() {
 		return(
 			<div className="sub_page_container">
 				<form onSubmit={this.handleSubmit}>
 					<label> Pluggtid Timmar: </label>
-					<input type="number" name="inputTimeH" defaultValueH={this.props.defaultTime} />
+					<input type="number" min="0" name="inputTimeH" value="0" defaultValueH={this.props.defaultTime} />
 					
 					<label>Minuter:</label>
-					<input type="number" name="inputTimeMin" defaultValueMin={this.props.defaultTime} />
+					<input type="number" min="0" name="inputTimeMin" value="45" defaultValueMin={this.props.defaultTime} />
 					
 					<label>Paustid Timmar:</label>
-					<input type="number" name="inputTimePauseH" defaultValuePauseH={this.props.defaultTime} />
+					<input type="number" min="0" name="inputTimePauseH" value="0" defaultValuePauseH={this.props.defaultTime} />
 					
 					<label>Minuter:</label>
-					<input type="number" name="inputTimePauseMin" defaultValuePauseMin={this.props.defaultTime} />
+					<input type="number" min="0" name="inputTimePauseMin" value="15" defaultValuePauseMin={this.props.defaultTime} />			
 
-					<MountainSelector
-						setSelectedMountain={this.props.subcomponentProps.setSelectedMountain}
-						clearSelectedMountain={this.props.subcomponentProps.clearSelectedMountain}
-						mountains={this.props.subcomponentProps.mountains}/>
+					<input type="submit" value="Submit" disabled={!ifMountainSelected}/>
 
-					<input type="submit" value="Submit"/>
+					
+				</form>	
 
-					<Button text="Hem" onClick={ () => {this.props.clearSubcomponent()}} />
-				</form>
+				<MountainSelector
+					setSelectedMountain={this.props.subcomponentProps.setSelectedMountain}
+					clearSelectedMountain={this.props.subcomponentProps.clearSelectedMountain}
+					mountains={this.props.subcomponentProps.mountains}/>
+
+				<Button text="Hem" onClick={ () => {this.props.clearSubcomponent()}} />
 			</div>
 		)
 	}
