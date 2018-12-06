@@ -21,12 +21,13 @@
 	text-align: center;
 }
 
+/*
 .has_subcomponent {
-	div:not(.hidden):not(.Clickable) {
+	div:not(.hidden):not(.Clickable):not(.mountain_climber_container):not(.button_container):not(.ClickWrapper):not(mountain_position){
 		padding: 10px;
 		background-color: $box-color;
 	}
-}
+}*/
 
 .fixed {
 	position: absolute;
@@ -40,6 +41,7 @@
 	&.center_on_page {
 		height: 100vh;
 		justify-content: center;
+		position:relative;
 	}
 
 	&.as_row { 
@@ -51,7 +53,7 @@
 .view_container {
 	margin: 0 40px;
 
-	div:not(.Clickable):not(.progress_bar) {
+	div:not(.Clickable):not(.progress_bar):not(.mountain_climber_container):not(.mountain_position) {
 		background-color: $box-color;
 	}
 }

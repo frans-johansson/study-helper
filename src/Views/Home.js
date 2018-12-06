@@ -11,10 +11,10 @@ class Home extends Component {
 		return(
 			<div className="page_container">
 				<h1>HEM</h1>
-
+			
 				<RecentProgress />
 
-				<MountainList className="view_container"
+				<MountainList className="view_container" 
 					displaySubcomponent={this.props.displaySubcomponent}
 					clearSubcomponent={this.props.clearSubcomponent}
 					mountains={this.props.viewProps.mountains}

@@ -103,7 +103,7 @@ class Timer extends Component {
        	let mountainColor = this.props.mountain.color
 
 		return(
-			<div>
+			<div className="page_container">
 					
 					<h1> {subject} </h1>
 					<p> {next} </p>
