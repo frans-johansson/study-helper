@@ -21,6 +21,14 @@
 	text-align: center;
 }
 
+.test {
+	background-image:url(../svg/position.svg);
+	position: cover;
+	width: 100px;
+	height: 100px;
+	fill: red;
+}
+
 /*
 .has_subcomponent {
 	div:not(.hidden):not(.Clickable):not(.mountain_climber_container):not(.button_container):not(.ClickWrapper):not(mountain_position){

@@ -18,21 +18,17 @@ class MountainClimber extends Component {
 		 	divStyle = {
             	left: 215*(this.props.percentage/this.props.goal),
             	bottom: 499*(this.props.percentage/this.props.goal),
-            	//backgroundColor: `${this.props.mountain}`,  // Detta funkar inte, men är en bit på vägen
-   				backgroundImage: 'url(/static/media/position.4f7a9f24.svg)',
+            	backgroundColor: `${this.props.mountain}`,
+   				//backgroundImage: 'url(/static/media/position.4f7a9f24.svg)',
    				backgroundSize: 'cover',
    				width: 20,
-   				height: 30,				// BackgroundColor är färgen, det borde vara svg-filen som är färgen
+   				height: 20,
+   				borderRadius: 100,
         	};
    		 }
 		return(
 			<div className="mountain_climber_container">
-				{/* <svg width="24" height="24" viewBox="0 0 216 146"
-			          pointerEvents="none">
-			          <title>{position}</title>
-			        <path fill={this.props.mountain}
-			          d="M172.77 123.025L144.825 95.08c6.735-9.722z..."/>
-			      </svg>*/}
+	
 				<div className="mountain_position" style={divStyle} />
 			</div>
 		)

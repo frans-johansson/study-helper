@@ -21,7 +21,7 @@ class MountainInfo extends Component {
 
 			<div className="sub_page_container">
 
-			<MountainClimber percentage= {studied} goal={goal} mountain={color}/> //Tillbaka knapp funkar ej ty div ligger över
+			<MountainClimber percentage= {studied} goal={goal} mountain={color}/> {/*Tillbaka knapp funkar ej ty div ligger över*/}
 				<div className="stat_image_conatiner">
 
 					<h1>{mountain.name}</h1>

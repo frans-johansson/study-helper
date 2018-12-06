@@ -11,7 +11,6 @@ class Home extends Component {
 		return(
 			<div className="page_container">
 				<h1>HEM</h1>
-			
 				<RecentProgress />
 
 				<MountainList className="view_container" 
