@@ -30,8 +30,8 @@ class MountainChoice extends Component {
 			isSelected: !isSelected
 		})
 	}
-	
-	
+
+
 
 	// The className mountainSelection is a test class and should be changed later
 	render() {
@@ -73,45 +73,45 @@ class MountainSelector extends Component {
 }
 
 class SimpleTimerSetup extends Component {
-	
+
 	constructor(props) {
 		super(props)
-		
+
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
-	
+
 	handleSubmit(event) {
         event.preventDefault();
-        
+
         let {setTimeInput, setPauseInput, setActiveView} = this.props.subcomponentProps
 
 		setTimeInput(event.target.elements.inputTimeH.value, event.target.elements.inputTimeMin.value);
         setPauseInput(event.target.elements.inputTimePauseH.value, event.target.elements.inputTimePauseMin.value);
-        
+
         this.props.clearSubcomponent()
         setActiveView("timer")
 	}
-	
+
 	render() {
 		return(
 			<div>
 				<form onSubmit={this.handleSubmit}>
 					<label> Pluggtid Timmar: </label>
 					<input type="number" min="0" name="inputTimeH" defaultValueH={this.props.defaultTime} />
-					
+
 					<label>Minuter:</label>
 					<input type="number" min="0" name="inputTimeMin" defaultValueMin={this.props.defaultTime} />
-					
+
 					<label>Paustid Timmar:</label>
 					<input type="number" min="0" name="inputTimePauseH" defaultValuePauseH={this.props.defaultTime} />
-					
-					<label>Minuter:</label>
-					<input type="number" min="0" name="inputTimePauseMin" defaultValuePauseMin={this.props.defaultTime} />			
 
-					
+					<label>Minuter:</label>
+					<input type="number" min="0" name="inputTimePauseMin" defaultValuePauseMin={this.props.defaultTime} />
+
+
 					<input type="submit" value="Submit" disabled={!ifMountainSelected}/>
-					
-				</form>	
+
+				</form>
 				<MountainSelector
 					setSelectedMountain={this.props.subcomponentProps.setSelectedMountain}
 					clearSelectedMountain={this.props.subcomponentProps.clearSelectedMountain}

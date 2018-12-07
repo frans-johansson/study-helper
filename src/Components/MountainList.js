@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import swal from '@sweetalert/with-react';
 
-import Button from './Button.js' 
+import Button from './Button.js'
 import ProgressBar from '../Components/ProgressBar.js'
 import { toHoursMinutes } from '../Utils'
 
@@ -16,7 +17,7 @@ class MountainData extends Component {
 
 		if (hours == 0 && minutes == 0)
 			this.studiedMessage += `Du har inte börjat plugga ${this.props.name} än`
-		
+
 		if (hours != 0)
 			this.studiedMessage += `${hours} h`
 		if (minutes != 0)
@@ -25,7 +26,7 @@ class MountainData extends Component {
 
 	render() {
 		return(
-			<div >			
+			<div >
 				<p>{`Nedlagd tid: ${this.studiedMessage} Mål: ${this.props.goal} h`}</p>
 				<p>{`Slutdatum: ${this.props.date}`}</p>
 
@@ -45,7 +46,23 @@ class ListElement extends Component {
 
 	handleClick(e) {
 		if(e.target.className == "Clickable") {
-			this.props.removeMountain(this.props.id)
+
+			//popup för att dubbelkolla att berget ska raderas
+			swal({
+				title: "Är du säker på att du vill radera berget?",
+				icon: "warning",
+				buttons:{
+					cancel: "Nej",
+					confirm: "JA",
+				}
+			})
+			.then((clicked) => {
+				if(clicked){
+					this.props.removeMountain(this.props.id)
+				}else{
+					swal.close()
+				}
+			})
 		}
 		else {
 			this.props.displaySubcomponent("mountainInfo")
@@ -57,14 +74,14 @@ class ListElement extends Component {
 		return(
 			<div onClick={this.handleClick}>
 				<h1>{this.props.name}</h1>
-				<MountainData 
+				<MountainData
 					name={this.props.name}
 					studied={this.props.studied}
 					goal={this.props.goal}
 					date={this.props.date}
 					color={this.props.color}
 			  	/>
-			  	<Button 
+			  	<Button
 			  		text="Radera berg"
 		  		/>
 			</div>
@@ -85,8 +102,8 @@ class MountainList extends Component {
 									goal={m.goal}
 									date={m.date}
 									key={m.id}
-									id={m.id} 
-									color={m.color} 
+									id={m.id}
+									color={m.color}
 
 									removeMountain={this.props.removeMountain}
 									setHighlightedMountain={this.props.setHighlightedMountain}
