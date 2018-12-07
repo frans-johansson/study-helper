@@ -9,7 +9,6 @@ let timer = undefined
 let isTicking = false
 let isPause = false
 
-let tickCounter = 0;
 let workSum = 0
 
 function pausePlay() {
@@ -37,23 +36,17 @@ class Timer extends Component {
 
 	tickDown() {
         let {time, pauseTime} = this.props
-
-		if (tickCounter == 0) {
-			this.setState({
-				time: time,
-				pauseTime: pauseTime
-			})
-		}
-
-		tickCounter++
 					
 		if(isTicking === true){
 			this.setState({
 				time: this.state.time - 1
 			})
 
+			console.log(this.state.time)
+
 			if (!isPause) {
 				workSum++
+				console.log(workSum)
 			}
 		}
 
@@ -86,7 +79,6 @@ class Timer extends Component {
         let totaltime = this.props.time
 
 		if (!isTicking) {
-			tickCounter = 0
 			isTicking = true
 		}
 		
@@ -135,6 +127,12 @@ class TimerContainer extends Component {
         this.props.viewProps.incrementStudied(this.props.viewProps.mountain.id, workSum)
         this.props.viewProps.updatePreviousDate(this.props.viewProps.mountain.id)
         this.props.viewProps.incrementWorkToday(workSum)
+
+        timer = undefined
+		isTicking = false
+		isPause = false
+        workSum = 0
+
         this.props.setActiveView("home")
     }
 
