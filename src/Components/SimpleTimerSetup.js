@@ -91,7 +91,7 @@ class SimpleTimerSetup extends Component {
         this.props.clearSubcomponent()
         setActiveView("timer")
 	}
-	/*Value är hårdkodad för det rekommenderade pluggintervallet*/
+	
 	render() {
 		return(
 			<div>
@@ -108,14 +108,14 @@ class SimpleTimerSetup extends Component {
 					<label>Minuter:</label>
 					<input type="number" min="0" name="inputTimePauseMin" defaultValuePauseMin={this.props.defaultTime} />			
 
-					<MountainSelector
-						setSelectedMountain={this.props.subcomponentProps.setSelectedMountain}
-						clearSelectedMountain={this.props.subcomponentProps.clearSelectedMountain}
-						mountains={this.props.subcomponentProps.mountains}/>
-
+					
 					<input type="submit" value="Submit" disabled={!ifMountainSelected}/>
 					
 				</form>	
+				<MountainSelector
+					setSelectedMountain={this.props.subcomponentProps.setSelectedMountain}
+					clearSelectedMountain={this.props.subcomponentProps.clearSelectedMountain}
+					mountains={this.props.subcomponentProps.mountains}/>
 
 				<Button text="Hem" onClick={ () => {this.props.clearSubcomponent()}} />
 

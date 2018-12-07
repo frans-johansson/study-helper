@@ -61,17 +61,19 @@ class Timer extends Component {
 			if(isPause) {
 				this.setState({
 				    time: time,
-				    pauseTime: pauseTime
+				    pauseTime: pauseTime,
 				})
 
+				alert("Plugg nu")
 				isPause = false
 			}
 			else {
 				this.setState({
 				    time: pauseTime,
-				    pauseTime: time
-				})
+				    pauseTime: time,
+				  })
 
+ 				alert("Paus nu")
 				isPause = true
 			}	
 		}
