@@ -60,7 +60,7 @@ html {
 		justify-content: center;
 	}
 
-	&.as_row { 
+	&.as_row {
 		flex-direction: row;
 		justify-content: space-around;
 	}
@@ -82,7 +82,7 @@ html {
 
 .filler {
 	background:blue;
-	
+
 	height:100%;
 }
 
@@ -91,7 +91,7 @@ html {
 
 		flex-direction:column;
 		align-content: space-evenly;
-		
+
 		width: 400px;
 		height: 600px;
 }
@@ -104,7 +104,7 @@ html {
 	background-image:url(../svg/homepagedown.svg);
 
 	background-size:cover;
-	
+
 	width: 450px;
 	height:500px;
 
@@ -140,7 +140,7 @@ html {
 	position: fixed;
 
     bottom: 20px;
-  
+
 }
 
 
@@ -157,7 +157,7 @@ input[type=text] {
 	color:$text-color;
 
 	height:30px;
-
+	background-color: $input-box-color;
 }
 
 input[type=number] {
@@ -168,4 +168,9 @@ input[type=number] {
 
 	font-size: 40px;
 	color:$text-color;
+		background-color: $input-box-color;
+}
+
+input[type=date]{
+		background-color: $input-box-color;
 }
