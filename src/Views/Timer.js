@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
+import swal from '@sweetalert/with-react'
 
 
 import Button from "../Components/Button.js"
 import ProgressBar from "../Components/ProgressBar.js"
 import {formatTimeFromUser, formatTimeToUser} from '../Utils'
+
 
 let timer = undefined
 let isTicking = false
@@ -51,30 +53,47 @@ class Timer extends Component {
 		}
 
 		if (this.state.time <= 0) {
+			isTicking = false;
 			if(isPause) {
-				this.setState({
-				    time: time,
-				    pauseTime: pauseTime,
+				swal({
+					title: "Plugg",
+					button: "Börja plugga",
 				})
+				.then((clicked) => {
+						
+					this.setState({
+					    time: time,
+					    pauseTime: pauseTime,
+					})
+					isPause = false	
+					isTicking = true;
 
-				alert("Plugg nu")
-				isPause = false
+				})		
+				
 			}
 			else {
-				this.setState({
-				    time: pauseTime,
-				    pauseTime: time,
-				  })
-
- 				alert("Paus nu")
-				isPause = true
+				swal({
+					title: "Rast",
+					button: "Börja rasten"
+					})
+				.then((clicked) => {
+						
+					this.setState({
+					    time: pauseTime,
+					    pauseTime: time,
+					  })
+					isPause = true
+					isTicking = true
+				})		
+ 				
+				
 			}	
 		}
 	}
 
 	render() {	
 
-		let next= "Nästa: Paus"
+		let next= "Nästa: Rast"
         let subject = "Analys"
         let totaltime = this.props.time
 
@@ -83,15 +102,16 @@ class Timer extends Component {
 		}
 		
 		if(isPause){
-       		subject = "Paus" 
+       		subject = "Rast" 
        		next = `Nästa: ${this.props.mountain.name}`
        		totaltime = this.props.pauseTime
-       		
+       		       		
        	}else{
        		subject = this.props.mountain.name
-       		next = "Nästa: paus"
+       		next = "Nästa: Rast"
        		totaltime = this.props.time
        	}
+
        	let nowtime=totaltime-this.state.time
 
        	let mountainColor = this.props.mountain.color
@@ -137,11 +157,7 @@ class TimerContainer extends Component {
     }
 
 	render() {
-        let {time, pauseTime, mountain} = this.props.viewProps
-       
-       
-
-       
+        let {time, pauseTime, mountain} = this.props.viewProps   
 
 		return(
 			
@@ -156,7 +172,7 @@ class TimerContainer extends Component {
 				
 
 				<div className="timer_box_container">
-				<Button onClick={() => pausePlay()} text="Paus"/>
+				<Button onClick={() => pausePlay()} text={"Paus"}/>
 				 </div>	
 
 				<div className="timer_box_container">
