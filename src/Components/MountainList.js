@@ -26,7 +26,7 @@ class MountainData extends Component {
 	render() {
 		return(
 			<div >			
-				<p>{`${this.studiedMessage} Mål: ${this.props.goal}`}</p>
+				<p>{`Nedlagd tid: ${this.studiedMessage} Mål: ${this.props.goal} h`}</p>
 				<p>{`Slutdatum: ${this.props.date}`}</p>
 
 				<div className="mini_image_conatiner"/>
