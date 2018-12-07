@@ -1,31 +1,12 @@
 @import 'variabels';
 @import 'button';
 
+.timer_box {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 
-	.timer_page_collum_container{
-		background-color: $sky-color;
-		width: 450px;
-		height: 700px;
-		position:absolute;
-		
-		text-align:center;
-	    display:flex;
-	    justify-content:center;
-	    flex-direction:column;
-	    align-content: space-evenly;
-	    	.timer_box_container{
-			width:430px;
-			justify-content:center;
-			border: 10px solid $sky-color;
-			display:flex;
-
-		}
-		
-		
-
-
+	&:first-child div {
+		width: 100%;
 	}
-
-	
-	
-	
+}

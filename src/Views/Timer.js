@@ -105,7 +105,7 @@ class Timer extends Component {
        	let mountainColor = this.props.mountain.color
 
 		return(
-			<div className="page_container">
+			<div>
 					
 					<h1> {subject} </h1>
 					<p> {next} </p>
@@ -140,32 +140,23 @@ class TimerContainer extends Component {
 
 	render() {
         let {time, pauseTime, mountain} = this.props.viewProps
-       
-       
-
-       
-
+      
 		return(
-			
-				<div className="timer_page_collum_container">
-
-				<div className="timer_box_container">
+			<div className="view_container">
+				<div className="timer_box">
 					<Timer 	time={formatTimeFromUser(time)}
 							pauseTime={formatTimeFromUser(pauseTime)}
 							mountain={mountain}/>
 				</div>	
 
-				
+				<div className="timer_box">
+					<Button onClick={() => pausePlay()} text="Paus"/>
+				</div>	
 
-				<div className="timer_box_container">
-				<Button onClick={() => pausePlay()} text="Paus"/>
-				 </div>	
-
-				<div className="timer_box_container">
-                <Button onClick={() => {this.returnHome()}} text="Tillbaka"/>
-                 </div>	
-
-                </div>	
+				<div className="timer_box">
+			    	<Button onClick={() => {this.returnHome()}} text="Tillbaka"/>
+			    </div>	
+			</div>	
 				
 		)
 	}

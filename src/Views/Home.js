@@ -8,24 +8,34 @@ import Button from '../Components/Button.js'
 
 class Home extends Component {
 	render() {
-		return(
-			<div className="page_container">
-				<h1>HEM</h1>
-				<RecentProgress />
+		// Make sure the subcomponent container is only visible if it has something to show us
+		let subcomponentContainer = "fixed center_on_page has_subcomponent"
+		if (!this.props.children.props.subcomponentProps) {
+			subcomponentContainer = "hidden"
+		}
 
-				<MountainList className="view_container" 
-					displaySubcomponent={this.props.displaySubcomponent}
-					clearSubcomponent={this.props.clearSubcomponent}
-					mountains={this.props.viewProps.mountains}
-					removeMountain={this.props.viewProps.removeMountain}
-					setHighlightedMountain={this.props.viewProps.setHighlightedMountain}
-				/>
-			
-				<div >
-					{/*<Button text="Arkiverade berg" onClick={ () => {this.props.setActiveView("archive")}} />*/}
+		return(
+			<div>
+				<div className="view_container">
+					<h1>HEM</h1>
+					<RecentProgress />
+
+					<MountainList className="list"
+						displaySubcomponent={this.props.displaySubcomponent}
+						clearSubcomponent={this.props.clearSubcomponent}
+						mountains={this.props.viewProps.mountains}
+						removeMountain={this.props.viewProps.removeMountain}
+						setHighlightedMountain={this.props.viewProps.setHighlightedMountain}
+					/>
+				
+					{/*
+					<div >
+						<Button text="Arkiverade berg" onClick={ () => {this.props.setActiveView("archive")}} />
+					</div>
+					*/}
 				</div>
 
-				<div className="fixed center_on_page has_subcomponent">
+				<div className={subcomponentContainer}>
 					{this.props.children}
 			    </div>
 
