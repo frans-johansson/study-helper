@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import swal from '@sweetalert/with-react'
 import '../Stylesheets/home.scss';
 import RecentProgress from '../Components/RecentProgress.js'
 import MountainList from '../Components/MountainList.js'
@@ -37,31 +38,45 @@ class Home extends Component {
 			this.props.displaySubcomponent("newMountain")
 		}
 		else {
-			alert("you can't add more mountains!")
+			swal({
+				title: "Oops!",
+				text: "Du har nått din maxgräns på berg",
+				icon: "warning" 
+			})
 		}
 	}
 
 	render() {
 
+		// Make sure the subcomponent container is only visible if it has something to show us
+		let subcomponentContainer = "fixed center_on_page has_subcomponent"
+		if (!this.props.children.props.subcomponentProps) {
+			subcomponentContainer = "hidden"
+		}
+
 
 		return(
-			<div className="page_container">
-				<h1>HEM</h1>
-				<RecentProgress />
+			<div>
+				<div className="view_container">
+					<h1>HEM</h1>
+					<RecentProgress />
 
-				<MountainList className="view_container" 
-					displaySubcomponent={this.props.displaySubcomponent}
-					clearSubcomponent={this.props.clearSubcomponent}
-					mountains={this.props.viewProps.mountains}
-					removeMountain={this.props.viewProps.removeMountain}
-					setHighlightedMountain={this.props.viewProps.setHighlightedMountain}
-				/>
-			
-				<div >
-					{/*<Button text="Arkiverade berg" onClick={ () => {this.props.setActiveView("archive")}} />*/}
+					<MountainList className="list"
+						displaySubcomponent={this.props.displaySubcomponent}
+						clearSubcomponent={this.props.clearSubcomponent}
+						mountains={this.props.viewProps.mountains}
+						removeMountain={this.props.viewProps.removeMountain}
+						setHighlightedMountain={this.props.viewProps.setHighlightedMountain}
+					/>
+				
+					{/*
+					<div >
+						<Button text="Arkiverade berg" onClick={ () => {this.props.setActiveView("archive")}} />
+					</div>
+					*/}
 				</div>
 
-				<div className="fixed center_on_page has_subcomponent">
+				<div className={subcomponentContainer}>
 					{this.props.children}
 			    </div>
 
