@@ -324,19 +324,28 @@ class AppController extends Component {
 		const viewProps = _props[activeView]
 		const subcomponentProps = _props[subcomponent]
 
+		// Changing styles depending on active view and subcomponent
+		let page_container = `page_container ${this.state.activeView}`
+		
+		// Make background darker when there's something on top
+		let overlay = ""
+		if (subcomponent != "nullComponent")
+			overlay = "darkened"
+
 		return(
 			<div>
-				<div className="page_container">
-				<ActiveView 
-					setActiveView={this.setActiveView}
-					displaySubcomponent={this.displaySubcomponent}
-					viewProps={viewProps}>
+				<div className={page_container}>
+					<ActiveView 
+						setActiveView={this.setActiveView}
+						displaySubcomponent={this.displaySubcomponent}
+						viewProps={viewProps}
+						overlay={overlay}>
 
-					<Subcomponent
-						clearSubcomponent={this.clearSubcomponent}
-						subcomponentProps={subcomponentProps}/>
+						<Subcomponent
+							clearSubcomponent={this.clearSubcomponent}
+							subcomponentProps={subcomponentProps}/>
 
-				</ActiveView>
+					</ActiveView>
 				</div>
 			</div>
 		)

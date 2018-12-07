@@ -2,43 +2,52 @@
 @import 'button';
 @import 'timer';
 
-#root {
-	width: 100vw;
-	height: 100vh;
+html {
+	#root {
+		font: 100% $texttesttest-font;
+		color: $text-color;
 
-	background-color: $grass-color;
+		.page_container {
+			height: 100vh;
+			width: 100vw;
 
-	font: 100% $texttesttest-font;
-	color: $text-color;
+			display: flex;
+			flex-direction: column;
+			align-content: space-between;
+
+			text-align: center;
+
+			background-color: $grass-color;
+
+			&.timer {
+				background-color: $sky-color;
+			}
+
+			.view_container {
+				padding: 0 40px;
+			}
+		}
+	}
 }
 
-.page_container {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-content: space-between;
-
-	text-align: center;
+.list {
+	> div {
+		margin: 0 80px;
+		background-color: $box-color;
+		border-radius: $corner-roundness;
+	}
 }
 
-.test {
-	background-image:url(../svg/position.svg);
-	position: cover;
-	width: 100px;
-	height: 100px;
-	fill: red;
-}
-
-/*
 .has_subcomponent {
 	div:not(.hidden):not(.Clickable):not(.mountain_climber_container):not(.button_container):not(.ClickWrapper):not(mountain_position){
 		padding: 10px;
 		background-color: $box-color;
 	}
-}*/
+}
 
 .fixed {
-	position: absolute;
+	position: fixed;
+	z-index: 1;
 	bottom: 0;
 	width: 100vw;
 
@@ -49,20 +58,11 @@
 	&.center_on_page {
 		height: 100vh;
 		justify-content: center;
-		position:relative;
 	}
 
 	&.as_row { 
 		flex-direction: row;
 		justify-content: space-around;
-	}
-}
-
-.view_container {
-	margin: 0 40px;
-
-	div:not(.Clickable):not(.progress_bar):not(.mountain_climber_container):not(.mountain_position) {
-		background-color: $box-color;
 	}
 }
 
