@@ -85,8 +85,7 @@ class Timer extends Component {
 					isPause = true
 					isTicking = true
 				})		
- 				
-				
+
 			}	
 		}
 	}

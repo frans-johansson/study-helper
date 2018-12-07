@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import swal from '@sweetalert/with-react'
 import '../Stylesheets/home.scss';
 import RecentProgress from '../Components/RecentProgress.js'
 import MountainList from '../Components/MountainList.js'
@@ -37,7 +38,11 @@ class Home extends Component {
 			this.props.displaySubcomponent("newMountain")
 		}
 		else {
-			alert("you can't add more mountains!")
+			swal({
+				title: "Oops!",
+				text: "Du har nått din maxgräns på berg",
+				icon: "warning" 
+			})
 		}
 	}
 
