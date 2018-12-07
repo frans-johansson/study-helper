@@ -55,9 +55,13 @@ class NewMountain extends Component {
 
 
   render() {
+
+    let numMountains = 10 - JSON.parse(window.localStorage.getItem("colors")).length
+
     return(
         <div>
           <h2>NYTT BERG</h2>
+          <p>Du har just nu {numMountains}/10 berg</p>
           <form onSubmit={this.handleSubmit} method="get">
             <label>
               Namn:
