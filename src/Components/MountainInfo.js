@@ -10,14 +10,14 @@ class MountainInfo extends Component {
 
 		let studied = this.props.subcomponentProps.highlightedMountain.studied
 		let name = this.props.subcomponentProps.highlightedMountain.name
-		
+
 		let [hours, minutes] = toHoursMinutes(studied)
 
 		this.studiedMessage = ''
 
 		if (hours == 0 && minutes == 0)
 			this.studiedMessage += `Du har inte börjat plugga ${name} än`
-		
+
 		if (hours != 0)
 			this.studiedMessage += `${hours} h`
 		if (minutes != 0)
@@ -67,7 +67,9 @@ class MountainInfo extends Component {
 					<div className="mountain_climber_container">
 						<div className="mountain_position" style={divStyle}/>
 						<h1>{mountain.name}</h1>
-						<p>{`Mål: ${goal} h Slutdatum: ${date} Nedlagd tid: ${this.studiedMessage}`}</p>
+						<p><p className="goal"/> {`${goal} h `} </p>
+						<p><p className="date"/> {`${date} `} </p>
+						<p><p className="time"/> {`${this.studiedMessage}`}</p>
 						<div className="button_container">
 							<Button text="Tillbaka" onClick={this.handleClick}/>
 						</div>

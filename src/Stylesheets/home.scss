@@ -1,6 +1,7 @@
 @import 'variabels';
 @import 'button';
 @import 'timer';
+@import 'swal';
 
 html {
 	#root {
@@ -140,7 +141,20 @@ html {
 	position: fixed;
 
     bottom: 20px;
+}
 
+/*icon för slutdatum*/
+.date {
+	content: url(../svg/icon_date.svg);
+	display: inline-block;
+}
+.time {
+	content: url(../svg/icon_time.svg);
+	display: inline-block;
+}
+.goal {
+	content: url(../svg/icon_goal.svg);
+	display: inline-block;
 }
 
 
