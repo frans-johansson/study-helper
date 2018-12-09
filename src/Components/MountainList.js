@@ -27,8 +27,8 @@ class MountainData extends Component {
 	render() {
 		return(
 			<div >
-				<p>{`Nedlagd tid: ${this.studiedMessage} Mål: ${this.props.goal} h`}</p>
-				<p>{`Slutdatum: ${this.props.date}`}</p>
+				<p><p className= "time"/> {` ${this.studiedMessage}    `} <p className= "goal"/> {` ${this.props.goal} h`}
+						<p className="date"/> {` ${this.props.date}`}</p>
 
 				<div className="mini_image_conatiner"/>
 				<ProgressBar percentage= {this.props.studied} goal={this.props.goal}  mountain={this.props.color}/>
