@@ -15,8 +15,10 @@
   border-radius: 100px;
 
   color: white;
+  cursor: pointer;
 
-  background-color: $text-color;
+  background-image: url(../svg/button_ground.svg);
+  //  background-color: $text-color;
 }
 
 .no_button{

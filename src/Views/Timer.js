@@ -38,7 +38,7 @@ class Timer extends Component {
 
 	tickDown() {
         let {time, pauseTime} = this.props
-					
+
 		if(isTicking === true){
 			this.setState({
 				time: this.state.time - 1
@@ -56,41 +56,43 @@ class Timer extends Component {
 			isTicking = false;
 			if(isPause) {
 				swal({
+					className: "swal_timer",
 					title: "Plugg",
 					button: "Börja plugga",
 				})
 				.then((clicked) => {
-						
+
 					this.setState({
 					    time: time,
 					    pauseTime: pauseTime,
 					})
-					isPause = false	
+					isPause = false
 					isTicking = true;
 
-				})		
-				
+				})
+
 			}
 			else {
 				swal({
+					className: "swal_timer",
 					title: "Rast",
 					button: "Börja rasten"
 					})
 				.then((clicked) => {
-						
+
 					this.setState({
 					    time: pauseTime,
 					    pauseTime: time,
 					  })
 					isPause = true
 					isTicking = true
-				})		
+				})
 
-			}	
+			}
 		}
 	}
 
-	render() {	
+	render() {
 
 		let next= "Nästa: Rast"
         let subject = "Analys"
@@ -99,12 +101,12 @@ class Timer extends Component {
 		if (!isTicking) {
 			isTicking = true
 		}
-		
+
 		if(isPause){
-       		subject = "Rast" 
+       		subject = "Rast"
        		next = `Nästa: ${this.props.mountain.name}`
        		totaltime = this.props.pauseTime
-       		       		
+
        	}else{
        		subject = this.props.mountain.name
        		next = "Nästa: Rast"
@@ -117,12 +119,12 @@ class Timer extends Component {
 
 		return(
 			<div>
-					
+
 					<h1> {subject} </h1>
 					<p> {next} </p>
 
 					<ProgressBar percentage= {nowtime} goal={totaltime} mountain={mountainColor}/>
-			
+
 					<p>
 						{formatTimeToUser(this.state.time)}
 					</p>
@@ -137,10 +139,10 @@ class Timer extends Component {
 class TimerContainer extends Component {
 	constructor(props) {
         super(props)
-        
+
         this.returnHome = this.returnHome.bind(this)
     }
-    
+
     returnHome() {
         clearInterval(timer)
         this.props.viewProps.incrementStudied(this.props.viewProps.mountain.id, workSum)
@@ -158,24 +160,24 @@ class TimerContainer extends Component {
 	render() {
 
         let {time, pauseTime, mountain} = this.props.viewProps
-      
+
 		return(
 			<div className="view_container">
 				<div className="timer_box">
 					<Timer 	time={formatTimeFromUser(time)}
 							pauseTime={formatTimeFromUser(pauseTime)}
 							mountain={mountain}/>
-				</div>	
+				</div>
 
 				<div className="timer_box">
 					<Button onClick={() => pausePlay()} text="Paus"/>
-				</div>	
+				</div>
 
 				<div className="timer_box">
-			    	<Button onClick={() => {this.returnHome()}} text="Tillbaka"/>
-			    </div>	
-			</div>	
-				
+			    	<Button onClick={() => {this.returnHome()}} text="Hem"/>
+			    </div>
+			</div>
+
 		)
 	}
 }

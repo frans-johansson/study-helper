@@ -49,8 +49,10 @@ class ListElement extends Component {
 
 			//popup för att dubbelkolla att berget ska raderas
 			swal({
+				className: "swalEraseMountain",
 				title: "Är du säker på att du vill radera berget?",
 				icon: "warning",
+
 				buttons:{
 					cancel: "Nej",
 					confirm: "JA",
@@ -82,8 +84,7 @@ class ListElement extends Component {
 					color={this.props.color}
 			  	/>
 			  	<Button
-			  		text="Radera berg"
-		  		/>
+			  		text="Radera berg"/>
 			</div>
 		)
 	}

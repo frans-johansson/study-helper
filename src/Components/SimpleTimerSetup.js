@@ -31,8 +31,6 @@ class MountainChoice extends Component {
 		})
 	}
 
-
-
 	// The className mountainSelection is a test class and should be changed later
 	render() {
 
@@ -69,6 +67,14 @@ class MountainSelector extends Component {
 				}
 			</div>
 		)
+	}
+}
+
+function validate(number) {
+	if(number >= 0)
+		return true;
+	else {
+		return false;
 	}
 }
 
