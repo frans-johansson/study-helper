@@ -118,6 +118,8 @@ class SimpleTimerSetup extends Component {
 					<input type="submit" value="Submit" disabled={!ifMountainSelected}/>
 
 				</form>
+
+				<label>Välj berg:</label>
 				<MountainSelector
 					setSelectedMountain={this.props.subcomponentProps.setSelectedMountain}
 					clearSelectedMountain={this.props.subcomponentProps.clearSelectedMountain}

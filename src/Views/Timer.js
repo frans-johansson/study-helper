@@ -22,6 +22,7 @@ function pausePlay() {
 	}
 }
 
+
 class Timer extends Component {
 	constructor(props) {
         super(props)
@@ -33,8 +34,6 @@ class Timer extends Component {
 
 		timer = setInterval(this.tickDown.bind(this), 1000)
 	}
-
-
 
 	tickDown() {
         let {time, pauseTime} = this.props
@@ -55,6 +54,7 @@ class Timer extends Component {
 		if (this.state.time <= 0) {
 			isTicking = false;
 			if(isPause) {
+				
 				swal({
 					className: "swal_timer",
 					title: "Plugg",
