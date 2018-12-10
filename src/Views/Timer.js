@@ -43,11 +43,9 @@ class Timer extends Component {
 				time: this.state.time - 1
 			})
 
-			console.log(this.state.time)
 
 			if (!isPause) {
 				workSum++
-				console.log(workSum)
 			}
 		}
 

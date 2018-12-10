@@ -90,6 +90,7 @@ class ListElement extends Component {
 					color={this.props.color}
 			  	/>
 			  	<Button
+			  	className = "deleteButton"
 			  		text="Radera berg"/>
 			</div>
 		)
