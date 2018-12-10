@@ -162,8 +162,18 @@ input[type=submit] {
 	border-radius: 100px;
 	border:0 none;
 
+	background: url(../svg/Buttons/button_accept.svg) no-repeat;
+
 	font: inherit;
 	color:$text-color;
+	cursor: pointer;
+
+	width: 10vw;
+	height: 10vh;
+}
+
+input[disabled]{
+	background: url(../svg/Buttons/button_accept_disabled.svg) no-repeat;
 }
 
 input[type=text] {
@@ -187,4 +197,8 @@ input[type=number] {
 
 input[type=date]{
 		background-color: $input-box-color;
+}
+.homeButton{
+	background: url(../svg/Buttons/symbol_home.svg) no-repeat;
+	display: inline-flex;
 }

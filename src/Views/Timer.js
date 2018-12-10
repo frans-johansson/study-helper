@@ -43,11 +43,9 @@ class Timer extends Component {
 				time: this.state.time - 1
 			})
 
-			console.log(this.state.time)
 
 			if (!isPause) {
 				workSum++
-				console.log(workSum)
 			}
 		}
 
@@ -117,13 +115,14 @@ class Timer extends Component {
 
        	let mountainColor = this.props.mountain.color
 
+       	let p= 100*nowtime/totaltime
+
 		return(
 			<div>
 
 					<h1> {subject} </h1>
 					<p> {next} </p>
-
-					<ProgressBar percentage= {nowtime} goal={totaltime} mountain={mountainColor}/>
+					<ProgressBar percentage= {p} goal={totaltime} mountain={mountainColor}/>
 
 					<p>
 						{formatTimeToUser(this.state.time)}

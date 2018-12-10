@@ -26,6 +26,8 @@ class MountainData extends Component {
 	}
 
 	render() {
+		let p=100*(this.props.studied/this.props.goal)
+
 		return(
 			<div>
 				<h1 style={{color: this.props.color}}>
@@ -33,7 +35,7 @@ class MountainData extends Component {
 				</h1>
 				<p>{this.studiedMessage}</p>
 				<ProgressBar
-					percentage={this.props.studied}
+					percentage={p}
 					goal={this.props.goal}
 					mountain={this.props.color}
 				/>
@@ -50,31 +52,8 @@ class ListElement extends Component {
 	}
 
 	handleClick(e) {
-		if(e.target.className == "Clickable") {
-
-			//popup för att dubbelkolla att berget ska raderas
-			swal({
-				className: "swalEraseMountain",
-				title: "Är du säker på att du vill radera berget?",
-				icon: "warning",
-
-				buttons:{
-					cancel: "Nej",
-					confirm: "JA",
-				}
-			})
-			.then((clicked) => {
-				if(clicked){
-					this.props.removeMountain(this.props.id)
-				}else{
-					swal.close()
-				}
-			})
-		}
-		else {
-			this.props.displaySubcomponent("mountainInfo")
-			this.props.setHighlightedMountain(this.props.id)
-		}
+		this.props.displaySubcomponent("mountainInfo")
+		this.props.setHighlightedMountain(this.props.id)
 	}
 
 	render() {
