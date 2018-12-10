@@ -153,6 +153,7 @@ class AppController extends Component {
 
   		let progressTracking = JSON.parse(window.localStorage.getItem("progressTracking"))
 		let {lastDate} = progressTracking
+		console.log(workToday)
 		window.localStorage.setItem("progressTracking", JSON.stringify({workToday, workYesterday, lastDate}))
   	}
   	
