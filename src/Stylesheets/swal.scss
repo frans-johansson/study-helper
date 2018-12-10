@@ -1,7 +1,7 @@
 @import 'variabels';
 
 .swal-modal {
-  background-color: $text-color;
+  background-color: $box-color;
   color: $text-color;
 }
 
@@ -12,13 +12,13 @@
 
 .swal-button{
   color: black;
-  border: 2px solid black;
+ // border: 2px solid black;
   border-radius: 2px;
   border-radius: $corner-roundness;
 }
 
 .swal-button--confirm {
-  background-color: $yes-color;
+background-color: $yes-color;
 }
 
 /*Detta funkar inte*/
@@ -27,7 +27,7 @@
 }
 
 .swal-button--cancel{
-  background-color: $no-color;
+ background-color: $no-color;
 }
 
 .swalEraseMountain {
@@ -36,6 +36,6 @@
 
 .swal_timer {
   .swal-button{
-    background-color: $box-color;
+    background-color: $text-color;
   }
 }

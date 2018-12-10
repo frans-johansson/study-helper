@@ -9,8 +9,8 @@ html {
 		color: $text-color;
 
 		.page_container {
-			height: 100vh;
-			width: 100vw;
+			height: 100%;
+			width: 100%;
 
 			display: flex;
 			flex-direction: column;
@@ -33,7 +33,7 @@ html {
 
 .list {
 	> div {
-		margin: 0 80px;
+		margin: 0 80px 60px 80px;
 		background-color: $box-color;
 		border-radius: $corner-roundness;
 	}
@@ -162,7 +162,7 @@ input[type=submit] {
 	border-radius: 100px;
 	border:0 none;
 
-	background: url(../svg/Buttons/button_accept.svg) no-repeat;
+	background:url(../svg/Buttons/button_accept.svg) no-repeat;
 
 	font: inherit;
 	color:$text-color;
@@ -198,3 +198,9 @@ input[type=number] {
 input[type=date]{
 		background-color: $input-box-color;
 }
+
+.homeButton{
+	background-image:url(../svg/Buttons/symbol_home.svg) no-repeat ;
+	
+	}
+
