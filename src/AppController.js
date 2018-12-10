@@ -170,9 +170,8 @@ class AppController extends Component {
 	}
 
 	removeMountain(id) {
-		// Remove mountain from local storage
-		let remainingMountains = this.state.mountains.filter((m) => m.id != id)
-		window.localStorage.setItem("mountains", JSON.stringify(remainingMountains))
+
+		console.log(id)
 
 		// Add the color back to local storage
 		let color = findMountain(id, this.state.mountains).color
@@ -183,6 +182,10 @@ class AppController extends Component {
 
 		colors.push(color)
 		window.localStorage.setItem("colors", JSON.stringify(colors))
+
+		// Remove mountain from local storage
+		let remainingMountains = this.state.mountains.filter((m) => m.id != id)
+		window.localStorage.setItem("mountains", JSON.stringify(remainingMountains))
 
 		this.updateMountainList()
 	}
@@ -308,6 +311,7 @@ class AppController extends Component {
 			mountainInfo: {
 				highlightedMountain: this.state.highlightedMountain,
 				clearHighlightedMountain: this.clearHighlightedMountain,
+				removeMountain: this.removeMountain,
 			},
 
 			simpleTimerSetup: {
