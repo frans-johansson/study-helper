@@ -116,9 +116,11 @@ class SimpleTimerSetup extends Component {
 					clearSelectedMountain={this.props.subcomponentProps.clearSelectedMountain}
 					mountains={this.props.subcomponentProps.mountains}/>
 				
-				<div className="homeButton">
-				<Button text="Hem" onClick={ () => {this.props.clearSubcomponent()}} />
-				</div>
+				<Button
+					onClick={ () => {this.props.clearSubcomponent()}}
+					className="homeButton"
+				/>
+
 			</div>
 		)
 	}

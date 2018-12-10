@@ -75,7 +75,9 @@ class NewMountain extends Component {
             <input type="submit" value="" disabled={!this.state.name || !this.state.goal || !this.state.date} />
           </form>
 
-          <Button text="Hem" onClick={ () => {this.props.clearSubcomponent()}} />
+          <div>
+            <Button text="Hem" onClick={ () => {this.props.clearSubcomponent()}} />
+          </div>
         </div>
     )
   }

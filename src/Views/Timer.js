@@ -173,7 +173,9 @@ class TimerContainer extends Component {
 				</div>
 
 				<div className="timer_box">
-			    	<Button onClick={() => {this.returnHome()}} text="Hem"/>
+					<div className="homeButton">
+			    		<Button onClick={() => {this.returnHome()}} text="Hem"/>
+			    	</div>
 			    </div>
 			</div>
 
