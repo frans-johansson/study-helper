@@ -10,7 +10,6 @@ class RecentProgress extends Component {
 		let workYesterday = progressTracking.workYesterday
 		let lastDate = progressTracking.lastDate
 
-		console.log(workToday)
 
 		workToday = workToday/3600
 		workYesterday = workYesterday/3600
@@ -37,8 +36,6 @@ class RecentProgress extends Component {
 		let [hours_today, minutes_today] = toHoursMinutes(workToday)
 
 		let studiedToday = ''
-
-		console.log(minutes_today)
 
 		if (hours_today == 0 && minutes_today == 0)
 			studiedToday += '0 h'

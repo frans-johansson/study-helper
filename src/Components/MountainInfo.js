@@ -77,7 +77,6 @@ class MountainInfo extends Component {
 	   			borderRadius: 100,
 	        };
 
-	        console.log(divStyle)
 	   	}
 
 
