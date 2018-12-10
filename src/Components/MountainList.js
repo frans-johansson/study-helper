@@ -26,9 +26,10 @@ class MountainData extends Component {
 
 	render() {
 		return(
-			<div >
-				<p><p className= "time"/> {` ${this.studiedMessage}    `} <p className= "goal"/> {` ${this.props.goal} h`}
-						<p className="date"/> {` ${this.props.date}`}</p>
+			<div>
+				<p className= "time">{`${this.studiedMessage}`}</p>
+				<p className= "goal">{`${this.props.goal} h`}</p>
+				<p className="date">{`${this.props.date}`}</p>
 
 				<div className="mini_image_conatiner"/>
 				<ProgressBar percentage= {this.props.studied} goal={this.props.goal}  mountain={this.props.color}/>
@@ -75,7 +76,7 @@ class ListElement extends Component {
 	render() {
 		return(
 			<div onClick={this.handleClick}>
-				<h1>{this.props.name}</h1>
+				<h1>{`Mt. ${this.props.name}`}</h1>
 				<MountainData
 					name={this.props.name}
 					studied={this.props.studied}
