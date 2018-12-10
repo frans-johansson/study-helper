@@ -39,9 +39,10 @@ class MountainChoice extends Component {
 		let divStyle={
 			backgroundColor:`${this.props.color}`,
 		}
+		console.log(this.props.name)
 
 		return(
-			<button className="mountainSelection" style={divStyle} onClick={() => this.handleClick(this.props.id)} />
+			<Button className="mountainSelection" text={`${this.props.name}`} style={divStyle} onClick={() => this.handleClick(this.props.id)} />
 		)
 	}
 }
@@ -61,6 +62,7 @@ class MountainSelector extends Component {
 								<MountainChoice
 									id={m.id}
 									color={m.color}
+									name={m.name}
 									setSelectedMountain={this.props.setSelectedMountain}
 									clearSelectedMountain={this.props.clearSelectedMountain}/>
 							)
