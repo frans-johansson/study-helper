@@ -1,0 +1,41 @@
+@import 'variabels';
+
+.swal-modal {
+  background-color: $text-color;
+  color: $text-color;
+}
+
+/*Detta funkar inte*/
+.swal {
+  font-style: $texttesttest-font;
+}
+
+.swal-button{
+  color: black;
+  border: 2px solid black;
+  border-radius: 2px;
+  border-radius: $corner-roundness;
+}
+
+.swal-button--confirm {
+  background-color: $yes-color;
+}
+
+/*Detta funkar inte*/
+.swal-button--confirm:hover{
+  background-color: $box-color;
+}
+
+.swal-button--cancel{
+  background-color: $no-color;
+}
+
+.swalEraseMountain {
+  font-style: $texttesttest-font;
+}
+
+.swal_timer {
+  .swal-button{
+    background-color: $box-color;
+  }
+}

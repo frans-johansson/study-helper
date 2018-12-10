@@ -27,7 +27,7 @@ const components = {
 }
 
 function findMountain(id, array) {
-	return [array.filter( (m) => m.id == id)]
+	return array.filter((m) => m.id == id).shift()
 }
 
 class AppController extends Component {
@@ -36,11 +36,15 @@ class AppController extends Component {
 		// Display functions
    		this.setActiveView = this.setActiveView.bind(this)
    		this.displaySubcomponent = this.displaySubcomponent.bind(this)
-   		this.clearSubcomponent = this.clearSubcomponent.bind(this);
+   		this.clearSubcomponent = this.clearSubcomponent.bind(this)
+   		// Progress
+   		this.incrementWorkToday = this.incrementWorkToday.bind(this)
 		// Mountain management
 		this.updateMountainList = this.updateMountainList.bind(this)
 		this.removeMountain = this.removeMountain.bind(this)
 		this.addMountain = this.addMountain.bind(this)
+		this.incrementStudied = this.incrementStudied.bind(this)
+		this.updatePreviousDate = this.updatePreviousDate.bind(this)
 		// Mountain information 
 		this.setHighlightedMountain = this.setHighlightedMountain.bind(this)
 		this.clearHighlightedMountain = this.clearHighlightedMountain.bind(this)
@@ -55,9 +59,14 @@ class AppController extends Component {
    			activeView: "home",
    			subcomponent: "nullComponent",
 
+   			// Progress
+   			workToday: 0,
+   			workYesterday: 0,
+
 			// Mountain
    			mountains: [],
 			highlightedMountain: undefined,
+			colors: undefined,
 			   
 			// Timer with defaults
 			timeInput: [0,45],
@@ -68,6 +77,48 @@ class AppController extends Component {
 
 	/* INITS */
 	componentWillMount() {
+		// Add colors to local storage 
+		if (!window.localStorage.getItem("colors")) {
+			let colors = ['#5A999D', '#D17B6E', '#868D6E', '#AD7B98', '#78B0E8', 
+						  '#D498CF', '#91BE7B', '#76639A', '#5360A5', '#5360A5']
+			// Sets array in state
+			this.setState({
+				colors: colors,
+			})
+			// Sets array in storage
+			window.localStorage.setItem("colors", JSON.stringify(colors))
+		}
+
+		// Set up variables for progress
+		let progressTracking = JSON.parse(window.localStorage.getItem("progressTracking"))
+		let workToday = 0
+		let workYesterday = 0
+		let lastDate = 0
+
+		if (!progressTracking) { // If uninitialized
+			[workToday, workYesterday, lastDate] = [0, 0, new Date().toDateString()]			
+
+			window.localStorage.setItem("progressTracking", JSON.stringify({workToday, workYesterday, lastDate}))
+		}
+		else { // If it exists in storage
+			let currentDate = new Date().toDateString()
+			workToday = progressTracking.workToday
+			workYesterday = progressTracking.workYesterday
+			lastDate = progressTracking.lastDate
+
+			// Check for new date
+			if (currentDate != lastDate && workToday > 0) {
+				[workToday, workYesterday, lastDate] = [0, workToday, currentDate] // Shifterino
+			}
+
+			window.localStorage.setItem("progressTracking", JSON.stringify({workToday, workYesterday, lastDate}))
+		}
+
+		// Update app state
+		this.setState({
+			workToday: workToday,
+			workYesterday: workYesterday,
+		})
 		this.updateMountainList()
 	}
 
@@ -91,6 +142,21 @@ class AppController extends Component {
   		})	
   	}
 
+  	/* PROGRESS */
+  	incrementWorkToday(amount) {
+  		let {workToday, workYesterday} = this.state
+  		workToday += amount
+
+  		this.setState({
+  			workToday: workToday,
+  		})
+
+  		let progressTracking = JSON.parse(window.localStorage.getItem("progressTracking"))
+		let {lastDate} = progressTracking
+		window.localStorage.setItem("progressTracking", JSON.stringify({workToday, workYesterday, lastDate}))
+  	}
+  	
+
 	/* MOUNTAINS */
 	updateMountainList() {
 		let updatedList = JSON.parse(window.localStorage.getItem("mountains"))
@@ -102,10 +168,20 @@ class AppController extends Component {
 		})
 	}
 
-	removeMountain(key) {
-		let remainingMountains = this.state.mountains.filter((m) => m.id != key)
-
+	removeMountain(id) {
+		// Remove mountain from local storage
+		let remainingMountains = this.state.mountains.filter((m) => m.id != id)
 		window.localStorage.setItem("mountains", JSON.stringify(remainingMountains))
+
+		// Add the color back to local storage
+		let color = findMountain(id, this.state.mountains).color
+		let colors = JSON.parse(window.localStorage.getItem("colors"))
+
+		console.log(color)
+		console.log(colors)
+
+		colors.push(color)
+		window.localStorage.setItem("colors", JSON.stringify(colors))
 
 		this.updateMountainList()
 	}
@@ -122,8 +198,27 @@ class AppController extends Component {
 	    // Updates the array in local storage
 	    window.localStorage.setItem("mountains", JSON.stringify(mountains))
 
+	    // Remove the used color from local storage
+	    let colors = JSON.parse(window.localStorage.getItem("colors"))
+	    colors.shift()
+	    window.localStorage.setItem("colors", JSON.stringify(colors))
+
 	    // Updates the app state with the new mountain
 	    this.updateMountainList()
+	}
+
+	updatePreviousDate(id) {
+		let mountain = findMountain(id, this.state.mountains)
+		let i = this.state.mountains.indexOf(mountain)
+
+		// Updates the date of this mountain in the state array
+		this.state.mountains[i].previousDate = new Date().toDateString()
+
+		console.log(this.state.mountains[i].previousDate)
+
+		// Push changes to local storage
+		window.localStorage.setItem("mountains", JSON.stringify(this.state.mountains))
+		this.updateMountainList()
 	}
 
 	clearHighlightedMountain() {
@@ -138,6 +233,19 @@ class AppController extends Component {
 		this.setState({
 			highlightedMountain: m,
 		})
+	}
+
+	incrementStudied(id, amount) {
+		let mountain = findMountain(id, this.state.mountains)
+		let i = this.state.mountains.indexOf(mountain)
+		
+		// Convert to hours
+		amount /= 3600
+
+		this.state.mountains[i].studied += amount
+
+		window.localStorage.setItem("mountains", JSON.stringify(this.state.mountains))
+		this.updateMountainList()
 	}
 
 	/* TIMER */
@@ -184,6 +292,10 @@ class AppController extends Component {
 			timer: {
 				time: this.state.timeInput,
 				pauseTime: this.state.pauseInput,
+				mountain: this.state.selectedMountain,
+				incrementWorkToday: this.incrementWorkToday,
+				incrementStudied: this.incrementStudied,
+				updatePreviousDate: this.updatePreviousDate,
 			},
 
 			newMountain: {
@@ -212,19 +324,28 @@ class AppController extends Component {
 		const viewProps = _props[activeView]
 		const subcomponentProps = _props[subcomponent]
 
+		// Changing styles depending on active view and subcomponent
+		let page_container = `page_container ${this.state.activeView}`
+		
+		// Make background darker when there's something on top
+		let overlay = ""
+		if (subcomponent != "nullComponent")
+			overlay = "darkened"
+
 		return(
 			<div>
-				<div class="page_container">
-				<ActiveView 
-					setActiveView={this.setActiveView}
-					displaySubcomponent={this.displaySubcomponent}
-					viewProps={viewProps}>
+				<div className={page_container}>
+					<ActiveView 
+						setActiveView={this.setActiveView}
+						displaySubcomponent={this.displaySubcomponent}
+						viewProps={viewProps}
+						overlay={overlay}>
 
-					<Subcomponent
-						clearSubcomponent={this.clearSubcomponent}
-						subcomponentProps={subcomponentProps}/>
+						<Subcomponent
+							clearSubcomponent={this.clearSubcomponent}
+							subcomponentProps={subcomponentProps}/>
 
-				</ActiveView>
+					</ActiveView>
 				</div>
 			</div>
 		)

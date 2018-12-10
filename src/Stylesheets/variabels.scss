@@ -1,27 +1,33 @@
 /*Fonts*/
+@import url(https://fonts.googleapis.com/css?family=Poppins);
+
 $font-stack:    Helvetica, sans-serif;
 $texttest-font:    Andale Mono;
-$texttesttest-font:    Futura;
+$texttesttest-font:    Poppins;
+
+/*Annat kul*/
+$corner-roundness: 20px;
 
 /*Färger*/
 $grass-color: #A3BC3D; /* gräs*/
 $sky-color: #BCDEEF; /*himmel*/
 $snow-color: #FFFFFF; /*snö*/
-$mountain_l-color: #92B5CB; /*berg*/ 
+$mountain_l-color: #92B5CB; /*berg*/
 $mountain_s-color: #88A7BC; /*berg skugga*/
 $box-color: #F3EFBE; /*bakgrunds färg till boxar där man kan ställa in saker*/
 $yes-color: #1CCC21; /*knapp färg för ja, gå vidare, positivt*/
 $no-color: #E52823; /*knapp färg för nej, avbryt*/
 $text-color: #867B6E; /*färg för allmän text*/
+$input-box-color: #d8d5c7; /*nina testar */
 
 /*Ämnes färger*/
-$a-color: #5A999D; 
-$b-color: #D17B6E; 
-$c-color: #868D6E; 
-$d-color: #AD7B98; 
-$e-color: #78B0E8; 
-$f-color: #D498CF; 
-$g-color: #91BE7B; 
-$h-color: #76639A; 
-$i-color: #5360A5; 
-$j-color: #5360A5; 
+$a-color: #5A999D;
+$b-color: #D17B6E;
+$c-color: #868D6E;
+$d-color: #AD7B98;
+$e-color: #78B0E8;
+$f-color: #D498CF;
+$g-color: #91BE7B;
+$h-color: #76639A;
+$i-color: #5360A5;
+$j-color: #5360A5;

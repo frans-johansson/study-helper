@@ -3,8 +3,9 @@
 .ClickWrapper{
   width: 70px;
   height: 140px;
-  display:flex;
-  flex-direction:column;
+
+  display: flex;
+  flex-direction: column;
   justify-content: center;
 }
 
@@ -14,8 +15,10 @@
   border-radius: 100px;
 
   color: white;
+  cursor: pointer;
 
-  background-color: $text-color;
+  background-image: url(../svg/button_ground.svg);
+  //  background-color: $text-color;
 }
 
 .no_button{
@@ -24,22 +27,6 @@
 
 .yes_button{
     background-color: $yes-color;
-}
-
-.button_container{
-  display:flex;
-  justify-content: center;
-  flex-direction:row;
-
-  width: 400px;
-}
-
-.button_container_two{
-  display:flex;
-  justify-content: space-around;
-  flex-direction:row;
-  border: 5px solid $text-color; 
-  width: 400px;
 }
 
 .small_button{

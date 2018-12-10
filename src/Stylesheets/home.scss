@@ -1,57 +1,111 @@
 @import 'variabels';
 @import 'button';
 @import 'timer';
+@import 'swal';
 
-.page_container{
-	text-align:center;
+html {
+	#root {
+		font: 100% $texttesttest-font;
+		color: $text-color;
 
-	display:flex;
-	justify-content:center;
-	align-content: space-evenly;
-	.page_collum_container{
-		background-color: $grass-color;
+		.page_container {
+			height: 100vh;
+			width: 100vw;
 
-		width: 450px;
+			display: flex;
+			flex-direction: column;
+			align-content: space-between;
 
-		position: relative;
-		bottom: -200px;
+			text-align: center;
 
-		flex-direction:column;
-		justify-content:center;
-		.place_container{
-			
-			.box_container{
-				width:430px;
+			background-color: $grass-color;
 
-				background-color: $box-color;
-				border: 10px solid $grass-color;
+			&.timer {
+				background-color: $sky-color;
 			}
-		
-	    }
 
+			.view_container {
+				padding: 0 40px;
+			}
+		}
 	}
-	
 }
 
-.progress_bar{
+.list {
+	> div {
+		margin: 0 80px;
+		background-color: $box-color;
+		border-radius: $corner-roundness;
+	}
+}
+
+.has_subcomponent {
+	div:not(.hidden):not(.Clickable):not(.mountain_climber_container):not(.button_container):not(.ClickWrapper):not(mountain_position){
+		padding: 10px;
+		background-color: $box-color;
+	}
+}
+
+.fixed {
+	position: fixed;
+	z-index: 1;
+	bottom: 0;
+	width: 100vw;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	&.center_on_page {
+		height: 100vh;
+		justify-content: center;
+	}
+
+	&.as_row {
+		flex-direction: row;
+		justify-content: space-around;
+	}
+}
+
+.mountainSelection {
+	width: 40px;
+	height:40px;
+}
+
+.progress_bar {
 	background:#d8d5c7;
 
 	position: relative;
 
 	height: 30px;
-	width: 430px;
+	width: 100%;
 }
 
-.filler{
+.filler {
 	background:blue;
-	
+
 	height:100%;
 }
 
-.home_image_conatiner{
-	background-image:url(../svg/homepage.svg);
+.mountain_climber_container {
+	position: absolute;
+
+		flex-direction:column;
+		align-content: space-evenly;
+
+		width: 400px;
+		height: 600px;
+}
+
+.mountain_position {
+    position: absolute;
+}
+
+.home_image_conatiner {
+	background-image:url(../svg/homepagedown.svg);
+
 	background-size:cover;
-	
+
 	width: 450px;
 	height:500px;
 
@@ -59,7 +113,7 @@
 	display:flex;
 }
 
-.stat_image_conatiner{
+.stat_image_conatiner {
 	background-image:url(../svg/statcomp.svg);
 	background-size:cover;
 
@@ -71,7 +125,7 @@
 	height:600px;
 }
 
-.mini_image_conatiner{
+.mini_image_conatiner {
 	background-image:url(../svg/minimount.svg);
 	background-size:cover;
 
@@ -83,32 +137,28 @@
 	flex-direction:column;
 }
 
-.bottom_container{
+.bottom_container {
 	position: fixed;
 
     bottom: 20px;
-    margin: 25px;
 }
 
-.sub_page_container{
-		position: absolute;
-		bottom: -20px;
-
-		flex-direction:column;
-		align-content: space-evenly;
-
-		background-color: $box-color;
-		
-		width: 400px;
-		height: 600px;
+/*icon för slutdatum*/
+.date {
+	content: url(../svg/icon_date.svg);
+	display: inline-block;
+}
+.time {
+	content: url(../svg/icon_time.svg);
+	display: inline-block;
+}
+.goal {
+	content: url(../svg/icon_goal.svg);
+	display: inline-block;
 }
 
-body{
-	font: 100% $texttesttest-font;
-	color: $text-color;
-}
 
-input[type=submit]{
+input[type=submit] {
 	border-radius: 100px;
 	border:0 none;
 
@@ -116,14 +166,15 @@ input[type=submit]{
 	color:$text-color;
 }
 
-input[type=text]{
+input[type=text] {
 	border:0 none;
 	color:$text-color;
 
 	height:30px;
-
+	background-color: $input-box-color;
 }
-input[type=number]{
+
+input[type=number] {
 	border:0 none;
 	width: 80px;
 	height:50px;
@@ -131,4 +182,9 @@ input[type=number]{
 
 	font-size: 40px;
 	color:$text-color;
+		background-color: $input-box-color;
+}
+
+input[type=date]{
+		background-color: $input-box-color;
 }
