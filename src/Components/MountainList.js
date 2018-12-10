@@ -25,13 +25,19 @@ class MountainData extends Component {
 	}
 
 	render() {
+
+		let p=100*(this.props.studied/this.props.goal)
+
+		
+
 		return(
 			<div >
+			
 				<p><p className= "time"/> {` ${this.studiedMessage}    `} <p className= "goal"/> {` ${this.props.goal} h`}
 						<p className="date"/> {` ${this.props.date}`}</p>
 
 				<div className="mini_image_conatiner"/>
-				<ProgressBar percentage= {this.props.studied} goal={this.props.goal}  mountain={this.props.color}/>
+				<ProgressBar percentage= {p} goal={this.props.goal}  mountain={this.props.color}/>
 			</div>
 		)
 	}
