@@ -18,10 +18,8 @@
   cursor: pointer;
 
   background-image: url(../svg/Buttons/button_ground.svg);
-  //  background-color: $text-color;
+  //background-color: $text-color;*/
 }
-
-
 
 .no_button{
     background-color: $no-color;
@@ -39,4 +37,9 @@
 
 	  background-color: $no-color;
 	  color: white;
+}
+
+.homeButton{
+  background: url(../svg/Buttons/button_pause2.svg) no-repeat;
+  display: inline-flex;
 }

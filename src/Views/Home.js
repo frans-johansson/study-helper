@@ -82,7 +82,11 @@ class Home extends Component {
 
 			    <div className="fixed as_row">
 					{/*<Button text="Complicated timer" />*/}
-					<Button text="Snabb timer" onClick={ () => {this.props.displaySubcomponent("simpleTimerSetup")}} />
+					<Button 
+					text="Snabb timer" 
+					onClick={ () => {this.props.displaySubcomponent("simpleTimerSetup")}} 
+					className="homeButton"	
+					/>
 					<Button text="Nytt berg" onClick={ () => {this.handleClick()}} />
 				</div>
 			</div>

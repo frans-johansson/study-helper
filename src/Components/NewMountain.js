@@ -71,11 +71,13 @@ class NewMountain extends Component {
               Slutdatum:
               <input id="datefield" type="date" name="date" min={this.todayDate()} onChange={this.handleChange} />
             </label>
-
+            
             <input type="submit" value="" disabled={!this.state.name || !this.state.goal || !this.state.date} />
           </form>
 
-          <Button text="Hem" onClick={ () => {this.props.clearSubcomponent()}} />
+          <div>
+            <Button text="Hem" onClick={ () => {this.props.clearSubcomponent()}} />
+          </div>
         </div>
     )
   }

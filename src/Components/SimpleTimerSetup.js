@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import Button from '../Components/Button.js'
 
 let ifMountainSelected = false;
+let correctInputValuesStudy = false;
+let correctInputValuesPause = false;
 
 class MountainChoice extends Component {
 	constructor(props) {
@@ -16,7 +18,7 @@ class MountainChoice extends Component {
 
 	handleClick(id) {
 		let {isSelected} = this.state;
-		
+
 		if(!isSelected){
 			this.props.setSelectedMountain(id)
 			ifMountainSelected = true;
@@ -37,9 +39,10 @@ class MountainChoice extends Component {
 		let divStyle={
 			backgroundColor:`${this.props.color}`,
 		}
+		console.log(this.props.name)
 
 		return(
-			<button className="mountainSelection" style={divStyle} onClick={() => this.handleClick(this.props.id)} />
+			<Button className="mountainSelection" text={`${this.props.name}`} style={divStyle} onClick={() => this.handleClick(this.props.id)} />
 		)
 	}
 }
@@ -59,6 +62,7 @@ class MountainSelector extends Component {
 								<MountainChoice
 									id={m.id}
 									color={m.color}
+									name={m.name}
 									setSelectedMountain={this.props.setSelectedMountain}
 									clearSelectedMountain={this.props.clearSelectedMountain}/>
 							)
@@ -76,10 +80,50 @@ class SimpleTimerSetup extends Component {
 		super(props)
 
 		this.handleSubmit = this.handleSubmit.bind(this);
+		this.goHome	= this.goHome.bind(this)
+		this.checkInputValuesStudy = this.checkInputValuesStudy.bind(this)
+		this.checkInputValuesPause = this.checkInputValuesPause.bind(this)
+	}
+
+	checkInputValuesStudy(event) {
+
+		if(event.target.value == '' || event.target.value == 0) {
+			correctInputValuesStudy = false
+		}
+		else {
+			correctInputValuesStudy = true
+		}
+
+		console.log(correctInputValuesStudy)
+
+		this.forceUpdate()
+	}
+
+	checkInputValuesPause(event) {
+
+		if(event.target.value == '' || event.target.value == 0) {
+			correctInputValuesPause = false
+		}
+		else {
+			correctInputValuesPause = true
+		}
+
+		this.forceUpdate()
+
+	}
+
+	goHome() {
+		ifMountainSelected = false
+		correctInputValuesStudy = false
+		correctInputValuesPause = false
+		this.props.clearSubcomponent()
 	}
 
 	handleSubmit(event) {
         event.preventDefault();
+        ifMountainSelected = false
+        correctInputValuesStudy = false
+		correctInputValuesPause = false
 
         let {setTimeInput, setPauseInput, setActiveView} = this.props.subcomponentProps
 
@@ -95,18 +139,18 @@ class SimpleTimerSetup extends Component {
 			<div>
 				<form onSubmit={this.handleSubmit}>
 					<label> Pluggtid Timmar: </label>
-					<input type="number" min="0" name="inputTimeH" defaultValueH={this.props.defaultTime} />
+					<input type="number" min="0" name="inputTimeH" defaultValueH={this.props.defaultTime} onInput={this.checkInputValuesStudy} />
 
 					<label>Minuter:</label>
-					<input type="number" min="0" name="inputTimeMin" defaultValueMin={this.props.defaultTime} />
+					<input type="number" min="0" name="inputTimeMin" defaultValueMin={this.props.defaultTime} onInput={this.checkInputValuesStudy}/>
 
 					<label>Paustid Timmar:</label>
-					<input type="number" min="0" name="inputTimePauseH" defaultValuePauseH={this.props.defaultTime} />
+					<input type="number" min="0" name="inputTimePauseH" defaultValuePauseH={this.props.defaultTime} onInput={this.checkInputValuesPause}/>
 
 					<label>Minuter:</label>
-					<input type="number" min="0" name="inputTimePauseMin" defaultValuePauseMin={this.props.defaultTime} />
+					<input type="number" min="0" name="inputTimePauseMin" defaultValuePauseMin={this.props.defaultTime} onInput={this.checkInputValuesPause}/>
 
-					<input type="submit" value="" disabled={!ifMountainSelected}/>
+					<input type="submit" value="" disabled={!ifMountainSelected || !correctInputValuesStudy || !correctInputValuesPause}/>
 
 				</form>
 
@@ -116,9 +160,11 @@ class SimpleTimerSetup extends Component {
 					clearSelectedMountain={this.props.subcomponentProps.clearSelectedMountain}
 					mountains={this.props.subcomponentProps.mountains}/>
 				
-				<div className="homeButton">
-				<Button text="Hem" onClick={ () => {this.props.clearSubcomponent()}} />
-				</div>
+				
+				<Button onClick={this.goHome}
+				className="homeButton" />
+				
+
 			</div>
 		)
 	}
