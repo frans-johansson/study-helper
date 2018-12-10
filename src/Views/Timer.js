@@ -117,13 +117,14 @@ class Timer extends Component {
 
        	let mountainColor = this.props.mountain.color
 
+       	let p= 100*nowtime/totaltime
+
 		return(
 			<div>
 
 					<h1> {subject} </h1>
 					<p> {next} </p>
-
-					<ProgressBar percentage= {nowtime} goal={totaltime} mountain={mountainColor}/>
+					<ProgressBar percentage= {p} goal={totaltime} mountain={mountainColor}/>
 
 					<p>
 						{formatTimeToUser(this.state.time)}
