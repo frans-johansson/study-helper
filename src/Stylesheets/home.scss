@@ -162,7 +162,7 @@ input[type=submit] {
 	border-radius: 100px;
 	border:0 none;
 
-	background: url(../svg/Buttons/button_accept.svg) no-repeat;
+	background:url(../svg/Buttons/button_accept.svg) no-repeat;
 
 	font: inherit;
 	color:$text-color;
@@ -199,6 +199,6 @@ input[type=date]{
 		background-color: $input-box-color;
 }
 .homeButton{
-	background: url(../svg/Buttons/symbol_home.svg) no-repeat;
-	display: inline-flex;
-}
+	background-image:url(../svg/Buttons/symbol_home.svg) no-repeat ;
+	
+	}
