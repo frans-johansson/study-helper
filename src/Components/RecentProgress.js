@@ -1,9 +1,67 @@
 import React, { Component } from 'react';
+import { toHoursMinutes } from '../Utils'
 
 class RecentProgress extends Component {
+
 	render() {
+
+		let progressTracking = JSON.parse(window.localStorage.getItem("progressTracking"))
+		let workToday = progressTracking.workToday
+		let workYesterday = progressTracking.workYesterday
+		let lastDate = progressTracking.lastDate
+
+		console.log(workToday)
+
+		workToday = workToday/3600
+		workYesterday = workYesterday/3600
+
+		if(workYesterday == 0)
+			lastDate = `Vi har inte kunnat spara några framsteg, dags att börja plugga`
+
+		let [hours, minutes] = toHoursMinutes(workYesterday)
+
+		let studiedMessage = ''
+
+		if (hours == 0 && minutes == 0)
+			studiedMessage += ''
+
+		if (hours != 0)
+			studiedMessage += `Du jobbade ${hours} h`
+
+		if (minutes != 0 && hours != 0)
+			studiedMessage += `och ${minutes} min`
+
+		if(minutes != 0 && hours == 0)
+			studiedMessage += `Du jobbade ${minutes} min`
+
+		let [hours_today, minutes_today] = toHoursMinutes(workToday)
+
+		let studiedToday = ''
+
+		console.log(minutes_today)
+
+		if (hours_today == 0 && minutes_today == 0)
+			studiedToday += '0 h'
+
+		if (hours_today != 0)
+			studiedToday += `${hours_today} h`
+
+		if (minutes_today != 0)
+			studiedToday += `${minutes_today} min`
+
+
+
+
 		return(
-			<h2>SENASTE FRAMSTEG</h2>
+			<div className="list">
+				<h2>SENASTE FRAMSTEG</h2>
+
+				<div>
+					<p>{studiedMessage} {lastDate}.</p>
+					<p>Idag har du jobbat {studiedToday}.</p>
+				</div>
+
+			</div>
 		)
 	}
 }
