@@ -16,7 +16,7 @@ class MountainChoice extends Component {
 
 	handleClick(id) {
 		let {isSelected} = this.state;
-
+		
 		if(!isSelected){
 			this.props.setSelectedMountain(id)
 			ifMountainSelected = true;
@@ -70,14 +70,6 @@ class MountainSelector extends Component {
 	}
 }
 
-function validate(number) {
-	if(number >= 0)
-		return true;
-	else {
-		return false;
-	}
-}
-
 class SimpleTimerSetup extends Component {
 
 	constructor(props) {
@@ -114,8 +106,7 @@ class SimpleTimerSetup extends Component {
 					<label>Minuter:</label>
 					<input type="number" min="0" name="inputTimePauseMin" defaultValuePauseMin={this.props.defaultTime} />
 
-
-					<input type="submit" value="Submit" disabled={!ifMountainSelected}/>
+					<input type="submit" value="" disabled={!ifMountainSelected}/>
 
 				</form>
 
@@ -124,9 +115,10 @@ class SimpleTimerSetup extends Component {
 					setSelectedMountain={this.props.subcomponentProps.setSelectedMountain}
 					clearSelectedMountain={this.props.subcomponentProps.clearSelectedMountain}
 					mountains={this.props.subcomponentProps.mountains}/>
-
+				
+				<div className="homeButton">
 				<Button text="Hem" onClick={ () => {this.props.clearSubcomponent()}} />
-
+				</div>
 			</div>
 		)
 	}
