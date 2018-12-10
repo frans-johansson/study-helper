@@ -1,12 +1,15 @@
 import React, { Component } from 'react'
-import Button from './Button'
 import { toHoursMinutes } from '../Utils'
+import swal from '@sweetalert/with-react';
+import Button from './Button.js'
 
 
 class MountainInfo extends Component {
 	constructor(props) {
 		super(props)
-		this.handleClick = this.handleClick.bind(this)
+		this.goHome = this.goHome.bind(this)
+		this.deleteMountain = this.deleteMountain.bind(this)
+
 
 		let studied = this.props.subcomponentProps.highlightedMountain.studied
 		let name = this.props.subcomponentProps.highlightedMountain.name
@@ -24,9 +27,29 @@ class MountainInfo extends Component {
 			this.studiedMessage += `${minutes} min`
 	}
 
-	handleClick() {
-		this.props.clearSubcomponent()
-		this.props.subcomponentProps.clearHighlightedMountain()
+	deleteMountain() {
+			swal({
+				className: "swalEraseMountain",
+				title: "Är du säker på att du vill radera berget?",
+				icon: "warning",
+
+				buttons:{
+					cancel: "Nej",
+					confirm: "JA",
+				}
+			})
+			.then((clicked) => {
+				if(clicked){
+					this.props.removeMountain(this.props.id)
+				}else{
+					swal.close()
+				}
+			})
+	}
+
+	goHome() {
+			this.props.clearSubcomponent()
+			this.props.subcomponentProps.clearHighlightedMountain()
 	}
 
 
@@ -49,8 +72,8 @@ class MountainInfo extends Component {
 	            backgroundColor: `${color}`,
 	   			//backgroundImage: 'url(/static/media/position.4f7a9f24.svg)',
 	   			backgroundSize: 'cover',
-	   			width: 20,
-	   			height: 20,
+	   			width: 10,
+	   			height: 10,
 	   			borderRadius: 100,
 	        };
 
@@ -60,9 +83,6 @@ class MountainInfo extends Component {
 
 		return(
 
-			<div className="sub_page_container">
-
-			 {/*Tillbaka knapp funkar ej ty div ligger över*/}
 				<div className="stat_image_conatiner">
 					<div className="mountain_climber_container">
 						<div className="mountain_position" style={divStyle}/>
@@ -71,11 +91,12 @@ class MountainInfo extends Component {
 						<p><p className="date"/> {`${date} `} </p>
 						<p><p className="time"/> {`${this.studiedMessage}`}</p>
 						<div className="button_container">
-							<Button text="Tillbaka" onClick={this.handleClick}/>
+							<Button text="Tillbaka" onClick={this.goHome}/>
+							<Button text="Radera berg" onClick={this.deleteMountain}/>
 						</div>
 					</div>
 				</div>
-			</div>
+			
 		)
 	}
 }

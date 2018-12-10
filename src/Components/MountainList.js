@@ -45,31 +45,8 @@ class ListElement extends Component {
 	}
 
 	handleClick(e) {
-		if(e.target.className == "Clickable") {
-
-			//popup för att dubbelkolla att berget ska raderas
-			swal({
-				className: "swalEraseMountain",
-				title: "Är du säker på att du vill radera berget?",
-				icon: "warning",
-
-				buttons:{
-					cancel: "Nej",
-					confirm: "JA",
-				}
-			})
-			.then((clicked) => {
-				if(clicked){
-					this.props.removeMountain(this.props.id)
-				}else{
-					swal.close()
-				}
-			})
-		}
-		else {
-			this.props.displaySubcomponent("mountainInfo")
-			this.props.setHighlightedMountain(this.props.id)
-		}
+		this.props.displaySubcomponent("mountainInfo")
+		this.props.setHighlightedMountain(this.props.id)
 	}
 
 	render() {
@@ -83,8 +60,6 @@ class ListElement extends Component {
 					date={this.props.date}
 					color={this.props.color}
 			  	/>
-			  	<Button
-			  		text="Radera berg"/>
 			</div>
 		)
 	}
