@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import swal from '@sweetalert/with-react';
+import '../Stylesheets/mountainList.scss'
 
 import Button from './Button.js'
 import ProgressBar from '../Components/ProgressBar.js'
@@ -27,12 +28,15 @@ class MountainData extends Component {
 	render() {
 		return(
 			<div>
-				<p className= "time">{`${this.studiedMessage}`}</p>
-				<p className= "goal">{`${this.props.goal} h`}</p>
-				<p className="date">{`${this.props.date}`}</p>
-
-				<div className="mini_image_conatiner"/>
-				<ProgressBar percentage= {this.props.studied} goal={this.props.goal}  mountain={this.props.color}/>
+				<h1 style={{color: this.props.color}}>
+					{this.props.name}
+				</h1>
+				<p>{this.studiedMessage}</p>
+				<ProgressBar
+					percentage={this.props.studied}
+					goal={this.props.goal}
+					mountain={this.props.color}
+				/>
 			</div>
 		)
 	}
@@ -75,17 +79,14 @@ class ListElement extends Component {
 
 	render() {
 		return(
-			<div onClick={this.handleClick}>
-				<h1>{`Mt. ${this.props.name}`}</h1>
+			<div className="list_element" onClick={this.handleClick}>
+				<div className="mountain_thumbnail"/>
 				<MountainData
 					name={this.props.name}
 					studied={this.props.studied}
 					goal={this.props.goal}
-					date={this.props.date}
 					color={this.props.color}
 			  	/>
-			  	<Button
-			  		text="Radera berg"/>
 			</div>
 		)
 	}
