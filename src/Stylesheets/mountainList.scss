@@ -1,0 +1,35 @@
+@import 'variabels';
+
+.list_element {
+	display: flex;
+	flex-direction: row;
+
+	.mountain_thumbnail {
+		flex: 1;
+		position: relative;
+
+		background-image: url(../svg/minimount.svg);
+		background-repeat: no-repeat;
+		border-radius: 0 0 0 $corner-roundness;
+
+		width: 100%;
+		margin-top: 10px;
+	}
+
+	div {
+		flex: 2;
+		width: 100%;
+
+		h1 {
+			font-size: 55px;
+		}
+
+		p {
+			margin-bottom: 0;
+		}
+
+		div {
+			border-radius: $corner-roundness 0 $corner-roundness $corner-roundness;
+		}
+	}
+}
