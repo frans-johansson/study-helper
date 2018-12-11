@@ -91,10 +91,6 @@ class Timer extends Component {
         let subject = "Analys"
         let totaltime = this.props.time
 
-		{/*if (!isTicking) {
-			isTicking = true
-		}*/}
-
 		if(isPause){
        		subject = "Rast"
        		next = `Nästa: ${this.props.mountain.name}`

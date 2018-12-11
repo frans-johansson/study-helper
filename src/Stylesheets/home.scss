@@ -107,7 +107,7 @@ html {
 }
 
 .has_subcomponent {
-	div:not(.hidden):not(.Clickable):not(.mountain_climber_container):not(.button_container):not(.ClickWrapper):not(.mountain_position):not(.deleteButton):not(.backButton){
+	div:not(.hidden):not(.Clickable):not(.mountain_climber_container):not(.button_container):not(.ClickWrapper):not(.mountain_position):not(.deleteButton):not(.backButton):not(.mountainSelection){
 		padding: 10px;
 		background-color: $box-color;
 	}
@@ -132,11 +132,6 @@ html {
 		flex-direction: row;
 		justify-content: space-around;
 	}
-}
-
-.mountainSelection {
-	width: 40px;
-	height:40px;
 }
 
 .mountain_climber_container {
