@@ -3,7 +3,8 @@
 .list_element {
 	display: flex;
 	flex-direction: row;
-
+	position: relative;
+	overflow: hidden;
 
 	.mountain_thumbnail {
 		flex: 1;
@@ -28,6 +29,8 @@
 
 		background-image: url(../svg/minimount.svg);
 		background-repeat: no-repeat;
+		background-position: center bottom;
+
 		border-radius: 0 0 0 $corner-roundness;
 
 		width: 100%;
@@ -39,11 +42,7 @@
 		z-index: 1;
 		
 		flex: 4.5;
-		& {
-			@media (max-width: 705px) {
-				flex: 3.5;
-			}
-		}
+
 
 		h1 {
 			font-size: 30px;
@@ -67,7 +66,7 @@
 
 			& {
 				@media (min-width: 560px) {
-					border-radius: 0 0 $corner-roundness 0;
+					border-radius: $corner-roundness 0 $corner-roundness $corner-roundness;
 				}
 			}
 
