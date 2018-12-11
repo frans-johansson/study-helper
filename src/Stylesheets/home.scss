@@ -3,6 +3,11 @@
 @import 'timer';
 @import 'swal';
 
+body {
+	height: 100vh;
+	background-color: $grass-color;
+}
+
 html {
 	#root {
 		font: 100% $texttesttest-font;
@@ -18,7 +23,9 @@ html {
 
 			text-align: center;
 
-			background-color: $grass-color;
+			> div {
+				background-color: $grass-color;
+			}
 
 			#title {
 				font-size: 45px;
@@ -93,10 +100,12 @@ html {
 }
 
 .list {
+
 	> div {
 		margin: 0 5vw 60px 5vw;
 		background-color: $box-color;
 		border-radius: $corner-roundness;
+		box-shadow: 1px 1px 7px lighten($text-color, 15);
 	}
 
 	&.progress {
@@ -110,6 +119,12 @@ html {
 	div:not(.hidden):not(.Clickable):not(.mountain_climber_container):not(.button_container):not(.ClickWrapper):not(.mountain_position):not(.deleteButton):not(.backButton):not(.mountainSelection){
 		padding: 10px;
 		background-color: $box-color;
+
+		& {
+			@media (max-width: 420px) {
+				height: 100%;
+			}
+		}
 	}
 }
 
