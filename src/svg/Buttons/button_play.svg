@@ -5,7 +5,7 @@
 <style type="text/css">
 	.st0{fill:#F3EFBE;}
 	.st1{fill:#96886E;}
-	.st2{fill:#2A2A2A;}
+	.st2{fill:#545454;}
 	.st3{fill:none;stroke:#545454;stroke-width:3;stroke-miterlimit:10;}
 </style>
 <g>
@@ -15,7 +15,7 @@
 </g>
 <g id="XMLID_1_">
 	<g>
-		<polygon class="st2" points="43.71,31.22 82.58,53.66 43.71,76.1 		"/>
+		<polygon class="st2" points="82.58,53.66 43.71,76.1 43.71,31.22 		"/>
 	</g>
 	<g>
 	</g>
