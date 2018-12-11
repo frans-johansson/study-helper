@@ -38,16 +38,10 @@
 		width: 100%;
 		z-index: 1;
 		
-		flex: 5;
+		flex: 4.5;
 		& {
 			@media (max-width: 705px) {
-				flex: 3;
-			}
-			@media (max-width: 500px) {
-				flex: 2;
-			}
-			@media (max-width: 350px) {
-				flex: 1.5;
+				flex: 3.5;
 			}
 		}
 
@@ -69,6 +63,12 @@
 			height: 30px;
 			width: 100%;
 			border-radius: 0 0 $corner-roundness $corner-roundness;
+
+			& {
+				@media (min-width: 560px) {
+					border-radius: 0 0 $corner-roundness 0;
+				}
+			}
 
 			.filler {
 				height:100%;
