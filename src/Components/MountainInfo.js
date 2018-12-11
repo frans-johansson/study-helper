@@ -76,9 +76,22 @@ class MountainInfo extends Component {
 	   			height: 10,
 	   			borderRadius: 100,
 	        };
-
 	   	}
 
+	   	let remainingTime = goal - studied
+
+	   	let [remainingHours, remainingMinutes] = toHoursMinutes(remainingTime)
+
+	   	let remainingMessage = ''
+
+	   	if(remainingHours == 0 && remainingMinutes == 0)
+	   		remainingMessage = ` ${goal}`
+
+	   	if(remainingHours != 0)
+	   		remainingMessage += ` ${remainingHours} h`
+
+	   	if(remainingMinutes != 0)
+	   		remainingMessage += ` ${remainingMinutes} min`
 
 		return(
 
@@ -86,9 +99,10 @@ class MountainInfo extends Component {
 					<div className="mountain_climber_container">
 						<div className="mountain_position" style={divStyle}/>
 						<h1>{mountain.name}</h1>
-						<p><p className="goal"/> {`${goal} h `} </p>
-						<p><p className="date"/> {`${date} `} </p>
-						<p><p className="time"/> {`${this.studiedMessage}`}</p>
+						<p>Mål: {`${goal} h `} </p>
+						<p>Nedlagd tid: {`${this.studiedMessage}`}</p>
+						<p>Tid kvar: {`${remainingMessage}`}</p>
+						<p>Slutdatum: {`${date} `} </p>
 						<div className="button_container">
 							<Button className = "backButton" onClick={this.goHome}/>
 							<Button className = "deleteButton" onClick={this.deleteMountain}/>
