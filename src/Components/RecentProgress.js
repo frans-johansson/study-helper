@@ -8,21 +8,19 @@ class RecentProgress extends Component {
 		let progressTracking = JSON.parse(window.localStorage.getItem("progressTracking"))
 		let workToday = progressTracking.workToday
 		let workYesterday = progressTracking.workYesterday
+		let currentDate = progressTracking.currentDate
 		let lastDate = progressTracking.lastDate
 
 
 		workToday = workToday/3600
 		workYesterday = workYesterday/3600
 
-		if(workYesterday == 0)
-			lastDate = `Vi har inte kunnat spara några framsteg, dags att börja plugga`
-
 		let [hours, minutes] = toHoursMinutes(workYesterday)
 
 		let studiedMessage = ''
 
 		if (hours == 0 && minutes == 0)
-			studiedMessage += ''
+			lastDate = `Vi har inte kunnat spara några framsteg, dags att börja plugga`
 
 		if (hours != 0)
 			studiedMessage += `Du jobbade ${hours} h`

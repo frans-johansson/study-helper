@@ -5,15 +5,20 @@
 <style type="text/css">
 	.st0{fill:#F3EFBE;}
 	.st1{fill:#96886E;}
-	.st2{fill:none;stroke:#545454;stroke-width:3;stroke-miterlimit:10;}
-	.st3{fill:#545454;}
+	.st2{fill:#545454;}
+	.st3{fill:none;stroke:#545454;stroke-width:3;stroke-miterlimit:10;}
 </style>
 <g>
 	<circle class="st0" cx="58" cy="55" r="43.5"/>
 	<path class="st1" d="M58,14c22.61,0,41,18.39,41,41S80.61,96,58,96S17,77.61,17,55S35.39,14,58,14 M58,9C32.59,9,12,29.59,12,55
 		s20.59,46,46,46s46-20.59,46-46S83.41,9,58,9L58,9z"/>
 </g>
-<path class="st2" d="M57.5,35.5"/>
-<rect x="43" y="35.61" class="st3" width="9.74" height="41.39"/>
-<rect x="61.26" y="35.61" class="st3" width="9.74" height="41.39"/>
+<g id="XMLID_1_">
+	<g>
+		<polygon class="st2" points="82.58,53.66 43.71,76.1 43.71,31.22 		"/>
+	</g>
+	<g>
+	</g>
+</g>
+<path class="st3" d="M57.5,35.5"/>
 </svg>
