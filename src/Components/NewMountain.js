@@ -57,10 +57,17 @@ class NewMountain extends Component {
   render() {
 
     let numMountains = 10 - JSON.parse(window.localStorage.getItem("colors")).length
+    let thisColor = JSON.parse(window.localStorage.getItem("colors")).shift()
+    console.log("Färg för berget blir: " + thisColor);
 
     return(
         <div>
-          <h2>NYTT BERG</h2>
+          <h2>NYTT BERG <div style={{
+              backgroundColor: thisColor,
+              width: 10,
+              height: 10,
+              borderRadius: 10,
+            }}/></h2>  
           <p>Du har just nu {numMountains}/10 berg</p>
           <form onSubmit={this.handleSubmit} method="get">
             <label>
@@ -74,6 +81,8 @@ class NewMountain extends Component {
 
             <input type="submit" value="" disabled={!this.state.name || !this.state.goal || !this.state.date} />
           </form>
+
+
 
           <div>
             <Button className="homeButton" onClick={ () => {this.props.clearSubcomponent()}} />
