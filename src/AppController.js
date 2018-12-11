@@ -93,25 +93,28 @@ class AppController extends Component {
 		let progressTracking = JSON.parse(window.localStorage.getItem("progressTracking"))
 		let workToday = 0
 		let workYesterday = 0
+		let currentDate = 0
 		let lastDate = 0
 
-		if (!progressTracking) { // If uninitialized
-			[workToday, workYesterday, lastDate] = [0, 0, new Date().toDateString()]			
 
-			window.localStorage.setItem("progressTracking", JSON.stringify({workToday, workYesterday, lastDate}))
+		if (!progressTracking) { // If uninitialized
+			[workToday, workYesterday, currentDate, lastDate] = [0, 0, new Date().toDateString(), '']			
+
+			window.localStorage.setItem("progressTracking", JSON.stringify({workToday, workYesterday, currentDate, lastDate}))
 		}
 		else { // If it exists in storage
-			let currentDate = new Date().toDateString()
+			let todayDate = new Date().toDateString()
 			workToday = progressTracking.workToday
 			workYesterday = progressTracking.workYesterday
+			currentDate = progressTracking.currentDate
 			lastDate = progressTracking.lastDate
 
 			// Check for new date
-			if (currentDate != lastDate && workToday > 0) {
-				[workToday, workYesterday, lastDate] = [0, workToday, currentDate] // Shifterino
+			if (todayDate != currentDate && workToday > 0) {
+				[workToday, workYesterday, currentDate, lastDate] = [0, workToday, todayDate, currentDate] // Shifterino
 			}
 
-			window.localStorage.setItem("progressTracking", JSON.stringify({workToday, workYesterday, lastDate}))
+			window.localStorage.setItem("progressTracking", JSON.stringify({workToday, workYesterday, currentDate, lastDate}))
 		}
 
 		// Update app state

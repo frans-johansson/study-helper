@@ -11,14 +11,18 @@ let timer = undefined
 let isTicking = false
 let isPause = false
 
+let pausePlayButton = "pauseButton"
+
 let workSum = 0
 
 function pausePlay() {
 	if(isTicking === true){
 		isTicking = false
+		pausePlayButton = "playButton"
 	}
 	else{
 		isTicking = true
+		pausePlayButton = "pauseButton"
 	}
 }
 
@@ -169,11 +173,11 @@ class TimerContainer extends Component {
 				</div>
 
 				<div className="timer_box">
-					<Button onClick={() => pausePlay()} className="pauseButton" />
+					<Button onClick={() => pausePlay()} className={`${pausePlayButton}`} />
 				</div>
 
 				<div className="timer_box">
-			    		<Button onClick={() => {this.returnHome()}} className="homeButton"/>
+			    		<Button onClick={() => {this.returnHome()}} className="stopButton"/>
 
 			    </div>
 			</div>
