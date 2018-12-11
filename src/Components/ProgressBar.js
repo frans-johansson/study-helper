@@ -19,11 +19,9 @@ class ProgressBarExample extends Component {
 	        };
     	}
 		return(
-			<div >
 				<div className="progress_bar">
 					<div className="filler" style={divStyle} />
 				</div>
-			</div>
 		)
 	}
 }

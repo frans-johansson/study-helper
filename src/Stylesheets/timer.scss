@@ -10,3 +10,19 @@
 		width: 100%;
 	}
 }
+
+.progress_bar {
+	background:#d8d5c7;
+
+	position: relative;
+
+	height: 30px;
+	width: 100%;
+	border-radius: $corner-roundness $corner-roundness $corner-roundness $corner-roundness;
+
+		.filler {
+			height:100%;
+			border-radius: $corner-roundness 0 0 $corner-roundness;
+			transition: all 1s linear;
+		}
+}
