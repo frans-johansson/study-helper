@@ -24,8 +24,56 @@ html {
 				background-color: $sky-color;
 			}
 
+			.header {
+				padding-top: 20px;
+				width: 100%;
+				height: 25vw;
+
+				background-color: $sky-color;
+				background-image: url(../svg/berg.svg);
+				background-repeat: no-repeat;
+				background-position: center bottom;
+
+				.hills {
+					background-image: url(../svg/kullar.svg);
+					background-repeat: no-repeat;
+					background-size: cover;
+
+					width: 100%;
+					height: 10vw;
+
+					position: absolute;
+					top: 22vw;
+				}
+				.forest_container {
+					position: absolute;
+					top: 27vw;
+
+					width: 100%;
+
+					display: flex;
+					justify-content: space-between;
+
+					.forest {
+						background-repeat: no-repeat;
+
+						width: 20vw;
+						height: 20vw;
+						z-index: 1;
+
+						&.left {
+							background-image: url(../svg/trad_v.svg);
+						}
+
+						&.right {
+							background-image: url(../svg/trad_h.svg);
+						}
+					}
+				}
+			}
+
 			.view_container {
-				padding: 0 40px;
+				padding: 0 5vw;
 			}
 		}
 	}
@@ -33,9 +81,15 @@ html {
 
 .list {
 	> div {
-		margin: 0 80px 60px 80px;
+		margin: 0 5vw 60px 5vw;
 		background-color: $box-color;
 		border-radius: $corner-roundness;
+	}
+
+	&.progress {
+		> div {
+			padding: 8px;
+		}
 	}
 }
 

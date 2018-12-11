@@ -40,7 +40,8 @@ class MountainInfo extends Component {
 			})
 			.then((clicked) => {
 				if(clicked){
-					this.props.removeMountain(this.props.id)
+					this.props.subcomponentProps.removeMountain(this.props.subcomponentProps.highlightedMountain.id)
+					this.goHome()
 				}else{
 					swal.close()
 				}

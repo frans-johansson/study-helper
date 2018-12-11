@@ -57,6 +57,14 @@ class Home extends Component {
 
 		return(
 			<div>
+				<div className="header">
+					<div className="hills"/>
+					<div className="forest_container">
+						<div className="forest left"/>
+						<div className="forest right"/>
+					</div>
+				</div>
+				
 				<div className="view_container">
 					<h1>HEM</h1>
 					<RecentProgress />
