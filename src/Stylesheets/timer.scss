@@ -12,17 +12,18 @@
 }
 
 .progress_bar {
-	background:#d8d5c7;
+	background: #F3EFBE;
 
 	position: relative;
 
 	height: 30px;
 	width: 100%;
+
+	overflow: hidden;
 	border-radius: $corner-roundness $corner-roundness $corner-roundness $corner-roundness;
 
 		.filler {
 			height:100%;
-			border-radius: $corner-roundness 0 0 $corner-roundness;
 			transition: all 1s linear;
 		}
 }

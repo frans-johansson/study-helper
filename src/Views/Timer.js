@@ -112,12 +112,11 @@ class Timer extends Component {
 			<div>
 
 					<h1> {subject} </h1>
-					<p> {next} </p>
-					<ProgressBar percentage= {p} goal={totaltime} mountain={mountainColor}/>
-
-					<p>
+					<h1>
 						{formatTimeToUser(this.state.time)}
-					</p>
+					</h1>
+					<ProgressBar percentage= {p} goal={totaltime} mountain={mountainColor}/>
+					<h3> {next} </h3>
 			</div>
 		)
 
