@@ -66,7 +66,6 @@ class Home extends Component {
 				</div>
 				
 				<div className="view_container">
-					<h1 id="title">HEM</h1>
 					<RecentProgress />
 
 					<MountainList className="list"

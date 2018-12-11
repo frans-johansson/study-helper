@@ -59,6 +59,7 @@
 			background:#d8d5c7;
 
 			position: relative;
+			overflow: hidden;
 
 			height: 30px;
 			width: 100%;
@@ -72,7 +73,6 @@
 
 			.filler {
 				height:100%;
-				border-radius: $corner-roundness 0 0 $corner-roundness;
 			}
 		}
 	}
