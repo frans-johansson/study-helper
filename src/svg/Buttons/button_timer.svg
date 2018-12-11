@@ -1,27 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Generator: Adobe Illustrator 23.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" id="Lager_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 113.39 113.39" style="enable-background:new 0 0 113.39 113.39;" xml:space="preserve">
+	 viewBox="0 0 113 113" style="enable-background:new 0 0 113 113;" xml:space="preserve">
 <style type="text/css">
 	.st0{fill:#BCDEEF;}
 	.st1{fill:#92B5CB;}
-	.st2{fill:#FFFFFF;}
-	.st3{fill:#545454;}
-	.st4{fill:none;stroke:#545454;stroke-width:3;stroke-miterlimit:10;}
+	.st2{fill:none;stroke:#545454;stroke-width:3;stroke-miterlimit:10;}
+	.st3{fill:#FFFFFF;}
+	.st4{fill:#545454;}
 	.st5{fill:#FFFFFF;stroke:#000000;stroke-miterlimit:10;}
 	.st6{fill:#BCDEEF;stroke:#545454;stroke-width:4;stroke-miterlimit:10;}
 </style>
 <g>
-	<circle class="st0" cx="58" cy="55" r="43.5"/>
-	<path class="st1" d="M58,14c22.61,0,41,18.39,41,41S80.61,96,58,96S17,77.61,17,55S35.39,14,58,14 M58,9C32.59,9,12,29.59,12,55
-		s20.59,46,46,46s46-20.59,46-46S83.41,9,58,9L58,9z"/>
+	<circle class="st0" cx="56.5" cy="56.5" r="54"/>
+	<g>
+		<path class="st1" d="M56.5,5C84.9,5,108,28.1,108,56.5S84.9,108,56.5,108S5,84.9,5,56.5S28.1,5,56.5,5 M56.5,0
+			C25.3,0,0,25.3,0,56.5S25.3,113,56.5,113S113,87.7,113,56.5S87.7,0,56.5,0L56.5,0z"/>
+	</g>
 </g>
+<path class="st2" d="M69.39,26"/>
 <g>
-	<circle class="st2" cx="57.5" cy="55.5" r="19.5"/>
-	<path class="st3" d="M57.5,38C67.15,38,75,45.85,75,55.5S67.15,73,57.5,73S40,65.15,40,55.5S47.85,38,57.5,38 M57.5,34
-		C45.63,34,36,43.63,36,55.5S45.63,77,57.5,77S79,67.37,79,55.5S69.37,34,57.5,34L57.5,34z"/>
+	<path class="st3" d="M56.99,81C44.86,81,35,71.14,35,59.01s9.86-21.99,21.99-21.99s21.99,9.86,21.99,21.99S69.11,81,56.99,81z"/>
+	<path class="st4" d="M56.99,39.02c11.02,0,19.99,8.97,19.99,19.99S68.01,79,56.99,79S37,70.03,37,59.01S45.97,39.02,56.99,39.02
+		 M56.99,35.02C43.74,35.02,33,45.76,33,59.01S43.74,83,56.99,83s23.99-10.74,23.99-23.99S70.24,35.02,56.99,35.02L56.99,35.02z"/>
 </g>
-<path class="st4" d="M57.5,35.5"/>
-<path class="st5" d="M57.5,55.5c0-3.33,0-6.67,0-10"/>
-<path class="st6" d="M57.5,36.5c0-2.33,0-4.67,0-7"/>
+<path class="st2" d="M56.99,36.69"/>
+<path class="st5" d="M56.99,59.01c0-3.72,0-7.44,0-11.16"/>
+<path class="st6" d="M56.99,37.81c0-2.6,0-5.21,0-7.81"/>
 </svg>
