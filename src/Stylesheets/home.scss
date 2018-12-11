@@ -6,7 +6,7 @@
 html {
 	#root {
 		font: 100% $texttesttest-font;
-		color: $text-color;
+		color: lighten($text-color, 10);
 
 		.page_container {
 			height: 100%;
@@ -19,6 +19,10 @@ html {
 			text-align: center;
 
 			background-color: $grass-color;
+
+			#title {
+				font-size: 45px;
+			}
 
 			&.timer {
 				background-color: $sky-color;
