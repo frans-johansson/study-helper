@@ -71,7 +71,7 @@ class NewMountain extends Component {
           <p>Du har just nu {numMountains}/10 berg</p>
           <form onSubmit={this.handleSubmit} method="get">
             <label>
-              Namn:
+              Ämne:
               <input type="text" minlength="2" name="name" onChange={this.handleChange} />
               Mål:
               <input type="number" min="0" name="goal" onChange={this.handleChange} />

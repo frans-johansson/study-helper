@@ -48,7 +48,7 @@ class RecentProgress extends Component {
 
 
 		return(
-			<div className="list">
+			<div className="list progress">
 				<h2>SENASTE FRAMSTEG</h2>
 
 				<div>

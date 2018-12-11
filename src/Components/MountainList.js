@@ -31,7 +31,7 @@ class MountainData extends Component {
 		return(
 			<div>
 				<h1 style={{color: this.props.color}}>
-					{this.props.name}
+					Mt. {this.props.name}
 				</h1>
 				<p>{this.studiedMessage}</p>
 				<ProgressBar
