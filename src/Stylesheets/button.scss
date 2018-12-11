@@ -21,6 +21,13 @@
   //background-color: $text-color;*/
 }
 
+.button_container{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+}
+
 .no_button{
     background-color: $no-color;
   }
@@ -34,7 +41,6 @@
 	  height: 40px;
 	  border-radius: 100px;
     border:0 none;
-
 	  background-color: $no-color;
 	  color: white;
 }
@@ -42,44 +48,45 @@
 .homeButton{
   background: url(../svg/Buttons/button_home.svg) no-repeat;
   //background-size: 40px 40px;
-  width: 10vw;
-  height: 10vh;
+  width: 8vw;
+  height: 8vh;
   display: inline-flex;
 }
 
 .addButton {
   background-color: #2a2a2a;
     background: url(../svg/Buttons/button_add.svg) no-repeat;
-    width: 10vw;
-    height: 10vh;
+    width: 8vw;
+    height: 8vh;
     display: inline-flex;
 }
 
 .pauseButton {
   background: url(../svg/Buttons/button_pause.svg) no-repeat;
-  width: 10vw;
-  height: 10vh;
+  width: 8vw;
+  height: 8vh;
   display: inline-flex;
 
 }
 
 .deleteButton {
   background: url(../svg/Buttons/button_delete.svg) no-repeat;
-  width: 10vw;
-  height: 10vh;
+  width: 8vw;
+  height: 8vh;
   display: inline-flex;
+
 }
 
 .backButton {
   background: url(../svg/Buttons/button_back.svg) no-repeat;
-  width: 10vw;
-  height: 10vh;
+  width: 8vw;
+  height: 8vh;
   display: inline-flex;
 }
 
 .timerButton {
     background: url(../svg/Buttons/button_timer.svg) no-repeat;
-    width: 10vw;
-    height: 10vh;
+    width: 8vw;
+    height: 8vh;
     display: inline-flex;
 }
