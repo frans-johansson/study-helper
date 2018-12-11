@@ -64,6 +64,14 @@ html {
 						width: 20vw;
 						height: 20vw;
 						z-index: 1;
+						
+						& {
+							@media (min-width: 800px) {
+								width: 160px;
+								height: 160px;
+							}
+						}
+						
 
 						&.left {
 							background-image: url(../svg/trad_v.svg);
@@ -78,6 +86,7 @@ html {
 
 			.view_container {
 				padding: 0 5vw;
+				margin-top: 10vw;
 			}
 		}
 	}
