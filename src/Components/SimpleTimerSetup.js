@@ -139,16 +139,16 @@ class SimpleTimerSetup extends Component {
 			<div>
 				<form onSubmit={this.handleSubmit}>
 					<label> Pluggtid Timmar: </label>
-					<input type="number" min="0" name="inputTimeH" defaultValueH={this.props.defaultTime} onInput={this.checkInputValuesStudy} />
+					<input type="number" min="0" name="inputTimeH" onInput={this.checkInputValuesStudy} />
 
 					<label>Minuter:</label>
-					<input type="number" min="0" name="inputTimeMin" defaultValueMin={this.props.defaultTime} onInput={this.checkInputValuesStudy}/>
+					<input type="number" min="0" name="inputTimeMin" onInput={this.checkInputValuesStudy}/>
 
 					<label>Paustid Timmar:</label>
-					<input type="number" min="0" name="inputTimePauseH" defaultValuePauseH={this.props.defaultTime} onInput={this.checkInputValuesPause}/>
+					<input type="number" min="0" name="inputTimePauseH" onInput={this.checkInputValuesPause}/>
 
 					<label>Minuter:</label>
-					<input type="number" min="0" name="inputTimePauseMin" defaultValuePauseMin={this.props.defaultTime} onInput={this.checkInputValuesPause}/>
+					<input type="number" min="0" name="inputTimePauseMin" onInput={this.checkInputValuesPause}/>
 
 					<input type="submit" value="" disabled={!ifMountainSelected || !correctInputValuesStudy || !correctInputValuesPause}/>
 

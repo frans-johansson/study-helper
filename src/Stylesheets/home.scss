@@ -40,7 +40,7 @@ html {
 }
 
 .has_subcomponent {
-	div:not(.hidden):not(.Clickable):not(.mountain_climber_container):not(.button_container):not(.ClickWrapper):not(mountain_position){
+	div:not(.hidden):not(.Clickable):not(.mountain_climber_container):not(.button_container):not(.ClickWrapper):not(.mountain_position):not(.deleteButton):not(.backButton){
 		padding: 10px;
 		background-color: $box-color;
 	}
@@ -159,12 +159,12 @@ input[type=submit] {
 
 input[disabled]{
 	background: url(../svg/Buttons/button_accept_disabled.svg) no-repeat;
+	cursor: default;
 }
 
 input[type=text] {
 	border:0 none;
 	color:$text-color;
-
 	height:30px;
 	background-color: $input-box-color;
 }
