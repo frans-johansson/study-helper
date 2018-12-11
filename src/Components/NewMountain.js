@@ -50,7 +50,7 @@ class NewMountain extends Component {
     today = yy + '-' + mm + '-' + dd;
 
     return today
-  
+
   }
 
 
@@ -71,12 +71,12 @@ class NewMountain extends Component {
               Slutdatum:
               <input id="datefield" type="date" name="date" min={this.todayDate()} onChange={this.handleChange} />
             </label>
-            
+
             <input type="submit" value="" disabled={!this.state.name || !this.state.goal || !this.state.date} />
           </form>
 
           <div>
-            <Button text="Hem" onClick={ () => {this.props.clearSubcomponent()}} />
+            <Button className="homeButton" onClick={ () => {this.props.clearSubcomponent()}} />
           </div>
         </div>
     )

@@ -52,7 +52,7 @@ class Timer extends Component {
 		if (this.state.time <= 0) {
 			isTicking = false;
 			if(isPause) {
-				
+
 				swal({
 					className: "swal_timer",
 					title: "Plugg",
@@ -169,13 +169,12 @@ class TimerContainer extends Component {
 				</div>
 
 				<div className="timer_box">
-					<Button onClick={() => pausePlay()} text="Paus"/>
+					<Button onClick={() => pausePlay()} className="pauseButton" />
 				</div>
 
 				<div className="timer_box">
-					<div className="homeButton">
-			    		<Button onClick={() => {this.returnHome()}} text="Hem"/>
-			    	</div>
+			    		<Button onClick={() => {this.returnHome()}} className="homeButton"/>
+
 			    </div>
 			</div>
 

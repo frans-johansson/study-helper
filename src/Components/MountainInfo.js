@@ -90,12 +90,12 @@ class MountainInfo extends Component {
 						<p><p className="date"/> {`${date} `} </p>
 						<p><p className="time"/> {`${this.studiedMessage}`}</p>
 						<div className="button_container">
-							<Button text="Tillbaka" onClick={this.goHome}/>
-							<Button className = "deleteButton" text="Radera berg" onClick={this.deleteMountain}/>
+							<Button className = "backButton" onClick={this.goHome}/>
+							<Button className = "deleteButton" onClick={this.deleteMountain}/>
 						</div>
 					</div>
 				</div>
-			
+
 		)
 	}
 }

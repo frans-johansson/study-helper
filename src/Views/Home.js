@@ -41,7 +41,7 @@ class Home extends Component {
 			swal({
 				title: "Oops!",
 				text: "Du har nått din maxgräns på berg",
-				icon: "warning" 
+				icon: "warning"
 			})
 		}
 	}
@@ -68,7 +68,7 @@ class Home extends Component {
 						removeMountain={this.props.viewProps.removeMountain}
 						setHighlightedMountain={this.props.viewProps.setHighlightedMountain}
 					/>
-				
+
 					{/*
 					<div >
 						<Button text="Arkiverade berg" onClick={ () => {this.props.setActiveView("archive")}} />
@@ -82,12 +82,14 @@ class Home extends Component {
 
 			    <div className="fixed as_row">
 					{/*<Button text="Complicated timer" />*/}
-					<Button 
-					text="Snabb timer" 
-					onClick={ () => {this.props.displaySubcomponent("simpleTimerSetup")}} 
-					className="homeButton"	
+					<Button
+						onClick={ () => {this.props.displaySubcomponent("simpleTimerSetup")}}
+						className="timerButton"
 					/>
-					<Button text="Nytt berg" onClick={ () => {this.handleClick()}} />
+					<Button
+						 onClick={ () => {this.handleClick()}}
+						 className="addButton"
+					 />
 				</div>
 			</div>
 		)
