@@ -8,23 +8,12 @@ import {formatTimeFromUser, formatTimeToUser} from '../Utils'
 
 
 let timer = undefined
-let isTicking = false
+let isTicking = true
 let isPause = false
 
 let pausePlayButton = "pauseButton"
 
 let workSum = 0
-
-function pausePlay() {
-	if(isTicking === true){
-		isTicking = false
-		pausePlayButton = "playButton"
-	}
-	else{
-		isTicking = true
-		pausePlayButton = "pauseButton"
-	}
-}
 
 
 class Timer extends Component {
@@ -96,13 +85,15 @@ class Timer extends Component {
 
 	render() {
 
+		console.log(isTicking)
+
 		let next= "Nästa: Rast"
         let subject = "Analys"
         let totaltime = this.props.time
 
-		if (!isTicking) {
+		{/*if (!isTicking) {
 			isTicking = true
-		}
+		}*/}
 
 		if(isPause){
        		subject = "Rast"
@@ -144,6 +135,7 @@ class TimerContainer extends Component {
         super(props)
 
         this.returnHome = this.returnHome.bind(this)
+        this.pausePlay = this.pausePlay.bind(this)
     }
 
     returnHome() {
@@ -153,12 +145,27 @@ class TimerContainer extends Component {
         this.props.viewProps.incrementWorkToday(workSum)
 
         timer = undefined
-		isTicking = false
+		isTicking = true
 		isPause = false
         workSum = 0
+        pausePlayButton = "pauseButton"
 
         this.props.setActiveView("home")
     }
+
+	pausePlay() {
+		if(isTicking === true){
+			isTicking = false
+			pausePlayButton = "playButton"
+		}
+		else{
+			isTicking = true
+			pausePlayButton = "pauseButton"
+		}
+
+		console.log(isTicking)
+		this.forceUpdate()
+	}
 
 	render() {
 
@@ -173,7 +180,7 @@ class TimerContainer extends Component {
 				</div>
 
 				<div className="timer_box">
-					<Button onClick={() => pausePlay()} className={`${pausePlayButton}`} />
+					<Button onClick={() => {this.pausePlay()}} className={`${pausePlayButton}`} />
 				</div>
 
 				<div className="timer_box">
