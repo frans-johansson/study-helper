@@ -48,7 +48,7 @@ class Timer extends Component {
 
 				swal({
 					className: "swal_timer",
-					title: "Plugg",
+					title: "Dags att ta tag i pluggandet igen!",
 					button: "Börja plugga",
 				})
 				.then((clicked) => {
@@ -66,7 +66,7 @@ class Timer extends Component {
 			else {
 				swal({
 					className: "swal_timer",
-					title: "Rast",
+					title: "Bra pluggat! Nu är det dags för rast.",
 					button: "Börja rasten"
 					})
 				.then((clicked) => {
@@ -87,18 +87,18 @@ class Timer extends Component {
 
 		console.log(isTicking)
 
-		let next= "Nästa: Rast"
+		let next= "Härnäst är det dags för: Rast"
         let subject = "Analys"
         let totaltime = this.props.time
 
 		if(isPause){
        		subject = "Rast"
-       		next = `Nästa: ${this.props.mountain.name}`
+       		next = `Härnäst är det dags för: ${this.props.mountain.name}`
        		totaltime = this.props.pauseTime
 
        	}else{
        		subject = this.props.mountain.name
-       		next = "Nästa: Rast"
+       		next = "Härnäst är det dags för: Rast"
        		totaltime = this.props.time
        	}
 
@@ -111,7 +111,7 @@ class Timer extends Component {
 		return(
 			<div>
 
-					<h1> {subject} </h1>
+					<h1>Du pluggar {subject} </h1>
 					<h1>
 						{formatTimeToUser(this.state.time)}
 					</h1>

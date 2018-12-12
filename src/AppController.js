@@ -98,12 +98,12 @@ class AppController extends Component {
 
 
 		if (!progressTracking) { // If uninitialized
-			[workToday, workYesterday, currentDate, lastDate] = [0, 0, new Date().toDateString(), '']			
+			[workToday, workYesterday, currentDate, lastDate] = [0, 0, new Date().toLocaleDateString(), '']			
 
 			window.localStorage.setItem("progressTracking", JSON.stringify({workToday, workYesterday, currentDate, lastDate}))
 		}
 		else { // If it exists in storage
-			let todayDate = new Date().toDateString()
+			let todayDate = new Date().toLocaleDateString()
 			workToday = progressTracking.workToday
 			workYesterday = progressTracking.workYesterday
 			currentDate = progressTracking.currentDate

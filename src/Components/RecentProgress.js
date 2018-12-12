@@ -36,7 +36,7 @@ class RecentProgress extends Component {
 		let studiedToday = ''
 
 		if (hours_today == 0 && minutes_today == 0)
-			studiedToday += '0 h'
+			studiedToday += '0 min'
 
 		if (hours_today != 0)
 			studiedToday += `${hours_today} h`
