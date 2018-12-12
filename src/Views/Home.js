@@ -12,6 +12,9 @@ class Home extends Component {
 		super(props)
 
 		this.checkColors = this.checkColors.bind(this)
+
+		this.handleTimer = this.handleTimer.bind(this)
+        this.handleMountain = this.handleMountain.bind(this)
 	}
 
 	checkColors() {
@@ -23,15 +26,29 @@ class Home extends Component {
 			availableColors = false
 		}
 
-		console.log(numAvailableColors)
-		console.log(availableColors)
-
 		return (
 			availableColors
 		)
 	}
 
-	handleClick() {
+	handleTimer() {
+		let colors = this.checkColors()
+
+		if(colors == 10) {
+			this.props.displaySubcomponent("simpleTimerSetup")
+		}
+		else {
+			swal({
+				title: "Oops!",
+				text: "Du måste lägga till ett ämne först",
+				icon: "warning"
+			})
+		}
+
+			
+	}
+
+	handleMountain() {
 		let colors = this.checkColors()
 
 		if(colors) {
@@ -89,12 +106,14 @@ class Home extends Component {
 
 			    <div className="fixed as_row">
 					{/*<Button text="Complicated timer" />*/}
-					<Button 
-						onClick={ () => {this.props.displaySubcomponent("simpleTimerSetup")}}
-						className="timerButton" 
+
+			<Button
+						onClick={ () => {this.handleTimer()}}
+						className="timerButton"
+
 					/>
 					<Button
-						 onClick={ () => {this.handleClick()}}
+						 onClick={ () => {this.handleMountain()}}
 						 className="addButton"
 					 />
 				</div>

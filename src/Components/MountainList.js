@@ -17,7 +17,7 @@ class MountainData extends Component {
 		this.studiedMessage = ''
 
 		if (hours == 0 && minutes == 0)
-			this.studiedMessage += `Du har inte börjat plugga ${this.props.name} än`
+			this.studiedMessage += `Du har inte börjat plugga ${this.props.name} än.`
 
 		if (hours != 0)
 			this.studiedMessage += `${hours} h`
