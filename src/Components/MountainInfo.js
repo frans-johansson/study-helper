@@ -79,9 +79,15 @@ class MountainInfo extends Component {
 	        };
 	   	}
 
-	   	let remainingTime = goal - studied
+	   	let [studiedHours, studiedMinutes] = toHoursMinutes(studied)
 
-	   	let [remainingHours, remainingMinutes] = toHoursMinutes(remainingTime)
+	   	let remainingHours = goal - studiedHours
+	   	let remainingMinutes = 0
+
+	   	if(studiedMinutes != 0 || studiedMinutes != '') {
+			remainingMinutes = 60 - studiedMinutes
+			remainingHours -= 1
+		}
 
 	   	let remainingMessage = ''
 
@@ -99,7 +105,7 @@ class MountainInfo extends Component {
 				<div className="stat_image_conatiner">
 					<div className="mountain_climber_container">
 						<div className="mountain_position" style={divStyle}/>
-						<h1>{mountain.name}</h1>
+						<h1>Mt. {mountain.name}</h1>
 						<p>Mål: {`${goal} h `} </p>
 						<p>Nedlagd tid: {`${this.studiedMessage}`}</p>
 						<p>Tid kvar: {`${remainingMessage}`}</p>
