@@ -87,9 +87,15 @@
   background: url(../svg/Buttons/button_play.svg) no-repeat;
   @include buttonSettings;
 }
+
 .timerButtonDisabled {
     background: url(../svg/Buttons/button_timer_disabled.svg) no-repeat;
   @include buttonSettings;
+}
+
+.addButtonDisabled {
+  background: url(../svg/Buttons/button_add_disabled.svg) no-repeat;
+  @include buttonSettings;  
 }
 
 .mountainSelection {
