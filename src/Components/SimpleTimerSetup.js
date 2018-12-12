@@ -54,9 +54,9 @@ class MountainChoice extends Component {
 }
 
 class MountainSelector extends Component {
-	constructor(props){
+	/*constructor(props){
 		super(props)
-	}
+	}*/
 
 	render() {
 		return(
@@ -114,7 +114,7 @@ class SimpleTimerSetup extends Component {
 	handleChangeStudyHours(event) {
 		studyDefaultHours = event.target.value
 
-		if(studyDefaultHours == '' || studyDefaultHours == 0) {
+		if(studyDefaultHours === '' || studyDefaultHours === 0) {
 			correctInputValuesStudyHours = false
 		}
 		else {
@@ -136,7 +136,7 @@ class SimpleTimerSetup extends Component {
 
 		console.log(studyDefaultMinutes)
 
-		if(studyDefaultMinutes == '' || studyDefaultMinutes == 0) {
+		if(studyDefaultMinutes === '' || studyDefaultMinutes === 0) {
 			correctInputValuesStudyMinutes = false
 		}
 		else {
@@ -161,7 +161,7 @@ class SimpleTimerSetup extends Component {
 	handleChangePauseHours(event) {
 		pauseDefaultHours = event.target.value
 
-		if(pauseDefaultHours == '' || pauseDefaultHours == 0) {
+		if(pauseDefaultHours === '' || pauseDefaultHours === 0) {
 			correctInputValuesPauseHours = false
 		}
 		else {
@@ -181,7 +181,7 @@ class SimpleTimerSetup extends Component {
 	handleChangePauseMinutes(event) {
 		pauseDefaultMinutes = event.target.value
 
-		if(pauseDefaultMinutes == '' || pauseDefaultMinutes == 0) {
+		if(pauseDefaultMinutes === '' || pauseDefaultMinutes === 0) {
 			correctInputValuesPauseMinutes = false
 		}
 		else {
