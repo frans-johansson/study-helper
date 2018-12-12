@@ -80,7 +80,7 @@ class Home extends Component {
 
 	render() {
 
-		let fix_a_row="fixed as_row"
+		let fix_a_row="fixed as_row fade-top"
 		// Make sure the subcomponent container is only visible if it has something to show us
 		let subcomponentContainer = "fixed center_on_page has_subcomponent"
 		if (!this.props.children.props.subcomponentProps) {
