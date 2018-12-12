@@ -32,7 +32,7 @@ html {
 			}
 
 			&.timer {
-				background-color: $sky-color;
+				background-color: $grass-color;
 			}
 
 			.header {
@@ -299,12 +299,13 @@ input[type=submit] {
 	color:$text-color;
 	cursor: pointer;
 
-	width: 10vw;
-	height: 10vh;
+	width: 90px;
+	height: 90px;
 
 	position: absolute;
 	bottom: 10px;
-	left:44vw;
+
+	box-shadow: 1px 1px 7px lighten($text-color, 15);
 }
 
 input[disabled]{

@@ -267,7 +267,9 @@ class SimpleTimerSetup extends Component {
 				</div>
 				
 				<Button onClick={this.goHome}
-				className="backButton blue" />
+				className="backButton blue"
+				positioning="right-absolute"
+				 />
 				
 
 			</div>
