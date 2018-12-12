@@ -106,7 +106,7 @@ html {
 .list {
 
 	> div {
-		margin: 0 5vw 60px 5vw;
+		margin: 0 5vw 20px 5vw;
 		background-color: $box-color;
 		border-radius: $corner-roundness;
 		box-shadow: 1px 1px 7px lighten($text-color, 15);
@@ -224,20 +224,16 @@ form {
 	}
 
 	&.as_row {
+		padding-top: 10px;
 		flex-direction: row;
 		justify-content: space-around;
 	}
 }
 
-/*.mountain_climber_container {
-	position: absolute;
 
-		flex-direction:column;
-		align-content: space-evenly;
-
-		width: 100vw;
-		height: 100vh;
-}*/
+.fade-top {
+	background: linear-gradient(to top, rgba($grass-color, 0.7), 50%, transparent);
+}
 
 .mountain_position {
     position: absolute;
