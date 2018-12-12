@@ -26,6 +26,11 @@
   flex-direction: row;
   justify-content: center;
 
+    &.home {
+      position: absolute;
+  bottom: 10px;
+  left:44vw;
+    }
 }
 
 .no_button{
@@ -46,7 +51,7 @@
 }
 
 .homeButton{
-  background: url(../svg/Buttons/button_home.svg) no-repeat;
+  background: url(../svg/Buttons/button_back_blue.svg) no-repeat;
   @include buttonSettings;
 }
 
@@ -71,6 +76,10 @@
 .backButton {
   background: url(../svg/Buttons/button_back.svg) no-repeat;
   @include buttonSettings;
+
+    &.blue {
+      background: url(../svg/Buttons/button_back_blue.svg) no-repeat;
+    }
 }
 
 .timerButton {
