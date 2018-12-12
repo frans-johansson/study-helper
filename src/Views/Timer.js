@@ -93,7 +93,7 @@ class Timer extends Component {
         let totaltime = this.props.time
 
 		if(isPause){
-       		subject = "Nu har du rast"
+       		subject = "Rast"
        		next = `Härnäst är det dags att plugga: ${this.props.mountain.name}`
        		totaltime = this.props.pauseTime
 
