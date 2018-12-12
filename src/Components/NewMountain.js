@@ -70,7 +70,7 @@ class NewMountain extends Component {
            <label className="as_column">
               Ämne
               <input type="text" minlength="2" name="name" onChange={this.handleChange} />
-              Mål
+              Mål (h):
               <input type="number" min="0" name="goal" onChange={this.handleChange} />
               Slutdatum
               <input id="datefield" type="date" name="date" min={this.todayDate()} onChange={this.handleChange} />
@@ -78,7 +78,6 @@ class NewMountain extends Component {
 
             <input type="submit" value="" disabled={!this.state.name || !this.state.goal || !this.state.date} />
           </form>
-
 
 
           <div>
