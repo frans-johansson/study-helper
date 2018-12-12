@@ -32,9 +32,10 @@ class Home extends Component {
 	}
 
 	handleTimer() {
-		let colors = this.checkColors()
 
-		if(colors == 10) {
+		let numAvailableColors = JSON.parse(window.localStorage.getItem("colors")).length
+
+		if(numAvailableColors < 10) {
 			this.props.displaySubcomponent("simpleTimerSetup")
 		}
 		else {
@@ -43,9 +44,7 @@ class Home extends Component {
 				text: "Du måste lägga till ett ämne först",
 				icon: "warning"
 			})
-		}
-
-			
+		}	
 	}
 
 	handleMountain() {
