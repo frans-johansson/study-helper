@@ -40,7 +40,7 @@ class Home extends Component {
 		else {
 			swal({
 				title: "Oops!",
-				text: "Du har nått din maxgräns på berg",
+				text: "Du har nått din maxgräns på berg, vill du lägga till ett nytt måste du tyvärr ta bort ett annat.",
 				icon: "warning"
 			})
 		}

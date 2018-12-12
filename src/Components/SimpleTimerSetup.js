@@ -4,6 +4,8 @@ import Button from '../Components/Button.js'
 let ifMountainSelected = false;
 let correctInputValuesStudy = false;
 let correctInputValuesPause = false;
+let studyDefaultMinutes = 45
+let pauseDefaultMinutes = 15
 
 class MountainChoice extends Component {
 	constructor(props) {
@@ -39,7 +41,6 @@ class MountainChoice extends Component {
 		let divStyle={
 			backgroundColor:`${this.props.color}`,
 		}
-		console.log(divStyle)
 
 		return(
 			<Button className="mountainSelection" text={`${this.props.name}`} style={divStyle} onClick={() => this.handleClick(this.props.id)} />
@@ -83,6 +84,8 @@ class SimpleTimerSetup extends Component {
 		this.goHome	= this.goHome.bind(this)
 		this.checkInputValuesStudy = this.checkInputValuesStudy.bind(this)
 		this.checkInputValuesPause = this.checkInputValuesPause.bind(this)
+		this.handleChangeStudy = this.handleChangeStudy.bind(this)
+		this.handleChangePause = this.handleChangePause.bind(this)
 	}
 
 	checkInputValuesStudy(event) {
@@ -93,8 +96,6 @@ class SimpleTimerSetup extends Component {
 		else {
 			correctInputValuesStudy = true
 		}
-
-		console.log(correctInputValuesStudy)
 
 		this.forceUpdate()
 	}
@@ -116,7 +117,18 @@ class SimpleTimerSetup extends Component {
 		ifMountainSelected = false
 		correctInputValuesStudy = false
 		correctInputValuesPause = false
+		studyDefaultMinutes = 45
+		pauseDefaultMinutes = 15
+
 		this.props.clearSubcomponent()
+	}
+
+	handleChangeStudy(event) {
+		studyDefaultMinutes = event.target.value
+	}
+
+	handleChangePause(event) {
+		pauseDefaultMinutes = event.target.value
 	}
 
 	handleSubmit(event) {
@@ -124,6 +136,8 @@ class SimpleTimerSetup extends Component {
         ifMountainSelected = false
         correctInputValuesStudy = false
 		correctInputValuesPause = false
+		studyDefaultMinutes = 45
+		pauseDefaultMinutes = 15
 
         let {setTimeInput, setPauseInput, setActiveView} = this.props.subcomponentProps
 
@@ -135,6 +149,9 @@ class SimpleTimerSetup extends Component {
 	}
 
 	render() {
+
+
+
 		return(
 			<div>
 				<form onSubmit={this.handleSubmit}>
@@ -142,13 +159,13 @@ class SimpleTimerSetup extends Component {
 					<input type="number" min="0" name="inputTimeH" onInput={this.checkInputValuesStudy} />
 
 					<label>Minuter:</label>
-					<input type="number" min="0" name="inputTimeMin" onInput={this.checkInputValuesStudy}/>
+					<input type="number" min="0" name="inputTimeMin" value={studyDefaultMinutes} onChange={this.handleChangeStudy} onInput={this.checkInputValuesStudy}/>
 
 					<label>Paustid Timmar:</label>
 					<input type="number" min="0" name="inputTimePauseH" onInput={this.checkInputValuesPause}/>
 
 					<label>Minuter:</label>
-					<input type="number" min="0" name="inputTimePauseMin" onInput={this.checkInputValuesPause}/>
+					<input type="number" min="0" name="inputTimePauseMin" value={pauseDefaultMinutes} onChange={this.handleChangePause} onInput={this.checkInputValuesPause}/>
 
 					<input type="submit" value="" disabled={!ifMountainSelected || !correctInputValuesStudy || !correctInputValuesPause}/>
 

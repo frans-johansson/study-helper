@@ -25,11 +25,14 @@ class Timer extends Component {
 			pauseTime: props.pauseTime,
         }
 
+
+
 		timer = setInterval(this.tickDown.bind(this), 1000)
 	}
 
 	tickDown() {
         let {time, pauseTime} = this.props
+
 
 		if(isTicking === true){
 			this.setState({
@@ -84,8 +87,6 @@ class Timer extends Component {
 	}
 
 	render() {
-
-		console.log(isTicking)
 
 		let next= ""
         let subject = ""
@@ -158,7 +159,6 @@ class TimerContainer extends Component {
 			pausePlayButton = "pauseButton"
 		}
 
-		console.log(isTicking)
 		this.forceUpdate()
 	}
 

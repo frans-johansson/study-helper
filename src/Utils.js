@@ -16,7 +16,5 @@ export function toHoursMinutes(h) {
 	let hours = parseInt(timeString.substring(0, 2), 10)
 	let minutes = parseInt(timeString.substring(3, 5), 10)
 
-	console.log([hours, minutes])
-
 	return [hours, minutes]
 }
