@@ -243,7 +243,7 @@ class SimpleTimerSetup extends Component {
 
 					<label className="block-label">Fyll i paustid!</label>
 					<div className="timer_setup">
-						<div >
+						<div>
 							<input type="number" placeholder="0" min="0" name="inputTimePauseH" value={pauseDefaultHours} onChange={this.handleChangePauseHours}/>
 							<label>Timmar</label>
 						</div>

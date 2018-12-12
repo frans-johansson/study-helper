@@ -163,13 +163,17 @@ form {
 .timer_setup{
 	display:flex;
 	flex-direction: row;
+	align-items: center;
+	justify-content: center;
 
 	width: 80vw;
 
-	>div{
+	> div{
 		width: 100%;
+
 		flex-direction: column;
 		align-content: center;
+
 		background-color: lighten($box-color, 7) !important;
 
 		&:first-child {
