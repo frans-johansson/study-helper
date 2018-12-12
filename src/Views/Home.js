@@ -5,6 +5,8 @@ import RecentProgress from '../Components/RecentProgress.js'
 import MountainList from '../Components/MountainList.js'
 import Button from '../Components/Button.js'
 
+let timerButtonClass = "timerButtonDisabled";
+let addButtonClass = "addButton";
 
 class Home extends Component {
 
@@ -24,7 +26,21 @@ class Home extends Component {
 
 		if(numAvailableColors == 0) {
 			availableColors = false
+			addButtonClass = "addButtonDisabled"
+		}else{
+			addButtonClass = "addButton"
 		}
+
+
+
+		if(numAvailableColors < 10) {
+			timerButtonClass = "timerButton"
+
+		}else{
+			timerButtonClass = "timerButtonDisabled"
+		}
+
+
 
 		return (
 			availableColors
@@ -64,12 +80,18 @@ class Home extends Component {
 
 	render() {
 
+		let fix_a_row="fixed as_row"
 		// Make sure the subcomponent container is only visible if it has something to show us
 		let subcomponentContainer = "fixed center_on_page has_subcomponent"
 		if (!this.props.children.props.subcomponentProps) {
 			subcomponentContainer = "hidden"
 		}
-
+		
+		if (this.props.children.props.subcomponentProps) {
+			
+			fix_a_row="hidden"
+		}
+		this.checkColors();
 
 		return(
 			<div>
@@ -103,17 +125,16 @@ class Home extends Component {
 					{this.props.children}
 			    </div>
 
-			    <div className="fixed as_row">
+			    <div className={fix_a_row}>
 					{/*<Button text="Complicated timer" />*/}
 
 			<Button
 						onClick={ () => {this.handleTimer()}}
-						className="timerButton"
-
+						className= {timerButtonClass}
 					/>
 					<Button
 						 onClick={ () => {this.handleMountain()}}
-						 className="addButton"
+						 className= {addButtonClass}
 					 />
 				</div>
 			</div>
