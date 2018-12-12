@@ -60,7 +60,7 @@ class NewMountain extends Component {
     return(
         <div>
           <h2>SKAPA BERG</h2> 
-          <h3>{numMountains+1}/10</h3>
+          <h3>Nr {numMountains+1}/10</h3>
           <form onSubmit={this.handleSubmit} method="get">
            <label className="mountain_setup">
             <div>

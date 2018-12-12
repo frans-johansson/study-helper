@@ -130,7 +130,18 @@ html {
 				width: 100%;
 			}
 		}
+
+		&.not_color{
+			background-color: $sky-color;
+		}
 	}
+}
+
+.stat_info{
+	width: 100vw;
+	height: 50vh !important;
+	padding: 0 !important;
+	background-color: transparent !important; 
 }
 
 
@@ -237,28 +248,20 @@ form {
     position: absolute;
 }
 
-.home_image_conatiner {
-	background-image:url(../svg/homepagedown.svg);
-
-	background-size:cover;
-
-	width: 450px;
-	height:500px;
-
-	justify-content:center;
-	display:flex;
-}
-
 .stat_image_conatiner {
 	background-image:url(../svg/statcomp.svg);
-	background-size:cover;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: bottom;
+
+	padding: 0 !important; 
 
 	justify-content:center;
 	display:flex;
 	flex-direction:column;
 
-	width: 400px;
-	height:600px;
+	width: 100vw;
+	height:100vh;
 }
 
 .mini_image_conatiner {

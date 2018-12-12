@@ -128,7 +128,7 @@ class Home extends Component {
 			    <div className={fix_a_row}>
 					{/*<Button text="Complicated timer" />*/}
 
-			<Button
+					<Button
 						onClick={ () => {this.handleTimer()}}
 						className= {timerButtonClass}
 					/>
