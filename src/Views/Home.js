@@ -64,10 +64,16 @@ class Home extends Component {
 
 	render() {
 
+		let fix_a_row="fixed as_row"
 		// Make sure the subcomponent container is only visible if it has something to show us
 		let subcomponentContainer = "fixed center_on_page has_subcomponent"
 		if (!this.props.children.props.subcomponentProps) {
 			subcomponentContainer = "hidden"
+		}
+		
+		if (this.props.children.props.subcomponentProps) {
+			
+			fix_a_row="hidden"
 		}
 
 
@@ -103,7 +109,7 @@ class Home extends Component {
 					{this.props.children}
 			    </div>
 
-			    <div className="fixed as_row">
+			    <div className={fix_a_row}>
 					{/*<Button text="Complicated timer" />*/}
 
 			<Button
