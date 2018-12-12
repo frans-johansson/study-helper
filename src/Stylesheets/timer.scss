@@ -43,35 +43,3 @@
 
 }
 
-.timer_setup{
-	display:flex;
-	flex-direction: row;
-
-	>div{
-		flex-direction: column;
-		background-color: lighten($box-color, 7) !important;
-
-		&:first-child {
-			border-radius: $corner-roundness 0 0 $corner-roundness;
-		}
-
-		&:last-child {
-			border-radius: 0 $corner-roundness $corner-roundness 0;
-		}
-	}
-
-	label{
-		display: block;
-	}
-	
-	input[type=number]{
-		background-color: lighten($box-color, 7);
-		border-bottom: solid lighten($text-color,30);
-		text-align: center;
-		&:focus{
-			outline: none;
-		}
-	}
-
-}
-
