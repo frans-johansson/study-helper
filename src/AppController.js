@@ -27,7 +27,7 @@ const components = {
 }
 
 function findMountain(id, array) {
-	return array.filter((m) => m.id == id).shift()
+	return array.filter((m) => m.id === id).shift()
 }
 
 class AppController extends Component {
@@ -80,7 +80,7 @@ class AppController extends Component {
 		// Add colors to local storage 
 		if (!window.localStorage.getItem("colors")) {
 			let colors = ['#5A999D', '#D17B6E', '#868D6E', '#AD7B98', '#78B0E8', 
-						  '#D498CF', '#91BE7B', '#76639A', '#5360A5', '#5360A5']
+						  '#D498CF', '#91BE7B', '#76639A', '#5360A5', '#e29178']
 			// Sets array in state
 			this.setState({
 				colors: colors,
@@ -110,7 +110,7 @@ class AppController extends Component {
 			lastDate = progressTracking.lastDate
 
 			// Check for new date
-			if (todayDate != currentDate && workToday > 0) {
+			if (todayDate !== currentDate && workToday > 0) {
 				[workToday, workYesterday, currentDate, lastDate] = [0, workToday, todayDate, currentDate] // Shifterino
 			}
 
@@ -156,7 +156,6 @@ class AppController extends Component {
 
   		let progressTracking = JSON.parse(window.localStorage.getItem("progressTracking"))
 		let {currentDate, lastDate} = progressTracking
-		console.log(workToday)
 		window.localStorage.setItem("progressTracking", JSON.stringify({workToday, workYesterday, currentDate, lastDate}))
   	}
   	
@@ -187,7 +186,7 @@ class AppController extends Component {
 		window.localStorage.setItem("colors", JSON.stringify(colors))
 
 		// Remove mountain from local storage
-		let remainingMountains = this.state.mountains.filter((m) => m.id != id)
+		let remainingMountains = this.state.mountains.filter((m) => m.id !== id)
 		window.localStorage.setItem("mountains", JSON.stringify(remainingMountains))
 
 		this.updateMountainList()
@@ -220,8 +219,6 @@ class AppController extends Component {
 
 		// Updates the date of this mountain in the state array
 		this.state.mountains[i].previousDate = new Date().toDateString()
-
-		console.log(this.state.mountains[i].previousDate)
 
 		// Push changes to local storage
 		window.localStorage.setItem("mountains", JSON.stringify(this.state.mountains))
@@ -337,7 +334,7 @@ class AppController extends Component {
 		
 		// Make background darker when there's something on top
 		let overlay = ""
-		if (subcomponent != "nullComponent")
+		if (subcomponent !== "nullComponent")
 			overlay = "darkened"
 
 		return(
