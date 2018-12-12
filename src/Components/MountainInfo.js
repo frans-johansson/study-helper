@@ -102,15 +102,18 @@ class MountainInfo extends Component {
 
 		return(
 
-				<div className="stat_image_conatiner">
+				<div className="stat_image_conatiner not_color">
 					<div className="mountain_climber_container">
 						<div className="mountain_position" style={divStyle}/>
-						<h1>Mt. {mountain.name}</h1>
-						<p>Mål: {`${goal} h `} </p>
-						<p>Nedlagd tid: {`${this.studiedMessage}`}</p>
-						<p>Tid kvar: {`${remainingMessage}`}</p>
-						<p>Slutdatum: {`${date} `} </p>
-						<div className="button_container">
+							<div className="stat_info">
+								<h1>Mt. {mountain.name}</h1>
+								<p>Mål: {`${goal} h `} </p>
+								<p>Nedlagd tid: {`${this.studiedMessage}`}</p>
+								<p>Tid kvar: {`${remainingMessage}`}</p>
+								<p>Slutdatum: {`${date} `} </p>
+							</div>
+						<div className="button_container stat_buttons">
+
 							<Button className = "backButton" onClick={this.goHome}/>
 							<Button className = "deleteButton" onClick={this.deleteMountain}/>
 						</div>
