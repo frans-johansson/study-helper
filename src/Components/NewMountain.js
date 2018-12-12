@@ -65,7 +65,7 @@ class NewMountain extends Component {
            <label className="mountain_setup">
             <div>
               <label>Ämne</label>
-                 <input type="text" minlength="2" name="name" onChange={this.handleChange} />
+                 <input type="text" minLength="2" maxLength="10" name="name" onChange={this.handleChange} />
             </div>
             <div>
                <label>Mål (h)</label>
