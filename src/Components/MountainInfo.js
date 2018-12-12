@@ -68,8 +68,8 @@ class MountainInfo extends Component {
 
 		if(studied>0){
 			divStyle = {
-	            left: 215*(studied/goal),
-	            bottom: 499*(studied/goal),
+	            left: `${50*(studied/goal)}vw`,
+	            bottom: `${50*(studied/goal)}vw`,
 	            backgroundColor: `${color}`,
 	   			//backgroundImage: 'url(/static/media/position.4f7a9f24.svg)',
 	   			backgroundSize: 'cover',
@@ -103,7 +103,6 @@ class MountainInfo extends Component {
 		return(
 
 				<div className="stat_image_conatiner not_color">
-					<div className="mountain_climber_container">
 						<div className="mountain_position" style={divStyle}/>
 							<div className="stat_info">
 								<h1>Mt. {mountain.name}</h1>
@@ -112,12 +111,12 @@ class MountainInfo extends Component {
 								<p>Tid kvar: {`${remainingMessage}`}</p>
 								<p>Slutdatum: {`${date} `} </p>
 							</div>
+							
 						<div className="button_container stat_buttons">
 
 							<Button className = "backButton" onClick={this.goHome}/>
 							<Button className = "deleteButton" onClick={this.deleteMountain}/>
 						</div>
-					</div>
 				</div>
 
 		)

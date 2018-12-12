@@ -138,7 +138,7 @@ html {
 }
 
 .stat_info{
-	width: 100vw;
+	width: 100vw !important;
 	height: 50vh !important;
 	padding: 0 !important;
 	background-color: transparent !important; 
@@ -229,28 +229,30 @@ form {
 	}
 }
 
-.mountain_climber_container {
+/*.mountain_climber_container {
 	position: absolute;
 
 		flex-direction:column;
 		align-content: space-evenly;
 
-		width: 400px;
-		height: 600px;
-}
+		width: 100vw;
+		height: 100vh;
+}*/
 
 .mountain_position {
     position: absolute;
 }
 
 .stat_image_conatiner {
-	background-image:url(../svg/statcomp.svg);
+	background-image:url(../svg/minimount.svg);
 	background-size: contain;
 	background-repeat: no-repeat;
 	background-position: bottom;
 
 	padding: 0 !important; 
 
+	position:absolute;
+	align-content: space-evenly;
 	justify-content:center;
 	display:flex;
 	flex-direction:column;

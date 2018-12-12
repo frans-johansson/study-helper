@@ -35,8 +35,14 @@
   flex-direction: row;
   justify-content: center;
 
-  .stat_buttons{
-    
+  &.stat_buttons{
+    width: 100vw !important;
+    position: absolute;
+    bottom: 0vh;
+
+    >div{
+      padding: 5%;
+    }
   }
 }
 
