@@ -2,9 +2,14 @@ import React, { Component } from 'react'
 import Button from '../Components/Button.js'
 
 let ifMountainSelected = false;
-let correctInputValuesStudy = false;
-let correctInputValuesPause = false;
+let correctInputValuesStudyHours = false
+let correctInputValuesStudyMinutes = true
+let correctInputValuesPauseHours = false
+let correctInputValuesPauseMinutes = true
+let correctInputValues = true
+let studyDefaultHours = 0
 let studyDefaultMinutes = 45
+let pauseDefaultHours = 0
 let pauseDefaultMinutes = 15
 
 class MountainChoice extends Component {
@@ -82,61 +87,131 @@ class SimpleTimerSetup extends Component {
 
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.goHome	= this.goHome.bind(this)
-		this.checkInputValuesStudy = this.checkInputValuesStudy.bind(this)
-		this.checkInputValuesPause = this.checkInputValuesPause.bind(this)
-		this.handleChangeStudy = this.handleChangeStudy.bind(this)
-		this.handleChangePause = this.handleChangePause.bind(this)
-	}
-
-	checkInputValuesStudy(event) {
-
-		if(event.target.value == '' || event.target.value == 0) {
-			correctInputValuesStudy = false
-		}
-		else {
-			correctInputValuesStudy = true
-		}
-
-		this.forceUpdate()
-	}
-
-	checkInputValuesPause(event) {
-
-		if(event.target.value == '' || event.target.value == 0) {
-			correctInputValuesPause = false
-		}
-		else {
-			correctInputValuesPause = true
-		}
-
-		this.forceUpdate()
+		this.handleChangeStudyHours = this.handleChangeStudyHours.bind(this)
+		this.handleChangeStudyMinutes = this.handleChangeStudyMinutes.bind(this)
+		this.handleChangePauseHours = this.handleChangePauseHours.bind(this)
+		this.handleChangePauseMinutes = this.handleChangePauseMinutes.bind(this)
 
 	}
+
 
 	goHome() {
 		ifMountainSelected = false
-		correctInputValuesStudy = false
-		correctInputValuesPause = false
+		correctInputValuesStudyHours = false
+		correctInputValuesStudyHours = true
+		correctInputValuesPauseHours = false
+		correctInputValuesPauseMinutes = true
+		correctInputValues = true
+
+		studyDefaultHours = 0
 		studyDefaultMinutes = 45
+		pauseDefaultHours = 0
 		pauseDefaultMinutes = 15
 
 		this.props.clearSubcomponent()
 	}
 
-	handleChangeStudy(event) {
-		studyDefaultMinutes = event.target.value
+	handleChangeStudyHours(event) {
+		studyDefaultHours = event.target.value
+
+		if(studyDefaultHours == '' || studyDefaultHours == 0) {
+			correctInputValuesStudyHours = false
+		}
+		else {
+			correctInputValuesStudyHours = true
+		}
+
+		if((correctInputValuesStudyHours || correctInputValuesStudyMinutes) && (correctInputValuesPauseHours || correctInputValuesPauseMinutes)) {
+			correctInputValues = true
+		}
+		else {
+			correctInputValues = false
+		}
+
+		this.forceUpdate()
 	}
 
-	handleChangePause(event) {
+	handleChangeStudyMinutes(event) {
+		studyDefaultMinutes = event.target.value
+
+		console.log(studyDefaultMinutes)
+
+		if(studyDefaultMinutes == '' || studyDefaultMinutes == 0) {
+			correctInputValuesStudyMinutes = false
+		}
+		else {
+			correctInputValuesStudyMinutes = true
+		}
+
+		console.log("StudyMinutes = " + correctInputValuesStudyMinutes)
+
+		if((correctInputValuesStudyHours || correctInputValuesStudyMinutes) && (correctInputValuesPauseHours || correctInputValuesPauseMinutes)) {
+			correctInputValues = true
+		}
+		else {
+			correctInputValues = false
+		}
+
+		console.log(correctInputValues)
+
+		this.forceUpdate()
+
+	}
+
+	handleChangePauseHours(event) {
+		pauseDefaultHours = event.target.value
+
+		if(pauseDefaultHours == '' || pauseDefaultHours == 0) {
+			correctInputValuesPauseHours = false
+		}
+		else {
+			correctInputValuesPauseHours = true
+		}
+
+		if((correctInputValuesStudyHours || correctInputValuesStudyMinutes) && (correctInputValuesPauseHours || correctInputValuesPauseMinutes)) {
+			correctInputValues = true
+		}
+		else {
+			correctInputValues = false
+		}
+
+		this.forceUpdate()
+	}
+
+	handleChangePauseMinutes(event) {
 		pauseDefaultMinutes = event.target.value
+
+		if(pauseDefaultMinutes == '' || pauseDefaultMinutes == 0) {
+			correctInputValuesPauseMinutes = false
+		}
+		else {
+			correctInputValuesPauseMinutes = true
+		}
+
+
+		if((correctInputValuesStudyHours || correctInputValuesStudyMinutes) && (correctInputValuesPauseHours || correctInputValuesPauseMinutes)) {
+			correctInputValues = true
+		}
+		else {
+			correctInputValues = false
+		}
+
+		this.forceUpdate()
 	}
 
 	handleSubmit(event) {
         event.preventDefault();
+
         ifMountainSelected = false
-        correctInputValuesStudy = false
-		correctInputValuesPause = false
+       	correctInputValuesStudyHours = false
+		correctInputValuesStudyHours = true
+		correctInputValuesPauseHours = false
+		correctInputValuesPauseMinutes = true
+		correctInputValues = true
+
+		studyDefaultHours = 0
 		studyDefaultMinutes = 45
+		pauseDefaultHours = 0
 		pauseDefaultMinutes = 15
 
         let {setTimeInput, setPauseInput, setActiveView} = this.props.subcomponentProps
@@ -150,19 +225,17 @@ class SimpleTimerSetup extends Component {
 
 	render() {
 
-
-
 		return(
 			<div >
 				<form onSubmit={this.handleSubmit}>
 					<label> Fyll i pluggtid! </label>
 					<div className="timer_setup">
 						<div>
-							<input type="number" placeholder="0" min="0" name="inputTimeH" onInput={this.checkInputValuesStudy} />
+							<input type="number" placeholder="0" min="0" name="inputTimeH" value={studyDefaultHours} onChange={this.handleChangeStudyHours} />
 							<label>Timmar</label>
 						</div>
 						<div>
-							<input type="number" placeholder="0" min="0" name="inputTimeMin" value={studyDefaultMinutes} onChange={this.handleChangeStudy} onInput={this.checkInputValuesStudy}/>
+							<input type="number" placeholder="0" min="0" name="inputTimeMin" value={studyDefaultMinutes} onChange={this.handleChangeStudyMinutes} />
 							<label>Minuter</label>
 						</div>
 
@@ -171,16 +244,16 @@ class SimpleTimerSetup extends Component {
 					<label>Fyll i paustid!</label>
 					<div className="timer_setup">
 						<div >
-							<input type="number" min="0" name="inputTimePauseH" onInput={this.checkInputValuesPause}/>
+							<input type="number" placeholder="0" min="0" name="inputTimePauseH" value={pauseDefaultHours} onChange={this.handleChangePauseHours}/>
 							<label>Timmar</label>
 						</div>
 						<div>
-							<input type="number" min="0" name="inputTimePauseMin" value={pauseDefaultMinutes} onChange={this.handleChangePause} onInput={this.checkInputValuesPause}/>
+							<input type="number" placeholder="0" min="0" name="inputTimePauseMin" value={pauseDefaultMinutes} onChange={this.handleChangePauseMinutes}/>
 							<label>Minuter</label>
 						</div>
 					</div>
 
-					<input type="submit" value="" disabled={!ifMountainSelected || !correctInputValuesStudy || !correctInputValuesPause}/>
+					<input type="submit" value="" disabled={!ifMountainSelected || !correctInputValues}/>
 
 				</form>
 
