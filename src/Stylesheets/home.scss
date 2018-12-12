@@ -127,6 +127,7 @@ html {
 		& {
 			@media (max-width: 420px) {
 				height: 100%;
+				width: 100%;
 			}
 		}
 	}
@@ -148,12 +149,27 @@ html {
 
 }
 
+.block-label {
+	display: block;
+	margin-top: 15px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .timer_setup{
 	display:flex;
 	flex-direction: row;
 
+	width: 80vw;
+
 	>div{
+		width: 100%;
 		flex-direction: column;
+		align-content: center;
 		background-color: lighten($box-color, 7) !important;
 
 		&:first-child {
@@ -163,10 +179,6 @@ html {
 		&:last-child {
 			border-radius: 0 $corner-roundness $corner-roundness 0;
 		}
-	}
-
-	label{
-		display: block;
 	}
 	
 	input[type=number]{

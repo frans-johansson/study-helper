@@ -228,7 +228,7 @@ class SimpleTimerSetup extends Component {
 		return(
 			<div >
 				<form onSubmit={this.handleSubmit}>
-					<label> Fyll i pluggtid! </label>
+					<label className="block-label"> Fyll i pluggtid! </label>
 					<div className="timer_setup">
 						<div>
 							<input type="number" placeholder="0" min="0" name="inputTimeH" value={studyDefaultHours} onChange={this.handleChangeStudyHours} />
@@ -241,7 +241,7 @@ class SimpleTimerSetup extends Component {
 
 					</div>
 
-					<label>Fyll i paustid!</label>
+					<label className="block-label">Fyll i paustid!</label>
 					<div className="timer_setup">
 						<div >
 							<input type="number" placeholder="0" min="0" name="inputTimePauseH" value={pauseDefaultHours} onChange={this.handleChangePauseHours}/>
@@ -257,7 +257,7 @@ class SimpleTimerSetup extends Component {
 
 				</form>
 
-				<label>Välj berg:</label>
+				<label className="block-label">Välj berg:</label>
 
 				<div className="timer_center">
 				<MountainSelector
