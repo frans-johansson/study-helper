@@ -72,8 +72,6 @@ class AppController extends Component {
 			timeInput: [0,45],
 			pauseInput: [0,15],
 			selectedMountain: undefined,
-			studyDefaultMinutes: 45,
-			pauseDefaultMinutes: 15,
    		}	
  	}
 
@@ -323,8 +321,6 @@ class AppController extends Component {
 				setTimeInput: this.setTimeInput,
 				setPauseInput: this.setPauseInput,
 				setActiveView: this.setActiveView,
-				studyDefaultMinutes: this.state.studyDefaultMinutes,
-				pauseDefaultMinutes: this.state.pauseDefaultMinutes,
 
 				// Mountain selection
 				mountains: this.state.mountains,
