@@ -87,17 +87,17 @@ class Timer extends Component {
 
 		console.log(isTicking)
 
-		let next= "Härnäst är det dags för: Rast"
-        let subject = "Analys"
+		let next= ""
+        let subject = ""
         let totaltime = this.props.time
 
 		if(isPause){
-       		subject = "Rast"
-       		next = `Härnäst är det dags för: ${this.props.mountain.name}`
+       		subject = "Nu har du rast"
+       		next = `Härnäst är det dags att plugga: ${this.props.mountain.name}`
        		totaltime = this.props.pauseTime
 
        	}else{
-       		subject = this.props.mountain.name
+       		subject = "Du pluggar: " + this.props.mountain.name
        		next = "Härnäst är det dags för: Rast"
        		totaltime = this.props.time
        	}
@@ -111,7 +111,7 @@ class Timer extends Component {
 		return(
 			<div>
 
-					<h1>Du pluggar {subject} </h1>
+					<h1>{subject} </h1>
 					<h1>
 						{formatTimeToUser(this.state.time)}
 					</h1>
