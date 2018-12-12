@@ -5,6 +5,7 @@ import RecentProgress from '../Components/RecentProgress.js'
 import MountainList from '../Components/MountainList.js'
 import Button from '../Components/Button.js'
 
+let timerButtonClass = "timerButtonDisabled";
 
 class Home extends Component {
 
@@ -24,6 +25,13 @@ class Home extends Component {
 
 		if(numAvailableColors == 0) {
 			availableColors = false
+		}
+
+		if(numAvailableColors < 10) {
+			timerButtonClass = "timerButton"
+
+		}else{
+			timerButtonClass = "timerButtonDisabled"
 		}
 
 		return (
@@ -75,7 +83,7 @@ class Home extends Component {
 			
 			fix_a_row="hidden"
 		}
-
+		this.checkColors();
 
 		return(
 			<div>
@@ -114,8 +122,7 @@ class Home extends Component {
 
 			<Button
 						onClick={ () => {this.handleTimer()}}
-						className="timerButton"
-
+						className= {timerButtonClass}
 					/>
 					<Button
 						 onClick={ () => {this.handleMountain()}}
