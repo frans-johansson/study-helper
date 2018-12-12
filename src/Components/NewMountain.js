@@ -24,8 +24,6 @@ class NewMountain extends Component {
   }
 
   handleSubmit() {
-    console.log("Handling submit...")
-    console.log(this.state)
 
     let {name, goal, date, color} = this.state
 
@@ -58,7 +56,6 @@ class NewMountain extends Component {
 
     let numMountains = 10 - JSON.parse(window.localStorage.getItem("colors")).length
     let thisColor = JSON.parse(window.localStorage.getItem("colors")).shift()
-    console.log("Färg för berget blir: " + thisColor);
 
     return(
         <div>
@@ -70,12 +67,12 @@ class NewMountain extends Component {
             }}/></h2>  
           <p>Du har just nu {numMountains}/10 berg</p>
           <form onSubmit={this.handleSubmit} method="get">
-            <label>
-              Ämne:
+           <label className="as_column">
+              Ämne
               <input type="text" minlength="2" name="name" onChange={this.handleChange} />
               Mål (h):
               <input type="number" min="0" name="goal" onChange={this.handleChange} />
-              Slutdatum:
+              Slutdatum
               <input id="datefield" type="date" name="date" min={this.todayDate()} onChange={this.handleChange} />
             </label>
 
