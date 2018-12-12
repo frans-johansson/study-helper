@@ -136,30 +136,45 @@ class SimpleTimerSetup extends Component {
 
 	render() {
 		return(
-			<div>
+			<div >
 				<form onSubmit={this.handleSubmit}>
-					<label> Pluggtid Timmar: </label>
-					<input type="number" min="0" name="inputTimeH" onInput={this.checkInputValuesStudy} />
+					<label> Fyll i pluggtid! </label>
+					<div className="timer_setup">
+						<div>
+							<input type="number" placeholder="0" min="0" name="inputTimeH" onInput={this.checkInputValuesStudy} />
+							<label>Timmar</label>
+						</div>
+						<div>
+							<input type="number" placeholder="0" min="0" name="inputTimeMin" onInput={this.checkInputValuesStudy}/>
+							<label>Minuter</label>
+						</div>
 
-					<label>Minuter:</label>
-					<input type="number" min="0" name="inputTimeMin" onInput={this.checkInputValuesStudy}/>
+					</div>
 
-					<label>Paustid Timmar:</label>
-					<input type="number" min="0" name="inputTimePauseH" onInput={this.checkInputValuesPause}/>
-
-					<label>Minuter:</label>
-					<input type="number" min="0" name="inputTimePauseMin" onInput={this.checkInputValuesPause}/>
+					<label>Fyll i paustid!</label>
+					<div className="timer_setup">
+						<div >
+							<input type="number" min="0" name="inputTimePauseH" onInput={this.checkInputValuesPause}/>
+							<label>Timmar</label>
+						</div>
+						<div>
+							<input type="number" min="0" name="inputTimePauseMin" onInput={this.checkInputValuesPause}/>
+							<label>Minuter</label>
+						</div>
+					</div>
 
 					<input type="submit" value="" disabled={!ifMountainSelected || !correctInputValuesStudy || !correctInputValuesPause}/>
 
 				</form>
 
 				<label>Välj berg:</label>
+
+				<div className="timer_center">
 				<MountainSelector
 					setSelectedMountain={this.props.subcomponentProps.setSelectedMountain}
 					clearSelectedMountain={this.props.subcomponentProps.clearSelectedMountain}
 					mountains={this.props.subcomponentProps.mountains}/>
-				
+				</div>
 				
 				<Button onClick={this.goHome}
 				className="homeButton" />
