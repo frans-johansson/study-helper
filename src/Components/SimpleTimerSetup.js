@@ -43,16 +43,17 @@ class MountainChoice extends Component {
 	// The className mountainSelection is a test class and should be changed later
 	render() {
 		let b=' '
+		let n= ''
 
 		console.log(ifMountainSelected)
 		if(ifMountainSelected){
-				let b='solid black'
+				b='black'
 			}
 
 		let divStyle={
 			backgroundColor:`${this.props.color}`,
-		
-			borderRadius: `${b}`
+			borderWidth: 100,
+			borderColor: "black"
 
 		}
 
