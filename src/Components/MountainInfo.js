@@ -84,7 +84,7 @@ class MountainInfo extends Component {
 	   	let remainingHours = goal - studiedHours
 	   	let remainingMinutes = 0
 
-	   	if(studiedMinutes !== 0 || studiedMinutes !== '') {
+	   	if(studiedMinutes !== 0 && studiedMinutes !== '') {
 			remainingMinutes = 60 - studiedMinutes
 			remainingHours -= 1
 		}

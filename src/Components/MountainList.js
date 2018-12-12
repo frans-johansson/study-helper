@@ -15,7 +15,7 @@ class MountainData extends Component {
 		let hoursLeft = this.props.goal - hoursStudied
 		let minutesLeft = 0
 
-		if(minutesStudied !== 0 || minutesStudied !== '') {
+		if(minutesStudied !== 0 && minutesStudied !== '') {
 			minutesLeft = 60 - minutesStudied
 			hoursLeft -= 1
 		}
