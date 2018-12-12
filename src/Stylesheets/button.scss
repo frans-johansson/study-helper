@@ -100,11 +100,13 @@
 .timerButtonDisabled {
     background: url(../svg/Buttons/button_timer_disabled.svg) no-repeat;
   @include buttonSettings;
+  cursor: default;
 }
 
 .addButtonDisabled {
   background: url(../svg/Buttons/button_add_disabled.svg) no-repeat;
-  @include buttonSettings;  
+  @include buttonSettings;
+  cursor: default;
 }
 
 .mountainSelection {

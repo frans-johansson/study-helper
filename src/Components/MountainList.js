@@ -12,17 +12,31 @@ class MountainData extends Component {
 		super(props)
 
 		// Formatera pluggad tid
-		let [hours, minutes] = toHoursMinutes(this.props.studied)
+		let [hoursStudied, minutesStudied] = toHoursMinutes(this.props.studied)
 
-		this.studiedMessage = ''
+		let hoursLeft = this.props.goal - hoursStudied
+		let minutesLeft = 0
 
-		if (hours == 0 && minutes == 0)
-			this.studiedMessage += `Du har inte börjat plugga ${this.props.name} än.`
+		if(minutesStudied != 0 || minutesStudied != '') {
+			minutesLeft = 60 - minutesStudied
+			hoursLeft -= 1
+		}
 
-		if (hours != 0)
-			this.studiedMessage += `${hours} h`
-		if (minutes != 0)
-			this.studiedMessage += `${minutes} min`
+
+		this.studiedMessage = 'Kvar till mål:'
+
+		if (hoursStudied == 0 && minutesStudied == 0)
+			this.studiedMessage += ` ${this.props.goal} h`
+
+		if (hoursStudied == 0 && minutesStudied != 0 && hoursLeft != 0) {
+			this.studiedMessage += ` ${hoursLeft} h`
+		}
+
+		if (hoursStudied != 0)
+			this.studiedMessage += ` ${hoursLeft} h`
+
+		if (minutesStudied != 0 && minutesLeft != 0)
+			this.studiedMessage += ` ${minutesLeft} min`
 	}
 
 	render() {
