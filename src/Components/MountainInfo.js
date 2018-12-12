@@ -18,12 +18,12 @@ class MountainInfo extends Component {
 
 		this.studiedMessage = ''
 
-		if (hours == 0 && minutes == 0)
+		if (hours === 0 && minutes === 0)
 			this.studiedMessage += `Du har inte börjat plugga ${name} än`
 
-		if (hours != 0)
+		if (hours !== 0)
 			this.studiedMessage += `${hours} h`
-		if (minutes != 0)
+		if (minutes !== 0)
 			this.studiedMessage += `${minutes} min`
 	}
 
@@ -56,7 +56,7 @@ class MountainInfo extends Component {
 
 	render() {
 		let mountain = this.props.subcomponentProps.highlightedMountain
-		let {goal, date, studied, color, id} = mountain
+		let {goal, date, studied, color} = mountain
 
 		let divStyle = {
 	        left: 0,
@@ -84,20 +84,20 @@ class MountainInfo extends Component {
 	   	let remainingHours = goal - studiedHours
 	   	let remainingMinutes = 0
 
-	   	if(studiedMinutes != 0 || studiedMinutes != '') {
+	   	if(studiedMinutes !== 0 && studiedMinutes !== '') {
 			remainingMinutes = 60 - studiedMinutes
 			remainingHours -= 1
 		}
 
 	   	let remainingMessage = ''
 
-	   	if(remainingHours == 0 && remainingMinutes == 0)
+	   	if(remainingHours === 0 && remainingMinutes === 0)
 	   		remainingMessage = ` ${goal}`
 
-	   	if(remainingHours != 0)
+	   	if(remainingHours !== 0)
 	   		remainingMessage += ` ${remainingHours} h`
 
-	   	if(remainingMinutes != 0)
+	   	if(remainingMinutes !== 0)
 	   		remainingMessage += ` ${remainingMinutes} min`
 
 		return(

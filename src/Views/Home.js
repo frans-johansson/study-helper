@@ -24,7 +24,7 @@ class Home extends Component {
 
 		let numAvailableColors = JSON.parse(window.localStorage.getItem("colors")).length
 
-		if(numAvailableColors == 0) {
+		if(numAvailableColors === 0) {
 			availableColors = false
 			addButtonClass = "addButtonDisabled"
 		}else{

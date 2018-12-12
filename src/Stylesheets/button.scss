@@ -1,13 +1,20 @@
 @import 'variabels';
 
 .ClickWrapper{
+ /*
   width: 70px;
   height: 140px;
-
+*/
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center
+  align-items: center;
+
+  & .right-absolute {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+  }
 }
 
 .Clickable {

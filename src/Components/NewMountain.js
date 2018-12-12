@@ -89,9 +89,7 @@ class NewMountain extends Component {
             }}/>
 
 
-          <div className="button_container home">
-            <Button className="backButton blue" onClick={ () => {this.props.clearSubcomponent()}} />
-          </div>
+            <Button className="backButton blue" positioning="right-absolute" onClick={ () => {this.props.clearSubcomponent()}} />
         </div>
     )
   }

@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import swal from '@sweetalert/with-react';
 import '../Stylesheets/mountainList.scss'
 
-import Button from './Button.js'
 import ProgressBar from '../Components/ProgressBar.js'
 import { toHoursMinutes } from '../Utils'
 
@@ -17,7 +15,7 @@ class MountainData extends Component {
 		let hoursLeft = this.props.goal - hoursStudied
 		let minutesLeft = 0
 
-		if(minutesStudied != 0 || minutesStudied != '') {
+		if(minutesStudied !== 0 && minutesStudied !== '') {
 			minutesLeft = 60 - minutesStudied
 			hoursLeft -= 1
 		}
@@ -25,17 +23,17 @@ class MountainData extends Component {
 
 		this.studiedMessage = 'Kvar till mål:'
 
-		if (hoursStudied == 0 && minutesStudied == 0)
+		if (hoursStudied === 0 && minutesStudied === 0)
 			this.studiedMessage += ` ${this.props.goal} h`
 
-		if (hoursStudied == 0 && minutesStudied != 0 && hoursLeft != 0) {
+		if (hoursStudied === 0 && minutesStudied !== 0 && hoursLeft !== 0) {
 			this.studiedMessage += ` ${hoursLeft} h`
 		}
 
-		if (hoursStudied != 0)
+		if (hoursStudied !== 0)
 			this.studiedMessage += ` ${hoursLeft} h`
 
-		if (minutesStudied != 0 && minutesLeft != 0)
+		if (minutesStudied !== 0 && minutesLeft !== 0)
 			this.studiedMessage += ` ${minutesLeft} min`
 	}
 

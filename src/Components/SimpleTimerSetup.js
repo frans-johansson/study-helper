@@ -54,9 +54,9 @@ class MountainChoice extends Component {
 }
 
 class MountainSelector extends Component {
-	constructor(props){
+	/*constructor(props){
 		super(props)
-	}
+	}*/
 
 	render() {
 		return(
@@ -114,7 +114,7 @@ class SimpleTimerSetup extends Component {
 	handleChangeStudyHours(event) {
 		studyDefaultHours = event.target.value
 
-		if(studyDefaultHours == '' || studyDefaultHours == 0) {
+		if(studyDefaultHours === '' || studyDefaultHours === 0) {
 			correctInputValuesStudyHours = false
 		}
 		else {
@@ -136,7 +136,7 @@ class SimpleTimerSetup extends Component {
 
 		console.log(studyDefaultMinutes)
 
-		if(studyDefaultMinutes == '' || studyDefaultMinutes == 0) {
+		if(studyDefaultMinutes === '' || studyDefaultMinutes === 0) {
 			correctInputValuesStudyMinutes = false
 		}
 		else {
@@ -161,7 +161,7 @@ class SimpleTimerSetup extends Component {
 	handleChangePauseHours(event) {
 		pauseDefaultHours = event.target.value
 
-		if(pauseDefaultHours == '' || pauseDefaultHours == 0) {
+		if(pauseDefaultHours === '' || pauseDefaultHours === 0) {
 			correctInputValuesPauseHours = false
 		}
 		else {
@@ -181,7 +181,7 @@ class SimpleTimerSetup extends Component {
 	handleChangePauseMinutes(event) {
 		pauseDefaultMinutes = event.target.value
 
-		if(pauseDefaultMinutes == '' || pauseDefaultMinutes == 0) {
+		if(pauseDefaultMinutes === '' || pauseDefaultMinutes === 0) {
 			correctInputValuesPauseMinutes = false
 		}
 		else {
@@ -228,7 +228,7 @@ class SimpleTimerSetup extends Component {
 		return(
 			<div >
 				<form onSubmit={this.handleSubmit}>
-					<label> Fyll i pluggtid! </label>
+					<label className="block-label"> Fyll i pluggtid! </label>
 					<div className="timer_setup">
 						<div>
 							<input type="number" placeholder="0" min="0" name="inputTimeH" value={studyDefaultHours} onChange={this.handleChangeStudyHours} />
@@ -241,9 +241,9 @@ class SimpleTimerSetup extends Component {
 
 					</div>
 
-					<label>Fyll i paustid!</label>
+					<label className="block-label">Fyll i paustid!</label>
 					<div className="timer_setup">
-						<div >
+						<div>
 							<input type="number" placeholder="0" min="0" name="inputTimePauseH" value={pauseDefaultHours} onChange={this.handleChangePauseHours}/>
 							<label>Timmar</label>
 						</div>
@@ -257,7 +257,7 @@ class SimpleTimerSetup extends Component {
 
 				</form>
 
-				<label>Välj berg:</label>
+				<label className="block-label">Välj berg:</label>
 
 				<div className="timer_center">
 				<MountainSelector
@@ -267,7 +267,9 @@ class SimpleTimerSetup extends Component {
 				</div>
 				
 				<Button onClick={this.goHome}
-				className="backButton blue" />
+				className="backButton blue"
+				positioning="right-absolute"
+				 />
 				
 
 			</div>

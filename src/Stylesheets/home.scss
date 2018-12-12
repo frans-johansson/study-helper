@@ -32,7 +32,7 @@ html {
 			}
 
 			&.timer {
-				background-color: $sky-color;
+				background-color: $grass-color;
 			}
 
 			.header {
@@ -127,6 +127,7 @@ html {
 		& {
 			@media (max-width: 420px) {
 				height: 100%;
+				width: 100%;
 			}
 		}
 
@@ -159,12 +160,31 @@ html {
 
 }
 
+.block-label {
+	display: block;
+	margin-top: 15px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .timer_setup{
 	display:flex;
 	flex-direction: row;
+	align-items: center;
+	justify-content: center;
 
-	>div{
+	width: 80vw;
+
+	> div{
+		width: 100%;
+
 		flex-direction: column;
+		align-content: center;
+
 		background-color: lighten($box-color, 7) !important;
 
 		&:first-child {
@@ -174,10 +194,6 @@ html {
 		&:last-child {
 			border-radius: 0 $corner-roundness $corner-roundness 0;
 		}
-	}
-
-	label{
-		display: block;
 	}
 	
 	input[type=number]{
@@ -286,12 +302,13 @@ input[type=submit] {
 	color:$text-color;
 	cursor: pointer;
 
-	width: 10vw;
-	height: 10vh;
+	width: 90px;
+	height: 90px;
 
 	position: absolute;
 	bottom: 10px;
-	left:44vw;
+
+	box-shadow: 1px 1px 7px lighten($text-color, 15);
 }
 
 input[disabled]{
