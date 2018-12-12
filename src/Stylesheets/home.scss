@@ -298,40 +298,52 @@ input[type=text] {
 
 	width: 200px;
 	height:50px;
-	margin:10px;
 
 	font-size: 40px;
-	background-color: $input-box-color;
+	background-color: lighten($box-color, 7);
+	text-align: center;
+	border-radius: $corner-roundness $corner-roundness $corner-roundness $corner-roundness;
 }
 
 input[type=number] {
-	border:0 none;
+	border:0 none  ;
 	width: 80px;
 	height:50px;
-	margin:10px;
 
 	font-size: 40px;
 	color:$text-color;
-		background-color: $input-box-color;
+	text-align: center;
+	background-color: lighten($box-color, 7);
 }
 
 input[type=date]{
 	border:0 none;
 	color:$text-color;
-	background-color: $input-box-color;
+	background-color: lighten($box-color, 7);
 
 	width: 200px;
 	height: 30px;
-	margin: 10px;
 
 	text-align: center;
+	border-radius: $corner-roundness $corner-roundness $corner-roundness $corner-roundness;
 }
 
-.as_column {
+.mountain_setup {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 
-	flex-direction: column;
-	justify-content: space-around;
+	text-align: center;
+
+	>div{
+	}
+
+	label{
+		display: block;
+	}
+
+	input[type=number] {
+		border-radius: $corner-roundness $corner-roundness $corner-roundness $corner-roundness;
+	}
+
 }
