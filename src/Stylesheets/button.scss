@@ -11,16 +11,15 @@
 }
 
 .Clickable {
-  width: 8vw;
-  height: 8vw;
+@include buttonSettings;
   border-radius: 100px;
+ 
 
   color: white;
   cursor: pointer;
-  
-  //background-image: url(../svg/Buttons/button_ground.svg) ;
-  //background-color: $text-color;*/
+  box-shadow: 1px 1px 7px lighten($text-color, 15);
 }
+
 
 .button_container{
   display: flex;
@@ -48,65 +47,47 @@
 
 .homeButton{
   background: url(../svg/Buttons/button_home.svg) no-repeat;
-  //background-size: 40px 40px;
-  width: 8vw;
-  height: 8vh;
-  display: inline-flex;
+  @include buttonSettings;
 }
 
 .addButton {
-  background-color: #2a2a2a;
-    background: url(../svg/Buttons/button_add.svg) no-repeat;
-    width: 8vw;
-    height: 8vh;
-    display: inline-flex;
+  background: url(../svg/Buttons/button_add.svg) no-repeat;
+  @include buttonSettings;
+  
 }
 
 .pauseButton {
   background: url(../svg/Buttons/button_pause.svg) no-repeat;
-  width: 10vw;
-  height: 10vh;
-  display: inline-flex;
+  @include buttonSettings;
 
 }
 
 .deleteButton {
   background: url(../svg/Buttons/button_delete.svg) no-repeat;
-  width: 8vw;
-  height: 8vh;
-  display: inline-flex;
+  @include buttonSettings;
 
 }
 
 .backButton {
   background: url(../svg/Buttons/button_back.svg) no-repeat;
-  width: 8vw;
-  height: 8vh;
-  display: inline-flex;
+  @include buttonSettings;
 }
 
 .timerButton {
-    background: url(../svg/Buttons/button_timer.svg) no-repeat;
-    width: 8vw;
-    height: 8vh;
-    display: inline-flex;
-}
+  background: url(../svg/Buttons/button_timer.svg) no-repeat;
+  @include buttonSettings;
+ }
 
 .stopButton{
   background: url(../svg/Buttons/button_stop.svg) no-repeat;
-  width: 10vw;
-  height: 10vh;
-  display: inline-flex;
+  @include buttonSettings;
 }
 
 .playButton {
   background: url(../svg/Buttons/button_play.svg) no-repeat;
-  width: 10vw;
-  height: 10vh;
-  display: inline-flex;
+  @include buttonSettings;
 }
 
 .mountainSelection {
-  width: 40px;
-  height:40px;
+  @include buttonSettings;
 }
