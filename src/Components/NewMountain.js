@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Button from '../Components/Button.js'
+import onClickOutside from 'react-onclickoutside'
 
 class NewMountain extends Component {
 
@@ -51,6 +52,9 @@ class NewMountain extends Component {
 
   }
 
+  handleClickOutside = () => {
+    this.props.clearSubcomponent()
+  }
 
   render() {
 
@@ -97,4 +101,4 @@ class NewMountain extends Component {
   }
 }
 
-export default NewMountain
+export default onClickOutside(NewMountain)

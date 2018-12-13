@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { toHoursMinutes } from '../Utils'
 import swal from '@sweetalert/with-react';
 import Button from './Button.js'
+import onClickOutside from 'react-onclickoutside'
 
 
 class MountainInfo extends Component {
@@ -63,10 +64,14 @@ class MountainInfo extends Component {
 
 	updateImageDimensions() {
 		this.setState({
-			windowWidth: document.documentElement.clientWidth
+			windowWidth: window.innerWidth
 		})
 	}
 
+	handleClickOutside = () => {
+		this.goHome()
+		console.log("here")
+	}
 
 	render() {
 		let mountain = this.props.subcomponentProps.highlightedMountain
@@ -164,4 +169,4 @@ class MountainInfo extends Component {
 	}
 }
 
-export default MountainInfo
+export default onClickOutside(MountainInfo)

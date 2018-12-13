@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Button from '../Components/Button.js'
+import onClickOutside from 'react-onclickoutside'
 
 let ifMountainSelected = false
 let isSelected = ''
@@ -252,6 +253,10 @@ class SimpleTimerSetup extends Component {
         setActiveView("timer")
 	}
 
+	handleClickOutside = () => {
+		this.goHome()
+	}
+
 	render() {
 
 		return(
@@ -306,4 +311,4 @@ class SimpleTimerSetup extends Component {
 	}
 }
 
-export default SimpleTimerSetup
+export default onClickOutside(SimpleTimerSetup)
