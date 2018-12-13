@@ -27,9 +27,6 @@
   box-shadow: 1px 1px 7px lighten($text-color, 15);
 }
 
-
-
-
 .button_container{
   display: flex;
   flex-direction: row;
@@ -37,7 +34,7 @@
 
   &.stat_buttons{
     width: 100vw !important;
-    position: absolute;
+    position: fixed;
     bottom: 0vh;
 
     >div{

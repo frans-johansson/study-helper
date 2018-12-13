@@ -68,8 +68,8 @@ class MountainInfo extends Component {
 
 		if(studied>0){
 			divStyle = {
-	            left: `${50}vw` *(studied/goal),
-	            bottom: `${50}vw` *  (703.38/595.38) *(studied/goal) ,
+	            left: `${50 *(studied/goal)}vw`,
+	            bottom: `${100 * (703.38/595.38) * (studied/goal)}vw` ,
 	            backgroundColor: `${color}`,
 	   			//backgroundImage: 'url(/static/media/position.4f7a9f24.svg)',
 	   			backgroundSize: 'cover',
@@ -77,6 +77,9 @@ class MountainInfo extends Component {
 	   			height: 10,
 	   			borderRadius: 100,
 	        };
+
+	        console.log("studied/goal")
+	        console.log(studied/goal)
 	   	}
 
 	   	let [studiedHours, studiedMinutes] = toHoursMinutes(studied)

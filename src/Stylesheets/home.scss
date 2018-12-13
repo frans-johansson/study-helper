@@ -120,7 +120,7 @@ html {
 }
 
 .has_subcomponent {
-	div:not(.hidden):not(.Clickable):not(.mountain_climber_container):not(.button_container):not(.ClickWrapper):not(.mountain_position):not(.deleteButton):not(.backButton):not(.mountainSelection):not(.timer_setup):not(.timer_center){
+	div:not(.hidden):not(.Clickable):not(.button_container):not(.ClickWrapper):not(.mountain_position):not(.deleteButton):not(.backButton):not(.mountainSelection):not(.timer_setup):not(.timer_center){
 		padding: 10px;
 		background-color: $box-color;
 
@@ -133,6 +133,9 @@ html {
 
 		&.not_color{
 			background-color: $sky-color;
+			width: 70vw;
+			height:70vh;
+
 		}
 	}
 }
@@ -141,7 +144,7 @@ html {
 	width: 100vw !important;
 	height: 50vh !important;
 	padding: 0 !important;
-	background-color: transparent !important; 
+	background-color: transparent !important;
 }
 
 
@@ -235,27 +238,28 @@ form {
 	background: linear-gradient(to top, rgba($grass-color, 0.7), 50%, transparent);
 }
 
-.mountain_position {
-    position: absolute;
-}
-
 .stat_image_conatiner {
 	background-image:url(../svg/minimount.svg);
 	background-size: contain;
 	background-repeat: no-repeat;
-	background-position: bottom;
+	background-position: bottom left;
 
 	padding: 0 !important; 
 
-	position:absolute;
+	position: absolute;
 	align-content: space-evenly;
-	justify-content:center;
+	justify-content: left;
 	display:flex;
 	flex-direction:column;
 
-	width: 100vw;
-	height:100vh;
+	width: 70vw;
+	max-width: 530px !important;
+	height:70vh;
 }
+
+.mountain_position {
+    position: absolute;
+} 
 
 .mini_image_conatiner {
 	background-image:url(../svg/minimount.svg);
