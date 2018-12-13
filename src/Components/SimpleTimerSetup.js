@@ -1,12 +1,15 @@
 import React, { Component } from 'react'
 import Button from '../Components/Button.js'
 
-let ifMountainSelected = false;
+let ifMountainSelected = false
+let isSelected = ''
+
 let correctInputValuesStudyHours = false
 let correctInputValuesStudyMinutes = true
 let correctInputValuesPauseHours = false
 let correctInputValuesPauseMinutes = true
 let correctInputValues = true
+
 let studyDefaultHours = 0
 let studyDefaultMinutes = 45
 let pauseDefaultHours = 0
@@ -17,88 +20,53 @@ class MountainChoice extends Component {
 		super(props)
 
 		this.handleClick = this.handleClick.bind(this)
-		this.unSelectMountain = this.unSelectMountain.bind(this)
-
-		this.state = {
-			isSelected: false,
-			op: 1,
-		//	selectedMountain: props.selectedMountain,
-		}
 	}
 
 	//IDE! Istället för isSelected är en bool, låt isSelected spara id:et på den som är vald och använd det!
 
 	handleClick(id) {
-		let {isSelected} = this.state;
-		let {op} = this.state;
-		//let {selectedMountain} = this.state;
-		this.unSelectMountain()
 
-		if(!isSelected){
-			//if(ifMountainSelected) {
-			//	this.props.setSelectedMountain(this.state.selectedMountain.id)
-			/*
-				this.setState ({
-					op: 1,
-				})
-			}
-			*/
+		if(isSelected === ''){
 
 			this.props.setSelectedMountain(id)
-			this.setState({
-				op: 0.5,
-			})
 
-			ifMountainSelected = true;
+			ifMountainSelected = true
+			isSelected = id
 		}
-		else{
-			
+		else if(isSelected === id) {
+
 			this.props.clearSelectedMountain()
+			ifMountainSelected = false
+			isSelected = ''
+		}
+		else if(isSelected !== id) {
 
-			ifMountainSelected = false;
+			this.props.setSelectedMountain(id)
+
+			ifMountainSelected = true
+			isSelected = id
+
+			this.props.updateButtons()
 		}
 
-		this.setState({
-				isSelected: !isSelected,
-		})
-	}
-
-	unSelectMountain() {
-
-		this.props.mountains.map(
-			(m) => {
-
-				console.log(m.name)
-				this.setState({
-					op: 1,
-				})
-
-				console.log("Test " + this.state.isSelected)
-				
-				this.props.clearSelectedMountain()
-				ifMountainSelected = false
-
-				this.setState({
-					isSelected: !this.state.isSelected,
-				})
-				
-				console.log("Hej")
-			}
-		)
 	}
 
 	// The className mountainSelection is a test class and should be changed later
 	render() {
 
-			let divStyle={
+		let opa = 1
+
+		if(isSelected === this.props.id) {
+			opa = 0.5
+		}
+
+		let divStyle={
 			backgroundColor: `${this.props.color}`,
-			opacity: `${this.state.op}`,
+			opacity: `${opa}`,
 			border: 100,
 			borderWidth: 5,
 			borderColor: "black",
 		}
-
-		console.log(divStyle)
 
 		return(
 			<Button className="mountainSelection" text={`${this.props.name}`} style={divStyle} onClick={() => this.handleClick(this.props.id)} />
@@ -107,9 +75,16 @@ class MountainChoice extends Component {
 }
 
 class MountainSelector extends Component {
-	/*constructor(props){
+
+	constructor(props) {
 		super(props)
-	}*/
+
+		this.updateButtons = this.updateButtons.bind(this)
+	}
+
+	updateButtons() {
+		this.forceUpdate()
+	}
 
 	render() {
 
@@ -125,7 +100,8 @@ class MountainSelector extends Component {
 									name={m.name}
 									setSelectedMountain={this.props.setSelectedMountain}
 									clearSelectedMountain={this.props.clearSelectedMountain}
-									mountains={this.props.mountains}/>
+									mountains={this.props.mountains}
+									updateButtons={this.updateButtons}/>
 							)
 						}
 					)
@@ -152,6 +128,8 @@ class SimpleTimerSetup extends Component {
 
 	goHome() {
 		ifMountainSelected = false
+		isSelected = ''
+		
 		correctInputValuesStudyHours = false
 		correctInputValuesStudyHours = true
 		correctInputValuesPauseHours = false
@@ -252,6 +230,8 @@ class SimpleTimerSetup extends Component {
         event.preventDefault();
 
         ifMountainSelected = false
+        isSelected = ''
+
        	correctInputValuesStudyHours = false
 		correctInputValuesStudyHours = true
 		correctInputValuesPauseHours = false
