@@ -68,8 +68,8 @@ class MountainInfo extends Component {
 
 		if(studied>0){
 			divStyle = {
-	            left: `${50*(studied/goal)}vw`,
-	            bottom: `${50*(studied/goal)}vw`,
+	            left: `${50}vw` *(studied/goal),
+	            bottom: `${50}vw` *  (703.38/595.38) *(studied/goal) ,
 	            backgroundColor: `${color}`,
 	   			//backgroundImage: 'url(/static/media/position.4f7a9f24.svg)',
 	   			backgroundSize: 'cover',
@@ -111,7 +111,7 @@ class MountainInfo extends Component {
 								<p>Tid kvar: {`${remainingMessage}`}</p>
 								<p>Slutdatum: {`${date} `} </p>
 							</div>
-							
+
 						<div className="button_container stat_buttons">
 
 							<Button className = "backButton" onClick={this.goHome}/>
