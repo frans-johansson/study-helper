@@ -1,10 +1,18 @@
 import React, { Component } from 'react'
 import Button from '../Components/Button.js'
 
-let ifMountainSelected = false;
-let correctInputValuesStudy = false;
-let correctInputValuesPause = false;
+let ifMountainSelected = false
+let isSelected = ''
+
+let correctInputValuesStudyHours = false
+let correctInputValuesStudyMinutes = true
+let correctInputValuesPauseHours = false
+let correctInputValuesPauseMinutes = true
+let correctInputValues = true
+
+let studyDefaultHours = 0
 let studyDefaultMinutes = 45
+let pauseDefaultHours = 0
 let pauseDefaultMinutes = 15
 
 class MountainChoice extends Component {
@@ -12,34 +20,52 @@ class MountainChoice extends Component {
 		super(props)
 
 		this.handleClick = this.handleClick.bind(this)
-
-		this.state = {
-			isSelected: false,
-		}
 	}
 
+	//IDE! Istället för isSelected är en bool, låt isSelected spara id:et på den som är vald och använd det!
+
 	handleClick(id) {
-		let {isSelected} = this.state;
 
-		if(!isSelected){
+		if(isSelected === ''){
+
 			this.props.setSelectedMountain(id)
-			ifMountainSelected = true;
+
+			ifMountainSelected = true
+			isSelected = id
 		}
-		else{
+		else if(isSelected === id) {
+
 			this.props.clearSelectedMountain()
-			ifMountainSelected = false;
+			ifMountainSelected = false
+			isSelected = ''
+		}
+		else if(isSelected !== id) {
+
+			this.props.setSelectedMountain(id)
+
+			ifMountainSelected = true
+			isSelected = id
+
+			this.props.updateButtons()
 		}
 
-		this.setState({
-			isSelected: !isSelected
-		})
 	}
 
 	// The className mountainSelection is a test class and should be changed later
 	render() {
 
+		let opa = 1
+
+		if(isSelected === this.props.id) {
+			opa = 0.5
+		}
+
 		let divStyle={
-			backgroundColor:`${this.props.color}`,
+			backgroundColor: `${this.props.color}`,
+			opacity: `${opa}`,
+			border: 100,
+			borderWidth: 5,
+			borderColor: "black",
 		}
 
 		return(
@@ -49,11 +75,19 @@ class MountainChoice extends Component {
 }
 
 class MountainSelector extends Component {
-	constructor(props){
+
+	constructor(props) {
 		super(props)
+
+		this.updateButtons = this.updateButtons.bind(this)
+	}
+
+	updateButtons() {
+		this.forceUpdate()
 	}
 
 	render() {
+
 		return(
 			<div>
 				{
@@ -65,7 +99,9 @@ class MountainSelector extends Component {
 									color={m.color}
 									name={m.name}
 									setSelectedMountain={this.props.setSelectedMountain}
-									clearSelectedMountain={this.props.clearSelectedMountain}/>
+									clearSelectedMountain={this.props.clearSelectedMountain}
+									mountains={this.props.mountains}
+									updateButtons={this.updateButtons}/>
 							)
 						}
 					)
@@ -82,61 +118,129 @@ class SimpleTimerSetup extends Component {
 
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.goHome	= this.goHome.bind(this)
-		this.checkInputValuesStudy = this.checkInputValuesStudy.bind(this)
-		this.checkInputValuesPause = this.checkInputValuesPause.bind(this)
-		this.handleChangeStudy = this.handleChangeStudy.bind(this)
-		this.handleChangePause = this.handleChangePause.bind(this)
-	}
-
-	checkInputValuesStudy(event) {
-
-		if(event.target.value == '' || event.target.value == 0) {
-			correctInputValuesStudy = false
-		}
-		else {
-			correctInputValuesStudy = true
-		}
-
-		this.forceUpdate()
-	}
-
-	checkInputValuesPause(event) {
-
-		if(event.target.value == '' || event.target.value == 0) {
-			correctInputValuesPause = false
-		}
-		else {
-			correctInputValuesPause = true
-		}
-
-		this.forceUpdate()
+		this.handleChangeStudyHours = this.handleChangeStudyHours.bind(this)
+		this.handleChangeStudyMinutes = this.handleChangeStudyMinutes.bind(this)
+		this.handleChangePauseHours = this.handleChangePauseHours.bind(this)
+		this.handleChangePauseMinutes = this.handleChangePauseMinutes.bind(this)
 
 	}
+
 
 	goHome() {
 		ifMountainSelected = false
-		correctInputValuesStudy = false
-		correctInputValuesPause = false
+		isSelected = ''
+		
+		correctInputValuesStudyHours = false
+		correctInputValuesStudyHours = true
+		correctInputValuesPauseHours = false
+		correctInputValuesPauseMinutes = true
+		correctInputValues = true
+
+		studyDefaultHours = 0
 		studyDefaultMinutes = 45
+		pauseDefaultHours = 0
 		pauseDefaultMinutes = 15
 
 		this.props.clearSubcomponent()
 	}
 
-	handleChangeStudy(event) {
-		studyDefaultMinutes = event.target.value
+	handleChangeStudyHours(event) {
+		studyDefaultHours = event.target.value
+
+		if(studyDefaultHours === '' || studyDefaultHours === 0) {
+			correctInputValuesStudyHours = false
+		}
+		else {
+			correctInputValuesStudyHours = true
+		}
+
+		if((correctInputValuesStudyHours || correctInputValuesStudyMinutes) && (correctInputValuesPauseHours || correctInputValuesPauseMinutes)) {
+			correctInputValues = true
+		}
+		else {
+			correctInputValues = false
+		}
+
+		this.forceUpdate()
 	}
 
-	handleChangePause(event) {
+	handleChangeStudyMinutes(event) {
+		studyDefaultMinutes = event.target.value
+
+		if(studyDefaultMinutes === '' || studyDefaultMinutes === 0) {
+			correctInputValuesStudyMinutes = false
+		}
+		else {
+			correctInputValuesStudyMinutes = true
+		}
+
+		if((correctInputValuesStudyHours || correctInputValuesStudyMinutes) && (correctInputValuesPauseHours || correctInputValuesPauseMinutes)) {
+			correctInputValues = true
+		}
+		else {
+			correctInputValues = false
+		}
+
+		this.forceUpdate()
+
+	}
+
+	handleChangePauseHours(event) {
+		pauseDefaultHours = event.target.value
+
+		if(pauseDefaultHours === '' || pauseDefaultHours === 0) {
+			correctInputValuesPauseHours = false
+		}
+		else {
+			correctInputValuesPauseHours = true
+		}
+
+		if((correctInputValuesStudyHours || correctInputValuesStudyMinutes) && (correctInputValuesPauseHours || correctInputValuesPauseMinutes)) {
+			correctInputValues = true
+		}
+		else {
+			correctInputValues = false
+		}
+
+		this.forceUpdate()
+	}
+
+	handleChangePauseMinutes(event) {
 		pauseDefaultMinutes = event.target.value
+
+		if(pauseDefaultMinutes === '' || pauseDefaultMinutes === 0) {
+			correctInputValuesPauseMinutes = false
+		}
+		else {
+			correctInputValuesPauseMinutes = true
+		}
+
+
+		if((correctInputValuesStudyHours || correctInputValuesStudyMinutes) && (correctInputValuesPauseHours || correctInputValuesPauseMinutes)) {
+			correctInputValues = true
+		}
+		else {
+			correctInputValues = false
+		}
+
+		this.forceUpdate()
 	}
 
 	handleSubmit(event) {
         event.preventDefault();
+
         ifMountainSelected = false
-        correctInputValuesStudy = false
-		correctInputValuesPause = false
+        isSelected = ''
+
+       	correctInputValuesStudyHours = false
+		correctInputValuesStudyHours = true
+		correctInputValuesPauseHours = false
+		correctInputValuesPauseMinutes = true
+		correctInputValues = true
+
+		studyDefaultHours = 0
 		studyDefaultMinutes = 45
+		pauseDefaultHours = 0
 		pauseDefaultMinutes = 15
 
         let {setTimeInput, setPauseInput, setActiveView} = this.props.subcomponentProps
@@ -150,41 +254,39 @@ class SimpleTimerSetup extends Component {
 
 	render() {
 
-
-
 		return(
 			<div >
 				<form onSubmit={this.handleSubmit}>
-					<label> Fyll i pluggtid! </label>
+					<label className="block-label"> Fyll i pluggtid! </label>
 					<div className="timer_setup">
 						<div>
-							<input type="number" placeholder="0" min="0" name="inputTimeH" onInput={this.checkInputValuesStudy} />
+							<input type="number" placeholder="0" min="0" name="inputTimeH" value={studyDefaultHours} onChange={this.handleChangeStudyHours} />
 							<label>Timmar</label>
 						</div>
 						<div>
-							<input type="number" placeholder="0" min="0" name="inputTimeMin" value={studyDefaultMinutes} onChange={this.handleChangeStudy} onInput={this.checkInputValuesStudy}/>
+							<input type="number" placeholder="0" min="0" name="inputTimeMin" value={studyDefaultMinutes} onChange={this.handleChangeStudyMinutes} />
 							<label>Minuter</label>
 						</div>
 
 					</div>
 
-					<label>Fyll i paustid!</label>
+					<label className="block-label">Fyll i paustid!</label>
 					<div className="timer_setup">
-						<div >
-							<input type="number" min="0" name="inputTimePauseH" onInput={this.checkInputValuesPause}/>
+						<div>
+							<input type="number" placeholder="0" min="0" name="inputTimePauseH" value={pauseDefaultHours} onChange={this.handleChangePauseHours}/>
 							<label>Timmar</label>
 						</div>
 						<div>
-							<input type="number" min="0" name="inputTimePauseMin" value={pauseDefaultMinutes} onChange={this.handleChangePause} onInput={this.checkInputValuesPause}/>
+							<input type="number" placeholder="0" min="0" name="inputTimePauseMin" value={pauseDefaultMinutes} onChange={this.handleChangePauseMinutes}/>
 							<label>Minuter</label>
 						</div>
 					</div>
 
-					<input type="submit" value="" disabled={!ifMountainSelected || !correctInputValuesStudy || !correctInputValuesPause}/>
+					<input type="submit" value="" disabled={!ifMountainSelected || !correctInputValues}/>
 
 				</form>
 
-				<label>Välj berg:</label>
+				<label className="block-label">Välj berg:</label>
 
 				<div className="timer_center">
 				<MountainSelector
@@ -192,10 +294,12 @@ class SimpleTimerSetup extends Component {
 					clearSelectedMountain={this.props.subcomponentProps.clearSelectedMountain}
 					mountains={this.props.subcomponentProps.mountains}/>
 				</div>
-				
+
 				<Button onClick={this.goHome}
-				className="homeButton" />
-				
+				className="backButton blue"
+				positioning="right-absolute"
+				 />
+
 
 			</div>
 		)

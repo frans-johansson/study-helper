@@ -32,7 +32,7 @@ html {
 			}
 
 			&.timer {
-				background-color: $sky-color;
+				background-color: $grass-color;
 			}
 
 			.header {
@@ -99,14 +99,14 @@ html {
 	}
 }
 
-.null{
-	position: none;
+.hidden{
+	display: none;
 }
 
 .list {
 
 	> div {
-		margin: 0 5vw 60px 5vw;
+		margin: 0 5vw 20px 5vw;
 		background-color: $box-color;
 		border-radius: $corner-roundness;
 		box-shadow: 1px 1px 7px lighten($text-color, 15);
@@ -120,16 +120,31 @@ html {
 }
 
 .has_subcomponent {
-	div:not(.hidden):not(.Clickable):not(.mountain_climber_container):not(.button_container):not(.ClickWrapper):not(.mountain_position):not(.deleteButton):not(.backButton):not(.mountainSelection):not(.timer_setup):not(.timer_center){
+	div:not(.hidden):not(.Clickable):not(.button_container):not(.ClickWrapper):not(.mountain_position):not(.deleteButton):not(.backButton):not(.mountainSelection):not(.timer_setup):not(.timer_center){
 		padding: 10px;
 		background-color: $box-color;
 
 		& {
 			@media (max-width: 420px) {
 				height: 100%;
+				width: 100%;
 			}
 		}
+
+		&.not_color{
+			background-color: $sky-color;
+			width: 70vw;
+			height:70vh;
+
+		}
 	}
+}
+
+.stat_info{
+	width: 100vw !important;
+	height: 50vh !important;
+	padding: 0 !important;
+	background-color: transparent !important;
 }
 
 
@@ -148,12 +163,31 @@ html {
 
 }
 
+.block-label {
+	display: block;
+	margin-top: 15px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .timer_setup{
 	display:flex;
 	flex-direction: row;
+	align-items: center;
+	justify-content: center;
 
-	>div{
+	width: 80vw;
+
+	> div{
+		width: 100%;
+
 		flex-direction: column;
+		align-content: center;
+
 		background-color: lighten($box-color, 7) !important;
 
 		&:first-child {
@@ -163,10 +197,6 @@ html {
 		&:last-child {
 			border-radius: 0 $corner-roundness $corner-roundness 0;
 		}
-	}
-
-	label{
-		display: block;
 	}
 	
 	input[type=number]{
@@ -197,48 +227,39 @@ html {
 	}
 
 	&.as_row {
+		padding-top: 10px;
 		flex-direction: row;
 		justify-content: space-around;
 	}
 }
 
-.mountain_climber_container {
+
+.fade-top {
+	background: linear-gradient(to top, rgba($grass-color, 0.7), 50%, transparent);
+}
+
+.stat_image_conatiner {
+	background-image:url(../svg/minimount.svg);
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: bottom left;
+
+	padding: 0 !important; 
+
 	position: absolute;
+	align-content: space-evenly;
+	justify-content: left;
+	display:flex;
+	flex-direction:column;
 
-		flex-direction:column;
-		align-content: space-evenly;
-
-		width: 400px;
-		height: 600px;
+	width: 70vw;
+	max-width: 530px !important;
+	height:70vh;
 }
 
 .mountain_position {
     position: absolute;
-}
-
-.home_image_conatiner {
-	background-image:url(../svg/homepagedown.svg);
-
-	background-size:cover;
-
-	width: 450px;
-	height:500px;
-
-	justify-content:center;
-	display:flex;
-}
-
-.stat_image_conatiner {
-	background-image:url(../svg/statcomp.svg);
-	background-size:cover;
-
-	justify-content:center;
-	display:flex;
-	flex-direction:column;
-
-	width: 400px;
-	height:600px;
-}
+} 
 
 .mini_image_conatiner {
 	background-image:url(../svg/minimount.svg);
@@ -283,12 +304,13 @@ input[type=submit] {
 	color:$text-color;
 	cursor: pointer;
 
-	width: 10vw;
-	height: 10vh;
+	width: 90px;
+	height: 90px;
 
 	position: absolute;
 	bottom: 10px;
-	left:44vw;
+
+	box-shadow: 1px 1px 7px lighten($text-color, 15);
 }
 
 input[disabled]{
@@ -302,40 +324,52 @@ input[type=text] {
 
 	width: 200px;
 	height:50px;
-	margin:10px;
 
 	font-size: 40px;
-	background-color: $input-box-color;
+	background-color: lighten($box-color, 7);
+	text-align: center;
+	border-radius: $corner-roundness $corner-roundness $corner-roundness $corner-roundness;
 }
 
 input[type=number] {
-	border:0 none;
+	border:0 none  ;
 	width: 80px;
 	height:50px;
-	margin:10px;
 
 	font-size: 40px;
 	color:$text-color;
-		background-color: $input-box-color;
+	text-align: center;
+	background-color: lighten($box-color, 7);
 }
 
 input[type=date]{
 	border:0 none;
 	color:$text-color;
-	background-color: $input-box-color;
+	background-color: lighten($box-color, 7);
 
 	width: 200px;
 	height: 30px;
-	margin: 10px;
 
 	text-align: center;
+	border-radius: $corner-roundness $corner-roundness $corner-roundness $corner-roundness;
 }
 
-.as_column {
+.mountain_setup {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 
-	flex-direction: column;
-	justify-content: space-around;
+	text-align: center;
+
+	>div{
+	}
+
+	label{
+		display: block;
+	}
+
+	input[type=number] {
+		border-radius: $corner-roundness $corner-roundness $corner-roundness $corner-roundness;
+	}
+
 }

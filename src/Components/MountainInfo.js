@@ -18,12 +18,12 @@ class MountainInfo extends Component {
 
 		this.studiedMessage = ''
 
-		if (hours == 0 && minutes == 0)
+		if (hours === 0 && minutes === 0)
 			this.studiedMessage += `Du har inte börjat plugga ${name} än`
 
-		if (hours != 0)
+		if (hours !== 0)
 			this.studiedMessage += `${hours} h`
-		if (minutes != 0)
+		if (minutes !== 0)
 			this.studiedMessage += `${minutes} min`
 	}
 
@@ -56,7 +56,7 @@ class MountainInfo extends Component {
 
 	render() {
 		let mountain = this.props.subcomponentProps.highlightedMountain
-		let {goal, date, studied, color, id} = mountain
+		let {goal, date, studied, color} = mountain
 
 		let divStyle = {
 	        left: 0,
@@ -68,8 +68,8 @@ class MountainInfo extends Component {
 
 		if(studied>0){
 			divStyle = {
-	            left: 215*(studied/goal),
-	            bottom: 499*(studied/goal),
+	            left: `${50 *(studied/goal)}vw`,
+	            bottom: `${100 * (703.38/595.38) * (studied/goal)}vw` ,
 	            backgroundColor: `${color}`,
 	   			//backgroundImage: 'url(/static/media/position.4f7a9f24.svg)',
 	   			backgroundSize: 'cover',
@@ -77,38 +77,49 @@ class MountainInfo extends Component {
 	   			height: 10,
 	   			borderRadius: 100,
 	        };
+
+	        console.log("studied/goal")
+	        console.log(studied/goal)
 	   	}
 
-	   	let remainingTime = goal - studied
+	   	let [studiedHours, studiedMinutes] = toHoursMinutes(studied)
 
-	   	let [remainingHours, remainingMinutes] = toHoursMinutes(remainingTime)
+	   	let remainingHours = goal - studiedHours
+	   	let remainingMinutes = 0
+
+	   	if(studiedMinutes !== 0 && studiedMinutes !== '') {
+			remainingMinutes = 60 - studiedMinutes
+			remainingHours -= 1
+		}
 
 	   	let remainingMessage = ''
 
-	   	if(remainingHours == 0 && remainingMinutes == 0)
+	   	if(remainingHours === 0 && remainingMinutes === 0)
 	   		remainingMessage = ` ${goal}`
 
-	   	if(remainingHours != 0)
+	   	if(remainingHours !== 0)
 	   		remainingMessage += ` ${remainingHours} h`
 
-	   	if(remainingMinutes != 0)
+	   	if(remainingMinutes !== 0)
 	   		remainingMessage += ` ${remainingMinutes} min`
 
 		return(
 
-				<div className="stat_image_conatiner">
-					<div className="mountain_climber_container">
+				<div className="stat_image_conatiner not_color">
 						<div className="mountain_position" style={divStyle}/>
-						<h1>{mountain.name}</h1>
-						<p>Mål: {`${goal} h `} </p>
-						<p>Nedlagd tid: {`${this.studiedMessage}`}</p>
-						<p>Tid kvar: {`${remainingMessage}`}</p>
-						<p>Slutdatum: {`${date} `} </p>
-						<div className="button_container">
+							<div className="stat_info">
+								<h1>Mt. {mountain.name}</h1>
+								<p>Mål: {`${goal} h `} </p>
+								<p>Nedlagd tid: {`${this.studiedMessage}`}</p>
+								<p>Tid kvar: {`${remainingMessage}`}</p>
+								<p>Slutdatum: {`${date} `} </p>
+							</div>
+
+						<div className="button_container stat_buttons">
+
 							<Button className = "backButton" onClick={this.goHome}/>
 							<Button className = "deleteButton" onClick={this.deleteMountain}/>
 						</div>
-					</div>
 				</div>
 
 		)

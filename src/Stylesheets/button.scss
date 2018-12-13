@@ -1,13 +1,20 @@
 @import 'variabels';
 
 .ClickWrapper{
+ /*
   width: 70px;
   height: 140px;
-
+*/
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center
+  align-items: center;
+
+  & .right-absolute {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+  }
 }
 
 .Clickable {
@@ -20,12 +27,20 @@
   box-shadow: 1px 1px 7px lighten($text-color, 15);
 }
 
-
 .button_container{
   display: flex;
   flex-direction: row;
   justify-content: center;
 
+  &.stat_buttons{
+    width: 100vw !important;
+    position: fixed;
+    bottom: 0vh;
+
+    >div{
+      padding: 5%;
+    }
+  }
 }
 
 .no_button{
@@ -46,7 +61,7 @@
 }
 
 .homeButton{
-  background: url(../svg/Buttons/button_home.svg) no-repeat;
+  background: url(../svg/Buttons/button_back_blue.svg) no-repeat;
   @include buttonSettings;
 }
 
@@ -71,6 +86,10 @@
 .backButton {
   background: url(../svg/Buttons/button_back.svg) no-repeat;
   @include buttonSettings;
+
+    &.blue {
+      background: url(../svg/Buttons/button_back_blue.svg) no-repeat;
+    }
 }
 
 .timerButton {
@@ -86,6 +105,18 @@
 .playButton {
   background: url(../svg/Buttons/button_play.svg) no-repeat;
   @include buttonSettings;
+}
+
+.timerButtonDisabled {
+    background: url(../svg/Buttons/button_timer_disabled.svg) no-repeat;
+  @include buttonSettings;
+  cursor: default;
+}
+
+.addButtonDisabled {
+  background: url(../svg/Buttons/button_add_disabled.svg) no-repeat;
+  @include buttonSettings;
+  cursor: default;
 }
 
 .mountainSelection {

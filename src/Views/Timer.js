@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import swal from '@sweetalert/with-react'
-
+import Sound from 'react-sound'
+import soundFile from "../Sounds/Alarm-tone.mp3"
 
 import Button from "../Components/Button.js"
 import ProgressBar from "../Components/ProgressBar.js"
@@ -12,6 +13,7 @@ let isTicking = true
 let isPause = false
 
 let pausePlayButton = "pauseButton"
+let alarmStatus = Sound.status.STOPPED
 
 let workSum = 0
 
@@ -49,6 +51,10 @@ class Timer extends Component {
 			isTicking = false;
 			if(isPause) {
 
+				alarmStatus = Sound.status.PLAYING
+
+				this.forceUpdate()
+
 				swal({
 					className: "swal_timer",
 					title: "Dags att ta tag i pluggandet igen!",
@@ -62,11 +68,16 @@ class Timer extends Component {
 					})
 					isPause = false
 					isTicking = true;
-
+					alarmStatus = Sound.status.STOPPED
 				})
 
 			}
 			else {
+
+				alarmStatus = Sound.status.PLAYING
+
+				this.forceUpdate()
+
 				swal({
 					className: "swal_timer",
 					title: "Bra pluggat! Nu är det dags för rast.",
@@ -80,6 +91,7 @@ class Timer extends Component {
 					  })
 					isPause = true
 					isTicking = true
+					alarmStatus = Sound.status.STOPPED
 				})
 
 			}
@@ -93,13 +105,13 @@ class Timer extends Component {
         let totaltime = this.props.time
 
 		if(isPause){
-       		subject = "Nu har du rast"
-       		next = `Härnäst är det dags att plugga: ${this.props.mountain.name}`
+       		subject = "Rast"
+       		next = `Nästa pass: ${this.props.mountain.name}`
        		totaltime = this.props.pauseTime
 
        	}else{
        		subject = "Du pluggar: " + this.props.mountain.name
-       		next = "Härnäst är det dags för: Rast"
+       		next = "Nästa pass: Rast"
        		totaltime = this.props.time
        	}
 
@@ -111,7 +123,7 @@ class Timer extends Component {
 
 		return(
 			<div>
-
+					<Sound url={`${soundFile}`} playStatus={`${alarmStatus}`} />
 					<h1>{subject} </h1>
 					<h1>
 						{formatTimeToUser(this.state.time)}
@@ -173,6 +185,7 @@ class TimerContainer extends Component {
 							pauseTime={formatTimeFromUser(pauseTime)}
 							mountain={mountain}/>
 				</div>
+
 
 				<div className="timer_box">
 					<Button onClick={() => {this.pausePlay()}} className={`${pausePlayButton}`} />

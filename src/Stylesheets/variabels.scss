@@ -37,15 +37,15 @@ $j-color: #e29178;
   
   display: inline-flex; 
   	@media screen and (max-width:500px) {
+		width: 18vw;
+ 		height: 18vw;
+	}
+	@media screen and (min-width: 500px){
 		width: 10vw;
  		height: 10vw;
 	}
-	@media screen and (min-width: 500px){
-		width: 8vw;
- 		height: 8vw;
-	}
 	@media screen and (min-width: 800px){
-		width: 5vw;
- 		height: 5vw;
+		width: 10vw;
+ 		height: 10vw;
 	}
 }

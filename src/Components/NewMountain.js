@@ -59,30 +59,37 @@ class NewMountain extends Component {
 
     return(
         <div>
-          <h2>NYTT BERG <div style={{
-              backgroundColor: thisColor,
-              width: 10,
-              height: 10,
-              borderRadius: 10,
-            }}/></h2>  
-          <p>Du har just nu {numMountains}/10 berg</p>
+          <h2>SKAPA BERG</h2> 
+          <h3>Nr {numMountains+1}/10</h3>
           <form onSubmit={this.handleSubmit} method="get">
-           <label className="as_column">
-              Ämne
-              <input type="text" minlength="2" name="name" onChange={this.handleChange} />
-              Mål (h):
-              <input type="number" min="0" name="goal" onChange={this.handleChange} />
-              Slutdatum
+           <label className="mountain_setup">
+            <div>
+              <label>Ämne</label>
+                 <input type="text" minLength="2" maxLength="10" name="name" onChange={this.handleChange} />
+            </div>
+            <div>
+               <label>Mål (h)</label>
+                 <input type="number" min="0" name="goal" onChange={this.handleChange} />
+            </div>
+            <div>
+                <label>Slutdatum</label>
               <input id="datefield" type="date" name="date" min={this.todayDate()} onChange={this.handleChange} />
+            </div>
             </label>
+
 
             <input type="submit" value="" disabled={!this.state.name || !this.state.goal || !this.state.date} />
           </form>
 
+          <div style={{
+              backgroundColor: thisColor,
+              width: 10,
+              height: 10,
+              borderRadius: 10,
+            }}/>
 
-          <div>
-            <Button className="homeButton" onClick={ () => {this.props.clearSubcomponent()}} />
-          </div>
+
+            <Button className="backButton blue" positioning="right-absolute" onClick={ () => {this.props.clearSubcomponent()}} />
         </div>
     )
   }

@@ -6,6 +6,10 @@
 	position: relative;
 	overflow: hidden;
 
+	&:last-of-type {
+		margin-bottom: 40vh;
+	}
+
 	.mountain_thumbnail {
 		flex: 1;
 		position: relative;
