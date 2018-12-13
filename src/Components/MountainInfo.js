@@ -90,8 +90,8 @@ class MountainInfo extends Component {
 			if (studied >= goal)
 			{
 				divStyle = {
-					left: `50vw`,
-					bottom: `100vw` ,
+					left: `50%`,
+					bottom: `100%` ,
 					backgroundColor: `${color}`,
 					//backgroundImage: 'url(/static/media/position.4f7a9f24.svg)',
 					backgroundSize: 'cover',
@@ -102,8 +102,8 @@ class MountainInfo extends Component {
 			}
 			else {
 				divStyle = {
-					left: `${50 *(studied/goal)}vw`,
-					bottom: `${100 * (703.38/595.38) * (studied/goal)}vw` ,
+					left: `${50 *(studied/goal)}%`,
+					bottom: `${100 * (703.38/595.38) * (studied/goal)}%` ,
 					backgroundColor: `${color}`,
 					//backgroundImage: 'url(/static/media/position.4f7a9f24.svg)',
 					backgroundSize: 'cover',
