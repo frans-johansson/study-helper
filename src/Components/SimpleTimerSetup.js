@@ -40,15 +40,18 @@ class MountainChoice extends Component {
 		})
 	}
 
+	/*unSelectMountain() {
+		this.props.mountains.map(
+			(m) => {
+				this.setState({
+					isSelected: false
+				})
+			}
+		)
+	}*/
+
 	// The className mountainSelection is a test class and should be changed later
 	render() {
-		let b=' '
-		let n= ''
-
-		console.log(ifMountainSelected)
-		if(ifMountainSelected){
-				b='black'
-			}
 
 		let divStyle={
 			backgroundColor:`${this.props.color}`,

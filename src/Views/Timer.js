@@ -106,12 +106,12 @@ class Timer extends Component {
 
 		if(isPause){
        		subject = "Rast"
-       		next = `Härnäst är det dags att plugga: ${this.props.mountain.name}`
+       		next = `Nästa pass: ${this.props.mountain.name}`
        		totaltime = this.props.pauseTime
 
        	}else{
        		subject = "Du pluggar: " + this.props.mountain.name
-       		next = "Härnäst är det dags för: Rast"
+       		next = "Nästa pass: Rast"
        		totaltime = this.props.time
        	}
 
