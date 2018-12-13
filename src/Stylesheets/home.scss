@@ -120,7 +120,7 @@ html {
 }
 
 .has_subcomponent {
-	div:not(.hidden):not(.Clickable):not(.button_container):not(.ClickWrapper):not(.mountain_position):not(.deleteButton):not(.backButton):not(.mountainSelection):not(.timer_setup):not(.timer_center){
+	div:not(.hidden):not(.Clickable):not(.button_container):not(.ClickWrapper):not(.mountain_position):not(.deleteButton):not(.backButton):not(.mountainSelection):not(.timer_setup):not(.timer_center):not(.subjectColor){
 		padding: 10px;
 		background-color: $box-color;
 
@@ -381,4 +381,15 @@ input[type=date]{
 		border-radius: $corner-roundness $corner-roundness $corner-roundness $corner-roundness;
 	}
 
+}
+
+.subjectColor {
+	height: 10vw;
+    width: 10vw;
+    align: center;
+
+    margin-right: 5%;
+
+    border-radius: 10vw;
+    display: inline-flex;
 }
