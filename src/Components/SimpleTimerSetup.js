@@ -20,24 +20,46 @@ class MountainChoice extends Component {
 
 		this.state = {
 			isSelected: false,
+			op: '',
+		//	selectedMountain: props.selectedMountain,
 		}
 	}
 
 	handleClick(id) {
-		let {isSelected} = this.state;
+	let {isSelected} = this.state;
+	let {op} = this.state;
+	//let {selectedMountain} = this.state;
 
 		if(!isSelected){
+			//if(ifMountainSelected) {
+			//	this.props.setSelectedMountain(this.state.selectedMountain.id)
+			/*
+				this.setState ({
+					op: 1,
+				})
+			}
+			*/
+
 			this.props.setSelectedMountain(id)
+			this.setState({
+				op: 0.8,
+			})
 			ifMountainSelected = true;
 		}
 		else{
 			this.props.clearSelectedMountain()
+			console.log("opacity2:");
+			console.log(this.state.op)
+			this.setState({
+				op: 1,
+			})
+
 			ifMountainSelected = false;
 		}
 
 		this.setState({
-			isSelected: !isSelected
-		})
+				isSelected: !isSelected,
+			})
 	}
 
 	/*unSelectMountain() {
@@ -53,11 +75,12 @@ class MountainChoice extends Component {
 	// The className mountainSelection is a test class and should be changed later
 	render() {
 
-		let divStyle={
-			backgroundColor:`${this.props.color}`,
-			borderWidth: 100,
-			borderColor: "black"
-
+			let divStyle={
+			backgroundColor: `${this.props.color}`,
+			opacity: `${this.state.op}`,
+			border: 100,
+			borderWidth: 5,
+			borderColor: "black",
 		}
 
 		return(
@@ -278,12 +301,12 @@ class SimpleTimerSetup extends Component {
 					clearSelectedMountain={this.props.subcomponentProps.clearSelectedMountain}
 					mountains={this.props.subcomponentProps.mountains}/>
 				</div>
-				
+
 				<Button onClick={this.goHome}
 				className="backButton blue"
 				positioning="right-absolute"
 				 />
-				
+
 
 			</div>
 		)
