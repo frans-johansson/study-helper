@@ -239,22 +239,31 @@ form {
 }
 
 .stat_image_conatiner {
-	background-image:url(../svg/minimount.svg);
-	background-size: contain;
-	background-repeat: no-repeat;
-	background-position: bottom left;
-
-	padding: 0 !important; 
+	padding: 0 !important;
 
 	position: absolute;
 	align-content: space-evenly;
-	justify-content: left;
+	justify-content: flex-end;
 	display:flex;
 	flex-direction:column;
 
 	width: 70vw;
-	max-width: 530px !important;
 	height:70vh;
+}
+
+.stat_image {
+	display: inline-block;
+	position: absolute;
+
+	padding: 0 !important;
+	//max-width: 530px !important;
+	width: 100%;
+
+	background-image:url(../svg/minimount.svg);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: bottom center;
+	background-color: $sky-color !important;
 }
 
 .mountain_position {
