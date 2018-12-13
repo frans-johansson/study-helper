@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { toHoursMinutes } from '../Utils'
 import swal from '@sweetalert/with-react';
 import Button from './Button.js'
+import onClickOutside from 'react-onclickoutside'
 
 
 class MountainInfo extends Component {
@@ -67,6 +68,10 @@ class MountainInfo extends Component {
 		})
 	}
 
+	handleClickOutside = () => {
+		this.goHome()
+		console.log("here")
+	}
 
 	render() {
 		let mountain = this.props.subcomponentProps.highlightedMountain
@@ -97,9 +102,6 @@ class MountainInfo extends Component {
 	   			height: 10,
 	   			borderRadius: 100,
 	        };
-
-	        console.log("studied/goal")
-	        console.log(studied/goal)
 	   	}
 
 	   	let [studiedHours, studiedMinutes] = toHoursMinutes(studied)
@@ -146,4 +148,4 @@ class MountainInfo extends Component {
 	}
 }
 
-export default MountainInfo
+export default onClickOutside(MountainInfo)
