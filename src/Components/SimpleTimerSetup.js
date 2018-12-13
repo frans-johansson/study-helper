@@ -17,18 +17,22 @@ class MountainChoice extends Component {
 		super(props)
 
 		this.handleClick = this.handleClick.bind(this)
+		this.unSelectMountain = this.unSelectMountain.bind(this)
 
 		this.state = {
 			isSelected: false,
-			op: '',
+			op: 1,
 		//	selectedMountain: props.selectedMountain,
 		}
 	}
 
+	//IDE! Istället för isSelected är en bool, låt isSelected spara id:et på den som är vald och använd det!
+
 	handleClick(id) {
-	let {isSelected} = this.state;
-	let {op} = this.state;
-	//let {selectedMountain} = this.state;
+		let {isSelected} = this.state;
+		let {op} = this.state;
+		//let {selectedMountain} = this.state;
+		this.unSelectMountain()
 
 		if(!isSelected){
 			//if(ifMountainSelected) {
@@ -42,24 +46,45 @@ class MountainChoice extends Component {
 
 			this.props.setSelectedMountain(id)
 			this.setState({
-				op: 0.8,
+				op: 0.5,
 			})
+
 			ifMountainSelected = true;
 		}
 		else{
+			
 			this.props.clearSelectedMountain()
-			console.log("opacity2:");
-			console.log(this.state.op)
-			this.setState({
-				op: 1,
-			})
 
 			ifMountainSelected = false;
 		}
 
 		this.setState({
 				isSelected: !isSelected,
-			})
+		})
+	}
+
+	unSelectMountain() {
+
+		this.props.mountains.map(
+			(m) => {
+
+				console.log(m.name)
+				this.setState({
+					op: 1,
+				})
+
+				console.log("Test " + this.state.isSelected)
+				
+				this.props.clearSelectedMountain()
+				ifMountainSelected = false
+
+				this.setState({
+					isSelected: !this.state.isSelected,
+				})
+				
+				console.log("Hej")
+			}
+		)
 	}
 
 	// The className mountainSelection is a test class and should be changed later
@@ -73,6 +98,8 @@ class MountainChoice extends Component {
 			borderColor: "black",
 		}
 
+		console.log(divStyle)
+
 		return(
 			<Button className="mountainSelection" text={`${this.props.name}`} style={divStyle} onClick={() => this.handleClick(this.props.id)} />
 		)
@@ -85,6 +112,7 @@ class MountainSelector extends Component {
 	}*/
 
 	render() {
+
 		return(
 			<div>
 				{
@@ -96,7 +124,8 @@ class MountainSelector extends Component {
 									color={m.color}
 									name={m.name}
 									setSelectedMountain={this.props.setSelectedMountain}
-									clearSelectedMountain={this.props.clearSelectedMountain}/>
+									clearSelectedMountain={this.props.clearSelectedMountain}
+									mountains={this.props.mountains}/>
 							)
 						}
 					)
@@ -160,8 +189,6 @@ class SimpleTimerSetup extends Component {
 	handleChangeStudyMinutes(event) {
 		studyDefaultMinutes = event.target.value
 
-		console.log(studyDefaultMinutes)
-
 		if(studyDefaultMinutes === '' || studyDefaultMinutes === 0) {
 			correctInputValuesStudyMinutes = false
 		}
@@ -169,16 +196,12 @@ class SimpleTimerSetup extends Component {
 			correctInputValuesStudyMinutes = true
 		}
 
-		console.log("StudyMinutes = " + correctInputValuesStudyMinutes)
-
 		if((correctInputValuesStudyHours || correctInputValuesStudyMinutes) && (correctInputValuesPauseHours || correctInputValuesPauseMinutes)) {
 			correctInputValues = true
 		}
 		else {
 			correctInputValues = false
 		}
-
-		console.log(correctInputValues)
 
 		this.forceUpdate()
 

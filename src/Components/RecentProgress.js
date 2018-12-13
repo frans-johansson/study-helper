@@ -19,7 +19,7 @@ class RecentProgress extends Component {
 		let studiedMessage = ''
 
 		if (hours === 0 && minutes === 0)
-			lastDate = `Vi har inte kunnat spara några framsteg, dags att börja plugga`
+			lastDate = `Här kommer dina framsteg från senaste dagen du arbetade att visas, dags att börja plugga så att vi har något att visa`
 
 		if (hours !== 0)
 			studiedMessage += `Du jobbade ${hours} h`
