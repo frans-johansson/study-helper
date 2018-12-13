@@ -30,15 +30,16 @@
 .button_container{
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  
 
   &.stat_buttons{
-    width: 100vw !important;
-    position: fixed;
-    bottom: 0vh;
+    
+    position: absolute;
+    padding-left: 15vw !important;
+   
 
     >div{
-      padding: 5%;
+      padding: 2%;
     }
   }
 }

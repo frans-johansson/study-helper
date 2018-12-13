@@ -80,8 +80,13 @@ class NewMountain extends Component {
 
 
             <input type="submit" value="" disabled={!this.state.name || !this.state.goal || !this.state.date} />
+    
+
           </form>
-                <label>Ditt berg får färgen:</label>
+              <label>Ditt berg får färgen:</label>
+
+           
+
             <div>
                 <div className="subjectColor" style={{backgroundColor: thisColor,}}/>
             </div>

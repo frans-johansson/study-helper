@@ -121,7 +121,7 @@ html {
 
 .has_subcomponent {
 	div:not(.hidden):not(.Clickable):not(.button_container):not(.ClickWrapper):not(.mountain_position):not(.deleteButton):not(.backButton):not(.mountainSelection):not(.timer_setup):not(.timer_center):not(.subjectColor){
-		padding: 10px;
+		padding: 5px;
 		background-color: $box-color;
 
 		& {
@@ -131,18 +131,44 @@ html {
 			}
 		}
 
+
+
 		&.not_color{
 			background-color: $sky-color;
 			width: 70vw;
 			height:70vh;
 
 		}
+		.stat_image {
+			display: inline-block;
+			position: absolute;
+
+			padding: 0 !important;
+			//max-width: 530px !important;
+			width: 100%;
+
+			background-image:url(../svg/minimount.svg);
+			background-size: cover;
+			background-repeat: no-repeat;
+			background-position: bottom center;
+			background-color: transparent !important;
+		}
 	}
 }
 
 .stat_info{
-	width: 100vw !important;
-	height: 50vh !important;
+
+	h1{
+		font-size: 3.9vh;
+		margin-block-start: 0.3vh !important;
+		margin-block-end: 0.2vh !important;
+	}
+	p{
+		font-size: 2.2vh;
+		margin-block-start: 0 !important;
+		margin-block-end: 0 !important;
+	}
+	
 	padding: 0 !important;
 	background-color: transparent !important;
 }
@@ -251,20 +277,7 @@ form {
 	height:70vh;
 }
 
-.stat_image {
-	display: inline-block;
-	position: absolute;
 
-	padding: 0 !important;
-	//max-width: 530px !important;
-	width: 100%;
-
-	background-image:url(../svg/minimount.svg);
-	background-size: cover;
-	background-repeat: no-repeat;
-	background-position: bottom center;
-	background-color: $sky-color !important;
-}
 
 .mountain_position {
     position: absolute;
@@ -320,6 +333,7 @@ input[type=submit] {
 	bottom: 10px;
 
 	box-shadow: 1px 1px 7px lighten($text-color, 15);
+
 }
 
 input[disabled]{
@@ -389,6 +403,8 @@ input[type=date]{
     align: center;
 
     margin-right: 5%;
+    margin-top: 2%;
+
 
     border-radius: 10vw;
     display: inline-flex;
