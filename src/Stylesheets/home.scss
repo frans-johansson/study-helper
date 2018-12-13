@@ -267,7 +267,8 @@ form {
 }
 
 .mountain_position {
-    position: absolute;
+	position: absolute;
+	transform: translate(-5px, -5px);
 } 
 
 .mini_image_conatiner {

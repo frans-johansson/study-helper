@@ -63,7 +63,7 @@ class MountainInfo extends Component {
 
 	updateImageDimensions() {
 		this.setState({
-			windowWidth: document.documentElement.clientWidth
+			windowWidth: window.innerWidth
 		})
 	}
 
