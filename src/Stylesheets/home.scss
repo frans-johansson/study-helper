@@ -131,8 +131,6 @@ html {
 			}
 		}
 
-
-
 		&.not_color{
 			background-color: $sky-color;
 			width: 70vw;
@@ -276,7 +274,7 @@ form {
 	width: 70vw;
 	height:70vh;
 
-	box-shadow: 0px 0px 100vw lighten(black, 40);
+	box-shadow: 0px 0px 100vw lighten(black, 10);
 }
 
 

@@ -113,12 +113,6 @@ class Home extends Component {
 						removeMountain={this.props.viewProps.removeMountain}
 						setHighlightedMountain={this.props.viewProps.setHighlightedMountain}
 					/>
-
-					{/*
-					<div >
-						<Button text="Arkiverade berg" onClick={ () => {this.props.setActiveView("archive")}} />
-					</div>
-					*/}
 				</div>
 
 				<div className={subcomponentContainer}>

@@ -55,18 +55,22 @@ class MountainChoice extends Component {
 	// The className mountainSelection is a test class and should be changed later
 	render() {
 
-		let opa = 1
+		let opa = 0.7
+		//let bordCol = ""
+		//let bordWid = 0
 
 		if(isSelected === this.props.id) {
-			opa = 0.5
+			opa = 1
+			//bordCol = "#3f3f3f"
+			//bordWid = 2
 		}
 
 		let divStyle={
 			backgroundColor: `${this.props.color}`,
 			opacity: `${opa}`,
-			border: 100,
-			borderWidth: 5,
-			borderColor: "black",
+			//borderWidth: bordWid,
+			//borderColor: `${bordCol}`,
+			//borderStyle: "solid"
 		}
 
 		return(

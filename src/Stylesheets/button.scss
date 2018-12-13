@@ -20,11 +20,19 @@
 .Clickable {
 @include buttonSettings;
   border-radius: 100px;
- 
 
   color: white;
   cursor: pointer;
   box-shadow: 1px 1px 7px lighten($text-color, 15);
+}
+
+.Clickable:active {
+  box-shadow: 5px 5px 5px lighten($text-color, 10);
+  transform: translateY(4px);
+
+    &.timerButton:active {
+      opacity: 0.5;
+    }
 }
 
 .button_container{
