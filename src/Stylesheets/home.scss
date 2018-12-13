@@ -138,6 +138,14 @@ html {
 			width: 70vw;
 			height:70vh;
 
+			border-right-style: solid;
+			border-right-color:  $sky-color;
+			border-right-width: 10px;
+
+			border-left-style: solid;
+			border-left-color:  $sky-color;
+			border-left-width: 10px;
+
 		}
 		.stat_image {
 			display: inline-block;
@@ -171,6 +179,8 @@ html {
 	
 	padding: 0 !important;
 	background-color: transparent !important;
+
+
 }
 
 
