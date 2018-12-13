@@ -67,16 +67,31 @@ class MountainInfo extends Component {
         				// Denna länk: https://blog.lftechnology.com/using-svg-icons-components-in-react-44fbe8e5f91
 
 		if(studied>0){
-			divStyle = {
-	            left: `${50 *(studied/goal)}vw`,
-	            bottom: `${100 * (703.38/595.38) * (studied/goal)}vw` ,
-	            backgroundColor: `${color}`,
-	   			//backgroundImage: 'url(/static/media/position.4f7a9f24.svg)',
-	   			backgroundSize: 'cover',
-	   			width: 10,
-	   			height: 10,
-	   			borderRadius: 100,
-	        };
+			if (studied >= goal)
+			{
+				divStyle = {
+					left: `50vw`,
+					bottom: `100vw` ,
+					backgroundColor: `${color}`,
+					//backgroundImage: 'url(/static/media/position.4f7a9f24.svg)',
+					backgroundSize: 'cover',
+					width: 10,
+					height: 10,
+					borderRadius: 100,
+				};
+			}
+			else {
+				divStyle = {
+					left: `${50 *(studied/goal)}vw`,
+					bottom: `${100 * (703.38/595.38) * (studied/goal)}vw` ,
+					backgroundColor: `${color}`,
+					//backgroundImage: 'url(/static/media/position.4f7a9f24.svg)',
+					backgroundSize: 'cover',
+					width: 10,
+					height: 10,
+					borderRadius: 100,
+				};
+			}
 
 	        console.log("studied/goal")
 	        console.log(studied/goal)
