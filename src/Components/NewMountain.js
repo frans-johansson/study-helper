@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Button from '../Components/Button.js'
+import onClickOutside from 'react-onclickoutside'
 
 class NewMountain extends Component {
 
@@ -51,6 +52,9 @@ class NewMountain extends Component {
 
   }
 
+  handleClickOutside = () => {
+    this.props.clearSubcomponent()
+  }
 
   render() {
 
@@ -65,11 +69,12 @@ class NewMountain extends Component {
            <label className="mountain_setup">
             <div>
               <label>Ämne</label>
-                 <input type="text" minLength="2" maxLength="10" name="name" onChange={this.handleChange} />
+              <input type="text" minLength="2" maxLength="10" name="name" onChange={this.handleChange} />
             </div>
             <div>
-               <label>Mål (h)</label>
-                 <input type="number" min="0" name="goal" onChange={this.handleChange} />
+               <label>Mål</label>
+               <input type="number" min="0" name="goal" onChange={this.handleChange} />
+               <label>Timmar</label>
             </div>
             <div>
                 <label>Slutdatum</label>
@@ -80,14 +85,10 @@ class NewMountain extends Component {
 
             <input type="submit" value="" disabled={!this.state.name || !this.state.goal || !this.state.date} />
           </form>
-
-          <div style={{
-              backgroundColor: thisColor,
-              width: 10,
-              height: 10,
-              borderRadius: 10,
-            }}/>
-
+                <label>Ditt berg får färgen:</label>
+            <div>
+                <div className="subjectColor" style={{backgroundColor: thisColor,}}/>
+            </div>
 
             <Button className="backButton blue" positioning="right-absolute" onClick={ () => {this.props.clearSubcomponent()}} />
         </div>
@@ -95,4 +96,4 @@ class NewMountain extends Component {
   }
 }
 
-export default NewMountain
+export default onClickOutside(NewMountain)
