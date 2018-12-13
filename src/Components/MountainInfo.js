@@ -9,7 +9,11 @@ class MountainInfo extends Component {
 		super(props)
 		this.goHome = this.goHome.bind(this)
 		this.deleteMountain = this.deleteMountain.bind(this)
+		this.updateImageDimensions = this.updateImageDimensions.bind(this)
 
+		this.state = {
+			windowWidth: document.documentElement.clientWidth
+		}
 
 		let studied = this.props.subcomponentProps.highlightedMountain.studied
 		let name = this.props.subcomponentProps.highlightedMountain.name
@@ -25,6 +29,10 @@ class MountainInfo extends Component {
 			this.studiedMessage += `${hours} h`
 		if (minutes !== 0)
 			this.studiedMessage += `${minutes} min`
+	}
+
+	componentDidMount() {
+		window.addEventListener("resize", this.updateImageDimensions)
 	}
 
 	deleteMountain() {
@@ -53,6 +61,12 @@ class MountainInfo extends Component {
 			this.props.subcomponentProps.clearHighlightedMountain()
 	}
 
+	updateImageDimensions() {
+		this.setState({
+			windowWidth: document.documentElement.clientWidth
+		})
+	}
+
 
 	render() {
 		let mountain = this.props.subcomponentProps.highlightedMountain
@@ -64,19 +78,40 @@ class MountainInfo extends Component {
 	        width: 10,
 	   		height: 10,
 	    }
+
+	    let {windowWidth} = this.state
+	    let imageElementWidth = windowWidth * 0.70;
+	    let imageHeight = {
+	    	height: `${imageElementWidth * (703.38/595.38)}px`,
+	    }
         				// Denna länk: https://blog.lftechnology.com/using-svg-icons-components-in-react-44fbe8e5f91
 
 		if(studied>0){
-			divStyle = {
-	            left: `${50 *(studied/goal)}vw`,
-	            bottom: `${100 * (703.38/595.38) * (studied/goal)}vw` ,
-	            backgroundColor: `${color}`,
-	   			//backgroundImage: 'url(/static/media/position.4f7a9f24.svg)',
-	   			backgroundSize: 'cover',
-	   			width: 10,
-	   			height: 10,
-	   			borderRadius: 100,
-	        };
+			if (studied >= goal)
+			{
+				divStyle = {
+					left: `50%`,
+					bottom: `100%` ,
+					backgroundColor: `${color}`,
+					//backgroundImage: 'url(/static/media/position.4f7a9f24.svg)',
+					backgroundSize: 'cover',
+					width: 10,
+					height: 10,
+					borderRadius: 100,
+				};
+			}
+			else {
+				divStyle = {
+					left: `${50 *(studied/goal)}%`,
+					bottom: `${100 * (703.38/595.38) * (studied/goal)}%` ,
+					backgroundColor: `${color}`,
+					//backgroundImage: 'url(/static/media/position.4f7a9f24.svg)',
+					backgroundSize: 'cover',
+					width: 10,
+					height: 10,
+					borderRadius: 100,
+				};
+			}
 
 	        console.log("studied/goal")
 	        console.log(studied/goal)
@@ -105,22 +140,22 @@ class MountainInfo extends Component {
 
 		return(
 
-				<div className="stat_image_conatiner not_color">
-						<div className="mountain_position" style={divStyle}/>
-							<div className="stat_info">
-								<h1>Mt. {mountain.name}</h1>
-								<p>Mål: {`${goal} h `} </p>
-								<p>Nedlagd tid: {`${this.studiedMessage}`}</p>
-								<p>Tid kvar: {`${remainingMessage}`}</p>
-								<p>Slutdatum: {`${date} `} </p>
-							</div>
-
-						<div className="button_container stat_buttons">
-
-							<Button className = "backButton" onClick={this.goHome}/>
-							<Button className = "deleteButton" onClick={this.deleteMountain}/>
-						</div>
+			<div className="stat_image_conatiner not_color">
+				<div className="stat_image" style={imageHeight}>
+					<div className="mountain_position" style={divStyle}/>
+					<div className="stat_info">
+						<h1>Mt. {mountain.name}</h1>
+						<p>Mål: {`${goal} h `} </p>
+						<p>Nedlagd tid: {`${this.studiedMessage}`}</p>
+						<p>Tid kvar: {`${remainingMessage}`}</p>
+						<p>Slutdatum: {`${date} `} </p>
+					</div>
 				</div>
+				<div className="button_container stat_buttons">
+					<Button className = "backButton" onClick={this.goHome}/>
+					<Button className = "deleteButton" onClick={this.deleteMountain}/>
+				</div>
+			</div>
 
 		)
 	}
