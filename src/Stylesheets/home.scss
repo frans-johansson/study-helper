@@ -185,14 +185,18 @@ html {
 .timer_center{
 	
 	display: flex;
-	justify-content: center;
+	justify-content: space-between;
 
-	width: 100%;
+	width: 100vw;
 	height: 40vh;
 
 	>div{
 		display: inherit;
 		justify-content: inherit;
+		flex-wrap: wrap;
+		overflow:scroll;
+
+		
 	}
 
 }
@@ -284,7 +288,7 @@ form {
 	width: 70vw;
 	height:70vh;
 
-	box-shadow: 0px 0px 100vw lighten(black, 10);
+	box-shadow: -2px -1px 100vh 16px lighten(black, 20);
 }
 
 
@@ -345,6 +349,15 @@ input[type=submit] {
 
 	box-shadow: 1px 1px 7px lighten($text-color, 15);
 
+}
+
+input[type=submit]:active {
+	box-shadow: 5px 5px 5px lighten($text-color, 10);
+  	transform: translateY(4px);
+
+    &.timerButton:active {
+      opacity: 0.5;
+    }
 }
 
 input[disabled]{

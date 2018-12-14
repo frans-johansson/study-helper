@@ -55,22 +55,22 @@ class MountainChoice extends Component {
 	// The className mountainSelection is a test class and should be changed later
 	render() {
 
-		let opa = 0.7
-		//let bordCol = ""
-		//let bordWid = 0
+		let opa = 0.5
+		let bordCol = ""
+		let bordWid = 0
 
 		if(isSelected === this.props.id) {
 			opa = 1
-			//bordCol = "#3f3f3f"
-			//bordWid = 2
+			bordCol = "#3f3f3f"
+			bordWid = 2
 		}
 
 		let divStyle={
 			backgroundColor: `${this.props.color}`,
 			opacity: `${opa}`,
-			//borderWidth: bordWid,
-			//borderColor: `${bordCol}`,
-			//borderStyle: "solid"
+			borderWidth: bordWid,
+			borderColor: `${bordCol}`,
+			borderStyle: "solid",
 		}
 
 		return(
@@ -263,6 +263,11 @@ class SimpleTimerSetup extends Component {
 
 	render() {
 
+		let breakLine = 
+		{
+
+		}
+
 		return(
 			<div >
 				<form onSubmit={this.handleSubmit}>
@@ -298,10 +303,10 @@ class SimpleTimerSetup extends Component {
 				<label className="block-label">Välj berg:</label>
 
 				<div className="timer_center">
-				<MountainSelector
-					setSelectedMountain={this.props.subcomponentProps.setSelectedMountain}
-					clearSelectedMountain={this.props.subcomponentProps.clearSelectedMountain}
-					mountains={this.props.subcomponentProps.mountains}/>
+					<MountainSelector
+						setSelectedMountain={this.props.subcomponentProps.setSelectedMountain}
+						clearSelectedMountain={this.props.subcomponentProps.clearSelectedMountain}
+						mountains={this.props.subcomponentProps.mountains}/>
 				</div>
 
 				<Button onClick={this.goHome}
