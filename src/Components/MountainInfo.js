@@ -118,14 +118,19 @@ class MountainInfo extends Component {
 			}
 	   	}
 
-	   	let divFlag = {
-	   		backgroundImage: `url(${flag})`,
-	   		backgroundSize: 'cover',
-	   		width: 40,
-	   		height: 40,
-	   		left: imageElementWidth * 0.5 - 21,
-	   		bottom: imageElementWidth * (703.38/595.38) - 10,
+	   	let divFlag
+
+	   	if (studied < goal) {
+	   		divFlag = {
+		   		backgroundImage: `url(${flag})`,
+		   		backgroundSize: 'cover',
+		   		width: 40,
+		   		height: 40,
+		   		left: imageElementWidth * 0.5 - 21,
+		   		bottom: imageElementWidth * (703.38/595.38) - 10,
+		   	}
 	   	}
+	   
 
 	   	let [studiedHours, studiedMinutes] = toHoursMinutes(studied)
 
@@ -156,7 +161,7 @@ class MountainInfo extends Component {
 			<div className="stat_image_conatiner not_color">
 				<div className="stat_info">
 							<h1>Mt. {mountain.name}</h1>
-							<p>Mål: {`${goal} h `} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Tid kvar: {`${remainingMessage}`}</p>
+							<p>Mål: {`${goal} h `} &nbsp;&nbsp;&nbsp;&nbsp; Tid kvar: {`${remainingMessage}`}</p>
 							<p>Nedlagd tid: {`${this.studiedMessage}`}</p>
 							<p></p>
 							<p>Slutdatum: {`${date} `} </p>

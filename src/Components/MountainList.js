@@ -37,7 +37,7 @@ class MountainData extends Component {
 			this.studiedMessage += ` ${minutesLeft} min`
 
 		if(this.props.studied >= this.props.goal)
-			this.studiedMessage = ' 0 min'
+			this.studiedMessage = 'Kvar till mål: 0 min'
 	}
 
 	render() {
