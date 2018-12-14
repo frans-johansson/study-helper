@@ -3,7 +3,8 @@ import { toHoursMinutes } from '../Utils'
 import swal from '@sweetalert/with-react';
 import Button from './Button.js'
 import onClickOutside from 'react-onclickoutside'
-
+import positionMarker from '../svg/position.svg'
+import flag from '../svg/flag.svg'
 
 class MountainInfo extends Component {
 	constructor(props) {
@@ -24,12 +25,12 @@ class MountainInfo extends Component {
 		this.studiedMessage = ''
 
 		if (hours === 0 && minutes === 0)
-			this.studiedMessage += `Du har inte börjat plugga ${name} än`
+			this.studiedMessage += ` 0 min`
 
 		if (hours !== 0)
-			this.studiedMessage += `${hours} h`
+			this.studiedMessage += ` ${hours} h`
 		if (minutes !== 0)
-			this.studiedMessage += `${minutes} min`
+			this.studiedMessage += ` ${minutes} min`
 	}
 
 	componentDidMount() {
@@ -95,32 +96,41 @@ class MountainInfo extends Component {
 			if (studied >= goal)
 			{
 				divStyle = {
-					left: `50%`,
-					bottom: `100%` ,
-					backgroundColor: `${color}`,
+					left: `48%`,
+					bottom: `99%` ,
 					//backgroundImage: 'url(/static/media/position.4f7a9f24.svg)',
+					backgroundImage: `url(${positionMarker})`,
 					backgroundSize: 'cover',
-					width: 10,
-					height: 10,
-					borderRadius: 100,
+					width: 20,
+					height: 30,
 				};
 			}
 			else {
 				divStyle = {
-					left: `${50 *(703.38/595.38)*(studied/goal)}%`,
-					bottom: `${100 * (703.38/595.38) * (studied/goal)}%` ,
-					backgroundColor: `${color}`,
-					//backgroundImage: 'url(/static/media/position.4f7a9f24.svg)',
+					left: `${48 * 0.89 * (703.38/595.38)*(studied/goal) -2}%`,
+					bottom: `${99 * 0.83 * (703.38/595.38) * (studied/goal) -2}%` ,
+					//backgroundImage: 'url(/static/media/position.3cc72012.svg)',
+					backgroundImage: `url(${positionMarker})`,
 					backgroundSize: 'cover',
-					width: 10,
-					height: 10,
-					borderRadius: 100,
+					width: 20,
+					height: 30,
 				};
 			}
-
-	        console.log("studied/goal")
-	        console.log(studied/goal)
 	   	}
+
+	   	let divFlag
+
+	   	if (studied < goal) {
+	   		divFlag = {
+		   		backgroundImage: `url(${flag})`,
+		   		backgroundSize: 'cover',
+		   		width: 40,
+		   		height: 40,
+		   		left: imageElementWidth * 0.5 - 21,
+		   		bottom: imageElementWidth * (703.38/595.38) - 10,
+		   	}
+	   	}
+	   
 
 	   	let [studiedHours, studiedMinutes] = toHoursMinutes(studied)
 
@@ -143,17 +153,22 @@ class MountainInfo extends Component {
 	   	if(remainingMinutes !== 0)
 	   		remainingMessage += ` ${remainingMinutes} min`
 
+	   	if(studied >= goal)
+	   		remainingMessage = ' 0 min'
+
 		return(
 
 			<div className="stat_image_conatiner not_color">
 				<div className="stat_info">
 							<h1>Mt. {mountain.name}</h1>
+							<p>Mål: {`${goal} h `} &nbsp;&nbsp;&nbsp;&nbsp; Tid kvar: {`${remainingMessage}`}</p>
 							<p>Nedlagd tid: {`${this.studiedMessage}`}</p>
 							<p></p>
 							<p>Slutdatum: {`${date} `} </p>
-							<p>Tid kvar: {`${remainingMessage}`} </p>
-							<p>Mål: {`${goal} h `} </p>
+							
+	
 				</div>
+				<div className="flag_position" style={divFlag}/>
 				<div className="stat_image" style={imageHeight}>
 
 					<div className="mountain_position" style={divStyle}/>

@@ -120,7 +120,7 @@ html {
 }
 
 .has_subcomponent {
-	div:not(.hidden):not(.Clickable):not(.button_container):not(.ClickWrapper):not(.mountain_position):not(.deleteButton):not(.backButton):not(.mountainSelection):not(.timer_setup):not(.timer_center):not(.subjectColor){
+	div:not(.hidden):not(.Clickable):not(.button_container):not(.ClickWrapper):not(.mountain_position):not(.deleteButton):not(.backButton):not(.mountainSelection):not(.timer_setup):not(.timer_center):not(.subjectColor):not(.flag_position){
 		padding: 5px;
 		background-color: $box-color;
 
@@ -296,7 +296,12 @@ form {
 .mountain_position {
 	position: absolute;
 	transform: translate(-5px, -5px);
-} 
+}
+
+.flag_position {
+	position: absolute;
+	transform: translate(-5px, -5px);
+}
 
 .mini_image_conatiner {
 	background-image:url(../svg/minimount.svg);
