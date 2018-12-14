@@ -62,7 +62,7 @@ class NewMountain extends Component {
     let thisColor = JSON.parse(window.localStorage.getItem("colors")).shift()
 
     return(
-        <div>
+        <div className="scroll">
           <h2>SKAPA BERG</h2> 
           <h3>Nr {numMountains+1}/10</h3>
           <form onSubmit={this.handleSubmit} method="get">

@@ -120,7 +120,7 @@ html {
 }
 
 .has_subcomponent {
-	div:not(.hidden):not(.Clickable):not(.button_container):not(.ClickWrapper):not(.mountain_position):not(.deleteButton):not(.backButton):not(.mountainSelection):not(.timer_setup):not(.timer_center):not(.subjectColor):not(.flag_position){
+	div:not(.hidden):not(.Clickable):not(.button_container):not(.ClickWrapper):not(.mountain_position):not(.deleteButton):not(.backButton):not(.mountainSelection):not(.timer_setup):not(.timer_center):not(.subjectColor){
 		padding: 5px;
 		background-color: $box-color;
 
@@ -196,7 +196,6 @@ html {
 		flex-wrap: wrap;
 		overflow:scroll;
 
-		
 	}
 
 }
@@ -296,12 +295,7 @@ form {
 .mountain_position {
 	position: absolute;
 	transform: translate(-5px, -5px);
-}
-
-.flag_position {
-	position: absolute;
-	transform: translate(-5px, -5px);
-}
+} 
 
 .mini_image_conatiner {
 	background-image:url(../svg/minimount.svg);
@@ -437,4 +431,8 @@ input[type=date]{
 
     border-radius: 10vw;
     display: inline-flex;
+}
+
+.scroll {
+	overflow:scroll;
 }

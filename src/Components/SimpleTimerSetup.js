@@ -61,7 +61,7 @@ class MountainChoice extends Component {
 
 		if(isSelected === this.props.id) {
 			opa = 1
-			bordCol = "#3f3f3f"
+			bordCol = "#707070"
 			bordWid = 2
 		}
 
@@ -269,7 +269,7 @@ class SimpleTimerSetup extends Component {
 		}
 
 		return(
-			<div >
+			<div className="scroll" >
 				<form onSubmit={this.handleSubmit}>
 					<label className="block-label"> Fyll i pluggtid! </label>
 					<div className="timer_setup">
