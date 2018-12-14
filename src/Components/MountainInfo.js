@@ -122,13 +122,16 @@ class MountainInfo extends Component {
 
 	   	if (studied < goal) {
 	   		divFlag = {
+				position: "absolute",
 		   		backgroundImage: `url(${flag})`,
-		   		backgroundSize: 'cover',
-		   		width: 40,
-		   		height: 40,
-		   		left: imageElementWidth * 0.5 - 21,
-		   		bottom: imageElementWidth * (703.38/595.38) - 10,
-		   	}
+				backgroundColor: "unset",   
+				backgroundSize: 'cover',
+		   		width: 20,
+		   		height: 20,
+		   		left: "50%",
+		   		top: "0px",
+				transform: "translate(-20px, -25px)"
+			}
 	   	}
 	   
 
@@ -165,15 +168,13 @@ class MountainInfo extends Component {
 							<p>Nedlagd tid: {`${this.studiedMessage}`}</p>
 							<p></p>
 							<p>Slutdatum: {`${date} `} </p>
-							
-	
 				</div>
-				<div className="flag_position" style={divFlag}/>
-				<div className="stat_image" style={imageHeight}>
 
+				<div className="stat_image" style={imageHeight}>
+					<div className="flag_position" style={divFlag}/>
 					<div className="mountain_position" style={divStyle}/>
-					
 				</div>
+
 				<div className="button_container stat_buttons">
 					<Button className = "backButton" onClick={this.goHome}/>
 					<Button className = "deleteButton" onClick={this.deleteMountain}/>
