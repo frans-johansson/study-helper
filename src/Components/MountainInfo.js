@@ -25,12 +25,12 @@ class MountainInfo extends Component {
 		this.studiedMessage = ''
 
 		if (hours === 0 && minutes === 0)
-			this.studiedMessage += `0 min`
+			this.studiedMessage += ` 0 min`
 
 		if (hours !== 0)
-			this.studiedMessage += `${hours} h`
+			this.studiedMessage += ` ${hours} h`
 		if (minutes !== 0)
-			this.studiedMessage += `${minutes} min`
+			this.studiedMessage += ` ${minutes} min`
 	}
 
 	componentDidMount() {
@@ -96,8 +96,8 @@ class MountainInfo extends Component {
 			if (studied >= goal)
 			{
 				divStyle = {
-					left: `50%`,
-					bottom: `100%` ,
+					left: `48%`,
+					bottom: `99%` ,
 					//backgroundImage: 'url(/static/media/position.4f7a9f24.svg)',
 					backgroundImage: `url(${positionMarker})`,
 					backgroundSize: 'cover',
@@ -107,8 +107,8 @@ class MountainInfo extends Component {
 			}
 			else {
 				divStyle = {
-					left: `${50 *(703.38/595.38)*(studied/goal)}%`,
-					bottom: `${100 * (703.38/595.38) * (studied/goal)}%` ,
+					left: `${48 * 0.89 * (703.38/595.38)*(studied/goal) -2}%`,
+					bottom: `${99 * 0.83 * (703.38/595.38) * (studied/goal) -2}%` ,
 					//backgroundImage: 'url(/static/media/position.3cc72012.svg)',
 					backgroundImage: `url(${positionMarker})`,
 					backgroundSize: 'cover',
@@ -148,15 +148,19 @@ class MountainInfo extends Component {
 	   	if(remainingMinutes !== 0)
 	   		remainingMessage += ` ${remainingMinutes} min`
 
+	   	if(studied >= goal)
+	   		remainingMessage = ' 0 min'
+
 		return(
 
 			<div className="stat_image_conatiner not_color">
 				<div className="stat_info">
 							<h1>Mt. {mountain.name}</h1>
+							<p>Mål: {`${goal} h `} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Tid kvar: {`${remainingMessage}`}</p>
 							<p>Nedlagd tid: {`${this.studiedMessage}`}</p>
 							<p></p>
 							<p>Slutdatum: {`${date} `} </p>
-							<p>Mål: {`${goal} h `} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Tid kvar: {`${remainingMessage}`}</p>
+							
 	
 				</div>
 				<div className="flag_position" style={divFlag}/>
