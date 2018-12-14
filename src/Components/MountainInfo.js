@@ -24,7 +24,7 @@ class MountainInfo extends Component {
 		this.studiedMessage = ''
 
 		if (hours === 0 && minutes === 0)
-			this.studiedMessage += `Du har inte börjat plugga ${name} än`
+			this.studiedMessage += `0 min`
 
 		if (hours !== 0)
 			this.studiedMessage += `${hours} h`
@@ -97,29 +97,31 @@ class MountainInfo extends Component {
 				divStyle = {
 					left: `50%`,
 					bottom: `100%` ,
-					backgroundColor: `${color}`,
-					//backgroundImage: 'url(/static/media/position.4f7a9f24.svg)',
+					backgroundImage: 'url(/static/media/position.4f7a9f24.svg)',
 					backgroundSize: 'cover',
-					width: 10,
-					height: 10,
-					borderRadius: 100,
+					width: 20,
+					height: 30,
 				};
 			}
 			else {
 				divStyle = {
 					left: `${50 *(703.38/595.38)*(studied/goal)}%`,
 					bottom: `${100 * (703.38/595.38) * (studied/goal)}%` ,
-					backgroundColor: `${color}`,
-					//backgroundImage: 'url(/static/media/position.4f7a9f24.svg)',
+					backgroundImage: 'url(/static/media/position.3cc72012.svg)',
 					backgroundSize: 'cover',
-					width: 10,
-					height: 10,
-					borderRadius: 100,
+					width: 20,
+					height: 30,
 				};
 			}
+	   	}
 
-	        console.log("studied/goal")
-	        console.log(studied/goal)
+	   	let divFlag = {
+	   		backgroundImage: ' url(/static/media/flag.5886853a.svg)',
+	   		backgroundSize: 'cover',
+	   		width: 40,
+	   		height: 40,
+	   		left: imageElementWidth * 0.5 - 21,
+	   		bottom: imageElementWidth * (703.38/595.38) - 10,
 	   	}
 
 	   	let [studiedHours, studiedMinutes] = toHoursMinutes(studied)
@@ -151,9 +153,10 @@ class MountainInfo extends Component {
 							<p>Nedlagd tid: {`${this.studiedMessage}`}</p>
 							<p></p>
 							<p>Slutdatum: {`${date} `} </p>
-							<p>Tid kvar: {`${remainingMessage}`} </p>
-							<p>Mål: {`${goal} h `} </p>
+							<p>Mål: {`${goal} h `} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Tid kvar: {`${remainingMessage}`}</p>
+	
 				</div>
+				<div className="flag_position" style={divFlag}/>
 				<div className="stat_image" style={imageHeight}>
 
 					<div className="mountain_position" style={divStyle}/>
