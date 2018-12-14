@@ -3,7 +3,8 @@ import { toHoursMinutes } from '../Utils'
 import swal from '@sweetalert/with-react';
 import Button from './Button.js'
 import onClickOutside from 'react-onclickoutside'
-
+import positionMarker from '../svg/position.svg'
+import flag from '../svg/flag.svg'
 
 class MountainInfo extends Component {
 	constructor(props) {
@@ -97,7 +98,8 @@ class MountainInfo extends Component {
 				divStyle = {
 					left: `50%`,
 					bottom: `100%` ,
-					backgroundImage: 'url(/static/media/position.4f7a9f24.svg)',
+					//backgroundImage: 'url(/static/media/position.4f7a9f24.svg)',
+					backgroundImage: `url(${positionMarker})`,
 					backgroundSize: 'cover',
 					width: 20,
 					height: 30,
@@ -107,7 +109,8 @@ class MountainInfo extends Component {
 				divStyle = {
 					left: `${50 *(703.38/595.38)*(studied/goal)}%`,
 					bottom: `${100 * (703.38/595.38) * (studied/goal)}%` ,
-					backgroundImage: 'url(/static/media/position.3cc72012.svg)',
+					//backgroundImage: 'url(/static/media/position.3cc72012.svg)',
+					backgroundImage: `url(${positionMarker})`,
 					backgroundSize: 'cover',
 					width: 20,
 					height: 30,
@@ -116,7 +119,7 @@ class MountainInfo extends Component {
 	   	}
 
 	   	let divFlag = {
-	   		backgroundImage: ' url(/static/media/flag.5886853a.svg)',
+	   		backgroundImage: `url(${flag})`,
 	   		backgroundSize: 'cover',
 	   		width: 40,
 	   		height: 40,
