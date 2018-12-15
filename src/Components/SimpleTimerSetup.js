@@ -263,11 +263,6 @@ class SimpleTimerSetup extends Component {
 
 	render() {
 
-		let breakLine = 
-		{
-
-		}
-
 		return(
 			<div className="scroll" >
 				<form onSubmit={this.handleSubmit}>

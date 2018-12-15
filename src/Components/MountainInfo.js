@@ -18,7 +18,6 @@ class MountainInfo extends Component {
 		}
 
 		let studied = this.props.subcomponentProps.highlightedMountain.studied
-		let name = this.props.subcomponentProps.highlightedMountain.name
 
 		let [hours, minutes] = toHoursMinutes(studied)
 
@@ -76,7 +75,7 @@ class MountainInfo extends Component {
 
 	render() {
 		let mountain = this.props.subcomponentProps.highlightedMountain
-		let {goal, date, studied, color} = mountain
+		let {goal, date, studied} = mountain
 
 		let divStyle = {
 	        left: 0,

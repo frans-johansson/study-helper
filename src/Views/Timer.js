@@ -132,9 +132,6 @@ class Timer extends Component {
 					<h3> {next} </h3>
 			</div>
 		)
-
-		nowtime= 0
-		totaltime=0
 	}
 }
 
