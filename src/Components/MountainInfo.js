@@ -118,7 +118,9 @@ class MountainInfo extends Component {
 			}
 	   	}
 
-	   	let divFlag
+	   	let divFlag = {
+	   		backgroundColor: "transparent",
+	   	}
 
 	   	if (studied < goal) {
 	   		divFlag = {
