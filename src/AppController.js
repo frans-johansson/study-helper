@@ -110,7 +110,7 @@ class AppController extends Component {
 			lastDate = progressTracking.lastDate
 
 			// Check for new date
-			if (todayDate !== currentDate && workToday > 0) {
+			if (todayDate !== currentDate && workToday > 60) {
 				[workToday, workYesterday, currentDate, lastDate] = [0, workToday, todayDate, currentDate] // Shifterino
 			}
 
