@@ -86,10 +86,12 @@ class MountainInfo extends Component {
 	   		height: 10,
 	    }
 
+		const imageRatio = 703.38/595.38
+
 	    let {windowWidth} = this.state
 	    let imageElementWidth = windowWidth * 0.70;
 	    let imageHeight = {
-	    	height: imageElementWidth * (703.38/595.38),
+	    	height: imageElementWidth * imageRatio,
 		}
 
 		let maxHeight = this.state.windowHeight / 2.5;
@@ -97,6 +99,14 @@ class MountainInfo extends Component {
 		if (imageHeight.height >= maxHeight) {
 			imageHeight.height = maxHeight;
 		}
+
+		let image_bounds = {
+			width: imageHeight.height / (2 * imageRatio),
+			height: imageHeight.height,
+		}
+
+		console.log(image_bounds)
+
         				// Denna länk: https://blog.lftechnology.com/using-svg-icons-components-in-react-44fbe8e5f91
 
 		if(studied>0){
@@ -114,8 +124,12 @@ class MountainInfo extends Component {
 			}
 			else {
 				divStyle = {
+					/*
 					left: `${48 * 0.89 * (703.38/595.38)*(studied/goal) -2}%`,
 					bottom: `${99 * 0.83 * (703.38/595.38) * (studied/goal) -2}%` ,
+					*/
+					left: `${100 * (studied/goal)}%`,
+					bottom: `${100 * (studied/goal)}%`,
 					//backgroundImage: 'url(/static/media/position.3cc72012.svg)',
 					backgroundImage: `url(${positionMarker})`,
 					backgroundSize: 'cover',
@@ -181,7 +195,9 @@ class MountainInfo extends Component {
 
 				<div className="stat_image" style={imageHeight}>
 					<div className="flag_position" style={divFlag}/>
-					<div className="mountain_position" style={divStyle}/>
+					<div className="image_bounding_box" style={image_bounds} >
+						<div className="mountain_position" style={divStyle}/>
+					</div>
 				</div>
 
 				<div className="button_container stat_buttons">
