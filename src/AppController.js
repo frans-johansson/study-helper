@@ -113,6 +113,9 @@ class AppController extends Component {
 			if (todayDate !== currentDate && workToday > 60) {
 				[workToday, workYesterday, currentDate, lastDate] = [0, workToday, todayDate, currentDate] // Shifterino
 			}
+			else if(todayDate !== currentDate) {
+				[workToday, currentDate] = [0, todayDate]
+			}
 
 			window.localStorage.setItem("progressTracking", JSON.stringify({workToday, workYesterday, currentDate, lastDate}))
 		}
