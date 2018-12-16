@@ -113,8 +113,9 @@ class MountainInfo extends Component {
 			if (studied >= goal)
 			{
 				divStyle = {
-					left: `48%`,
-					bottom: `99%` ,
+					left: `${100 * (studied/goal)}%`,
+					bottom: `${100 * (studied/goal)}%`,
+					transform: "translate(-10px, 1px)",
 					//backgroundImage: 'url(/static/media/position.4f7a9f24.svg)',
 					backgroundImage: `url(${positionMarker})`,
 					backgroundSize: 'cover',

@@ -45,6 +45,14 @@ html {
 				background-repeat: no-repeat;
 				background-position: center bottom;
 
+				& {
+					@media (min-width: 1000px) {
+						height: 15vw;
+						padding-top: 40px;
+						background-image: url(../svg/fler_berg.svg)
+					}
+				}
+
 				.hills {
 					background-image: url(../svg/kullar.svg);
 					background-repeat: no-repeat;
@@ -52,13 +60,25 @@ html {
 
 					width: 100%;
 					height: 10vw;
-
+					
 					position: absolute;
 					top: 22vw;
+
+					& {
+						@media (min-width: 1000px) {
+							top: 12vw;
+						}
+					}
 				}
 				.forest_container {
 					position: absolute;
 					top: 27vw;
+
+					& {
+						@media (min-width: 1000px) {
+							top: 18vw;
+						}
+					}
 
 					width: 100%;
 
