@@ -166,6 +166,14 @@ html {
 			background-repeat: no-repeat;
 			background-position: bottom center;
 			background-color: $sky-color !important;
+
+			.image_bounding_box {
+				background-color: unset !important;
+				padding: 0 !important;
+				position: absolute;
+				bottom: 0;
+				right: 50%;
+			}
 		}
 	}
 }
