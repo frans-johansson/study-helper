@@ -276,6 +276,8 @@ form {
 	flex-direction: column;
 	align-items: center;
 
+	pointer-events: none;
+
 	&.center_on_page {
 		height: 100vh;
 		justify-content: center;
