@@ -14,7 +14,8 @@ class MountainInfo extends Component {
 		this.updateImageDimensions = this.updateImageDimensions.bind(this)
 
 		this.state = {
-			windowWidth: document.documentElement.clientWidth
+			windowWidth: document.documentElement.clientWidth,
+			windowHeight: document.documentElement.clientHeight
 		}
 
 		let studied = this.props.subcomponentProps.highlightedMountain.studied
@@ -64,7 +65,8 @@ class MountainInfo extends Component {
 
 	updateImageDimensions() {
 		this.setState({
-			windowWidth: window.innerWidth
+			windowWidth: window.innerWidth,
+			windowHeight: window.innerHeight,
 		})
 	}
 
@@ -87,8 +89,14 @@ class MountainInfo extends Component {
 	    let {windowWidth} = this.state
 	    let imageElementWidth = windowWidth * 0.70;
 	    let imageHeight = {
-	    	height: `${imageElementWidth * (703.38/595.38)}px`,
-	    }
+	    	height: imageElementWidth * (703.38/595.38),
+		}
+
+		let maxHeight = this.state.windowHeight / 2.5;
+
+		if (imageHeight.height >= maxHeight) {
+			imageHeight.height = maxHeight;
+		}
         				// Denna länk: https://blog.lftechnology.com/using-svg-icons-components-in-react-44fbe8e5f91
 
 		if(studied>0){

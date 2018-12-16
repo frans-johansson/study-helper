@@ -20,7 +20,7 @@ $no-color: #E52823; /*knapp färg för nej, avbryt*/
 $text-color: #3f3f3f; /*färg för allmän text*/
 $input-box-color: #d8d5c7; /*nina testar */
 
-/*Ämnes färger*/
+/*Ämnesfärger*/
 $a-color: #5A999D;
 $b-color: #D17B6E;
 $c-color: #868D6E;
@@ -35,17 +35,20 @@ $j-color: #e29178;
 @mixin buttonSettings{
   border-radius: 100px;
   
-  display: inline-flex; 
-  	@media screen and (max-width:500px) {
-		width: 18vw;
- 		height: 18vw;
+  display: inline-flex;
+  width: 60px;
+  height: 60px;
+
+  	@media screen and (min-width:500px) {
+		width: 60px;
+ 		height: 60px;
 	}
-	@media screen and (min-width: 500px){
-		width: 10vw;
- 		height: 10vw;
+	@media screen and (min-width: 600px){
+		width: 70px;
+ 		height: 70px;
 	}
 	@media screen and (min-width: 800px){
-		width: 10vw;
- 		height: 10vw;
+		width: 80px;
+		height: 80px;
 	}
 }

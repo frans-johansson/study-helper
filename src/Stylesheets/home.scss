@@ -94,6 +94,15 @@ html {
 			.view_container {
 				padding: 0 5vw;
 				margin-top: 10vw;
+
+				& {
+					@media (min-width: 800px) {
+						padding: 0 10vw;
+					}
+					@media (min-width: 1000px) {
+						padding: 0 15vw;
+					}
+				}
 			}
 		}
 	}
@@ -150,11 +159,10 @@ html {
 			position: absolute;
 
 			padding: 0 !important;
-			//max-width: 530px !important;
 			width: 100%;
 
 			background-image:url(../svg/minimount.svg);
-			background-size: cover;
+			background-size: contain;
 			background-repeat: no-repeat;
 			background-position: bottom center;
 			background-color: $sky-color !important;
@@ -164,6 +172,10 @@ html {
 
 .stat_info{
 
+	position: absolute;
+	top: 0;
+	width: 100%;
+	
 	h1{
 		font-size: 3.9vh;
 		margin-block-start: 0.3vh !important;
@@ -177,8 +189,6 @@ html {
 	
 	padding: 0 !important;
 	background-color: transparent !important;
-
-
 }
 
 
@@ -266,7 +276,7 @@ form {
 	&.as_row {
 		padding-top: 10px;
 		flex-direction: row;
-		justify-content: space-around;
+		justify-content: space-between;
 	}
 }
 

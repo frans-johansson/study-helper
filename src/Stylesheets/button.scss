@@ -10,6 +10,21 @@
   justify-content: center;
   align-items: center;
 
+  & {
+    @media (max-width: 500px) {
+      margin: 0 10px;
+    }
+    @media (min-width: 500px) {
+      margin: 0 20px;
+    }
+    @media (min-width: 800px) {
+      margin: 0 30px;
+    }
+    @media (min-width: 1000px) {
+      margin: 0 70px;
+    }
+  }
+
   & .right-absolute {
     position: absolute;
     left: 10px;
@@ -38,13 +53,18 @@
 .button_container{
   display: flex;
   flex-direction: row;
-  
+  justify-content: space-around;
 
-  &.stat_buttons{
-    
+  &.stat_buttons{    
     position: absolute;
-    padding-left: 15vw !important;
-   
+    left: 50%;
+    right: 50%;
+
+    .ClickWrapper {
+      @media (min-width: 600px) {
+        margin: 0 20vw !important;
+      }
+    }
 
     >div{
       padding: 2%;
