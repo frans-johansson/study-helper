@@ -508,6 +508,9 @@ input[type=date]{
 	overflow:scroll;
 	position: relative;
 	width: 68vw;
+	@media (max-width: 800px) {
+		padding-top: 40px !important;
+	}
 	@media (min-width: 800px) {
 		width: 50vw;
 	}
