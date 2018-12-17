@@ -25,7 +25,7 @@ class RecentProgress extends Component {
 			studiedMessage += `Du jobbade ${hours} h`
 
 		if (minutes !== 0 && hours !== 0)
-			studiedMessage += `och ${minutes} min`
+			studiedMessage += ` och ${minutes} min`
 
 		if(minutes !== 0 && hours === 0)
 			studiedMessage += `Du jobbade ${minutes} min`
