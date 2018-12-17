@@ -73,7 +73,7 @@ class NewMountain extends Component {
             </div>
             <div>
                <label>Mål</label>
-               <input type="number" min="0" name="goal" onChange={this.handleChange} />
+               <input type="number" min="1" name="goal" onChange={this.handleChange} />
                <label>Timmar</label>
             </div>
             <div>
