@@ -62,7 +62,7 @@ class NewMountain extends Component {
     let thisColor = JSON.parse(window.localStorage.getItem("colors")).shift()
 
     return(
-        <div className="scroll">
+        <div className="scroll new_mountain" style={{color: thisColor}}>
           <h2>SKAPA BERG</h2> 
           <h3>Nr {numMountains+1}/10</h3>
           <form onSubmit={this.handleSubmit} method="get">
@@ -73,8 +73,12 @@ class NewMountain extends Component {
             </div>
             <div>
                <label>Mål</label>
-               <input type="number" min="1" name="goal" onChange={this.handleChange} />
-               <label>Timmar</label>
+               <div style={{display: "flex", justifyContent: "center", padding: 0}}>
+                <div style={{display: "flex", alignItems: "center", width: "unset", padding: 0}}>
+                  <input type="number" min="1" name="goal" onChange={this.handleChange} />
+                  <label id="hour_label">Timmar</label>
+                </div>
+               </div>
             </div>
             <div>
                 <label>Slutdatum</label>
@@ -87,13 +91,15 @@ class NewMountain extends Component {
     
 
           </form>
+          {/*
               <label>Ditt berg får färgen:</label>
 
            
 
-            <div>
+            <div style={{display: "flex", alignItems: "center", justifyContent: "center" }}>
                 <div className="subjectColor" style={{backgroundColor: thisColor,}}/>
             </div>
+          */}
 
             <Button className="backButton blue" positioning="right-absolute" onClick={ () => {this.props.clearSubcomponent()}} />
         </div>

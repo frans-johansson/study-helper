@@ -140,6 +140,9 @@ html {
 
 	> div {
 		margin: 0 5vw 20px 5vw;
+		@media (min-width: 1000px) {
+			margin: 0 5vw 35px 5vw;
+		}
 		background-color: $box-color;
 		border-radius: $corner-roundness;
 		box-shadow: 1px 1px 7px lighten($text-color, 15);
@@ -158,7 +161,7 @@ html {
 		background-color: $box-color;
 
 		& {
-			@media (max-width: 420px) {
+			@media (max-width: 600px) {
 				height: 100%;
 				width: 100%;
 			}
@@ -229,7 +232,7 @@ html {
 	display: flex;
 	justify-content: space-between;
 
-	width: 100vw;
+	width: 100%;
 	height: 40vh;
 
 	>div{
@@ -244,7 +247,10 @@ html {
 
 .block-label {
 	display: block;
-	margin-top: 15px;
+	margin-top: 50px;
+	@media (max-width: 400px) {
+		margin-top: 20px;
+	}
 }
 
 form {
@@ -259,7 +265,18 @@ form {
 	align-items: center;
 	justify-content: center;
 
-	width: 80vw;
+	@media (max-width: 500px) {
+		width: 60vw;
+	}
+	@media (min-width: 500px) {
+		width: 50vw;
+	}
+	@media (min-width: 800px) {
+		width: 35vw;
+	}
+	@media (min-width: 1200px) {
+		width: 20vw;
+	}
 
 	> div{
 		width: 100%;
@@ -392,11 +409,15 @@ input[type=submit] {
 	width: 90px;
 	height: 90px;
 
+	z-index: 1;
 	position: absolute;
+	@media (max-width: 600px) {
+		position: fixed;
+	}
 	bottom: 10px;
+	right: 10px;
 
 	box-shadow: 1px 1px 7px lighten($text-color, 15);
-
 }
 
 input[type=submit]:active {
@@ -453,13 +474,21 @@ input[type=date]{
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-
 	text-align: center;
+	width: 70vw;
 
-	>div{
+	>div {
+		margin: 5px 0;
+	}
+	
+	#hour_label {
+		font-size: unset;
+		margin-left: 10px; 
+		display: inline;
 	}
 
 	label{
+		font-size: 20px;
 		display: block;
 	}
 
@@ -472,16 +501,22 @@ input[type=date]{
 .subjectColor {
 	height: 10vw;
     width: 10vw;
-    align: center;
-
-    margin-right: 5%;
-    margin-top: 2%;
-
-
     border-radius: 10vw;
-    display: inline-flex;
 }
 
 .scroll {
 	overflow:scroll;
+	position: relative;
+	width: 68vw;
+	@media (min-width: 800px) {
+		width: 50vw;
+	}
+	@media (min-width: 1000px) {
+		width: 40vw;
+	}
+	box-shadow: -2px -1px 100vh 16px lighten(black, 20);
+
+	@media (min-width:600px) {
+		border-radius: $corner-roundness;
+	}
 }

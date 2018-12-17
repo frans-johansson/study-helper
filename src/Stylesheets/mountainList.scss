@@ -51,6 +51,12 @@
 		h1 {
 			font-size: 30px;
 			margin: 10px 0;
+			@media (min-width: 700px) {
+				font-size: 40px;
+			}
+			@media (min-width: 900px) {
+				font-size: 50px;
+			}
 		}
 
 		p {

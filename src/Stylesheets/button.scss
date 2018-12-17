@@ -26,7 +26,11 @@
   }
 
   & .right-absolute {
+    z-index: 1;
     position: absolute;
+    @media (max-width: 600px) {
+      position: fixed;
+    }
     left: 10px;
     bottom: 10px;
   }

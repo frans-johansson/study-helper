@@ -297,7 +297,7 @@ class SimpleTimerSetup extends Component {
 
 				<label className="block-label">Välj berg:</label>
 
-				<div className="timer_center">
+				<div className="timer_center" style={{display: "flex", justifyContent: "space-around", height: "unset", marginBottom: "40px"}}>
 					<MountainSelector
 						setSelectedMountain={this.props.subcomponentProps.setSelectedMountain}
 						clearSelectedMountain={this.props.subcomponentProps.clearSelectedMountain}

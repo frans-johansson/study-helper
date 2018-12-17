@@ -105,7 +105,10 @@ class MountainInfo extends Component {
 			height: imageHeight.height,
 		}
 
-		console.log(image_bounds)
+		let studiedPercentage = studied/goal
+		if(studiedPercentage >= 1) {
+			studiedPercentage = 1
+		}
 
         				// Denna länk: https://blog.lftechnology.com/using-svg-icons-components-in-react-44fbe8e5f91
 
@@ -113,8 +116,8 @@ class MountainInfo extends Component {
 			if (studied >= goal)
 			{
 				divStyle = {
-					left: `${100 * (studied/goal)}%`,
-					bottom: `${100 * (studied/goal)}%`,
+					left: `${100 * (studiedPercentage)}%`,
+					bottom: `${100 * (studiedPercentage)}%`,
 					transform: "translate(-10px, 1px)",
 					//backgroundImage: 'url(/static/media/position.4f7a9f24.svg)',
 					backgroundImage: `url(${positionMarker})`,
