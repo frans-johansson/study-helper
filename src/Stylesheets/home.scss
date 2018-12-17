@@ -3,6 +3,10 @@
 @import 'timer';
 @import 'swal';
 
+::-webkit-scrollbar {
+	display: none;
+}
+
 body {
 	height: 100vh;
 	background-color: $grass-color;
