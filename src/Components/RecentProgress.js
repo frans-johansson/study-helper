@@ -35,13 +35,13 @@ class RecentProgress extends Component {
 		let studiedToday = ''
 
 		if (hours_today === 0 && minutes_today === 0)
-			studiedToday += '0 min'
+			studiedToday += ' 0 min'
 
 		if (hours_today !== 0)
-			studiedToday += `${hours_today} h`
+			studiedToday += ` ${hours_today} h`
 
 		if (minutes_today !== 0)
-			studiedToday += `${minutes_today} min`
+			studiedToday += ` ${minutes_today} min`
 
 
 
@@ -52,7 +52,7 @@ class RecentProgress extends Component {
 
 				<div>
 					<p>{studiedMessage} {lastDate}.</p>
-					<p>Idag har du jobbat {studiedToday}.</p>
+					<p>Idag har du jobbat{studiedToday}.</p>
 				</div>
 
 			</div>
